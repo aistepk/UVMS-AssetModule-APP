@@ -1,0 +1,15 @@
+# Created at 2021-09-02T13:01:34.478
+WARNING: An illegal reflective access operation has occurred
+
+# Created at 2021-09-02T13:01:34.479
+WARNING: Illegal reflective access by org.powermock.reflect.internal.WhiteboxImpl (file:/C:/Users/paist/.m2/repository/org/powermock/powermock-reflect/2.0.4/powermock-reflect-2.0.4.jar) to method java.util.ArrayList.elementData(int)
+
+# Created at 2021-09-02T13:01:34.479
+WARNING: Please consider reporting this to the maintainers of org.powermock.reflect.internal.WhiteboxImpl
+
+# Created at 2021-09-02T13:01:34.480
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created at 2021-09-02T13:01:34.493
+WARNING: All illegal access operations will be denied in a future release
+

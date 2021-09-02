@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PollRestResource.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.rest.mobileterminal.services</a> &gt; <span class="el_source">PollRestResource.java</span></div><h1>PollRestResource.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.rest.mobileterminal.services;
+
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.*;
+import eu.europa.ec.fisheries.uvms.commons.date.JsonBConfigurator;
+import eu.europa.ec.fisheries.uvms.mobileterminal.bean.MobileTerminalServiceBean;
+import eu.europa.ec.fisheries.uvms.mobileterminal.bean.PollServiceBean;
+import eu.europa.ec.fisheries.uvms.mobileterminal.dao.PollProgramDaoBean;
+import eu.europa.ec.fisheries.uvms.mobileterminal.mapper.PollEntityToModelMapper;
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.dto.CreatePollResultDto;
+import eu.europa.ec.fisheries.uvms.mobileterminal.dto.PollChannelListDto;
+import eu.europa.ec.fisheries.uvms.mobileterminal.dto.PollDto;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.ProgramPoll;
+import eu.europa.ec.fisheries.uvms.mobileterminal.mapper.PollDtoMapper;
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.dto.SimpleCreatePoll;
+import eu.europa.ec.fisheries.uvms.rest.security.RequiresFeature;
+import eu.europa.ec.fisheries.uvms.rest.security.UnionVMSFeature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.json.bind.Jsonb;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.UUID;
+
+@Path(&quot;/poll&quot;)
+@Stateless
+@Consumes(value = { MediaType.APPLICATION_JSON })
+@Produces(value = { MediaType.APPLICATION_JSON })
+<span class="nc" id="L49">public class PollRestResource {</span>
+
+<span class="nc" id="L51">    private final static Logger LOG = LoggerFactory.getLogger(PollRestResource.class);</span>
+
+    @Inject
+    private PollServiceBean pollServiceBean;
+
+    @EJB
+    private PollProgramDaoBean pollProgramDao;
+
+    @Inject
+    private MobileTerminalServiceBean mobileTerminalServiceBean;
+
+    @Context
+    private HttpServletRequest request;
+
+    private Jsonb jsonb;
+
+    @PostConstruct
+    public void init() {
+<span class="nc" id="L69">        jsonb =  new JsonBConfigurator().getContext(null);</span>
+<span class="nc" id="L70">    }</span>
+
+    @POST
+    @Path(&quot;/&quot;)
+    @RequiresFeature(UnionVMSFeature.managePolls)
+    public Response createPoll(PollRequestType createPoll)  throws Exception {
+<span class="nc" id="L76">        LOG.info(&quot;Create poll invoked in rest layer:{}&quot;,createPoll);</span>
+        try {
+<span class="nc" id="L78">            createPoll.setUserName(request.getRemoteUser());</span>
+<span class="nc" id="L79">            CreatePollResultDto createPollResultDto = pollServiceBean.createPoll(createPoll);</span>
+<span class="nc" id="L80">            return Response.ok(createPollResultDto).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L81">        } catch (Exception ex) {</span>
+<span class="nc" id="L82">            LOG.error(&quot;[ Error when creating poll {}] {}&quot;,createPoll, ex.getStackTrace());</span>
+<span class="nc" id="L83">            throw ex;</span>
+        }
+    }
+
+    @POST
+    @Path(&quot;createPollForAsset/{assetId}&quot;)
+    @RequiresFeature(UnionVMSFeature.managePolls)
+    public Response createPollForAsset(@PathParam(&quot;assetId&quot;) String assetId, SimpleCreatePoll pollDto) {
+        try {
+<span class="nc" id="L92">            UUID asset = UUID.fromString(assetId);</span>
+<span class="nc" id="L93">            String username = request.getRemoteUser();</span>
+<span class="nc" id="L94">            CreatePollResultDto createdPoll = pollServiceBean.createPollForAsset(asset, pollDto, username);</span>
+<span class="nc" id="L95">            return Response.ok(createdPoll)</span>
+<span class="nc" id="L96">                    .header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L97">        } catch (Exception ex) {</span>
+<span class="nc" id="L98">            LOG.error(&quot;[ Error when creating poll for {}] {}&quot;,assetId, ex);</span>
+<span class="nc" id="L99">            throw ex;</span>
+        }
+    }
+
+    @GET
+    @Path(&quot;/running&quot;)
+    @RequiresFeature(UnionVMSFeature.viewMobileTerminalPolls)
+    public Response getRunningProgramPolls()  throws Exception{
+<span class="nc" id="L107">        LOG.info(&quot;Get running program polls invoked in rest layer&quot;);</span>
+        try {
+<span class="nc" id="L109">            List&lt;PollDto&gt; polls = pollServiceBean.getRunningProgramPolls();</span>
+<span class="nc" id="L110">            return Response.ok(polls).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L111">        } catch (Exception ex) {</span>
+<span class="nc" id="L112">            LOG.error(&quot;[ Error when getting running program polls ] {}&quot;, (Object) ex.getStackTrace());</span>
+<span class="nc" id="L113">            throw ex;</span>
+        }
+    }
+
+    @PUT
+    @Path(&quot;{pollProgramId}/start/&quot;)
+    @RequiresFeature(UnionVMSFeature.managePolls)
+    public Response startProgramPoll(@PathParam(&quot;pollProgramId&quot;) String pollId) {
+<span class="nc" id="L121">        LOG.info(&quot;Start poll invoked in rest layer:{}&quot;,pollId);</span>
+        try {
+<span class="nc" id="L123">            ProgramPoll program = pollServiceBean.startProgramPoll(pollId, request.getRemoteUser());</span>
+<span class="nc" id="L124">            PollResponseType pollResponse = PollEntityToModelMapper.mapToPollResponseType(program);</span>
+<span class="nc" id="L125">            PollDto poll = PollDtoMapper.mapPoll(pollResponse);</span>
+<span class="nc" id="L126">            return Response.ok(poll).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L127">        } catch (Exception ex) {</span>
+<span class="nc" id="L128">            LOG.error(&quot;[ Error when starting program poll {}] {}&quot;, pollId, ex.getStackTrace());</span>
+<span class="nc" id="L129">            throw ex;</span>
+        }
+    }
+
+    @PUT
+    @Path(&quot;{pollProgramId}/stop/&quot;)
+    @RequiresFeature(UnionVMSFeature.managePolls)
+    public Response stopProgramPoll(@PathParam(&quot;pollProgramId&quot;) String pollId) {
+<span class="nc" id="L137">        LOG.info(&quot;Stop poll invoked in rest layer:{}&quot;,pollId);</span>
+        try {
+<span class="nc" id="L139">            ProgramPoll program = pollServiceBean.stopProgramPoll(pollId, request.getRemoteUser());</span>
+<span class="nc" id="L140">            PollResponseType pollResponse = PollEntityToModelMapper.mapToPollResponseType(program);</span>
+<span class="nc" id="L141">            PollDto poll = PollDtoMapper.mapPoll(pollResponse);</span>
+<span class="nc" id="L142">            return Response.ok(poll).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L143">        } catch (Exception ex) {</span>
+<span class="nc" id="L144">            LOG.error(&quot;[ Error when stopping program poll {} ] {}&quot;,pollId, ex.getStackTrace());</span>
+<span class="nc" id="L145">            throw ex;</span>
+        }
+    }
+
+    @PUT
+    @Path(&quot;{pollProgramId}/archive/&quot;)
+    @RequiresFeature(UnionVMSFeature.managePolls)
+    public Response archiveProgramPoll(@PathParam(&quot;pollProgramId&quot;) String pollId) {
+        // This gives a poll the status &quot;ARCHIVED&quot;
+<span class="nc" id="L154">        LOG.info(&quot;Archive poll invoked in rest layer:{}&quot;,pollId);</span>
+        try {
+<span class="nc" id="L156">            ProgramPoll program = pollServiceBean.inactivateProgramPoll(pollId, request.getRemoteUser());</span>
+<span class="nc" id="L157">            PollResponseType pollResponse = PollEntityToModelMapper.mapToPollResponseType(program);</span>
+<span class="nc" id="L158">            PollDto poll = PollDtoMapper.mapPoll(pollResponse);</span>
+<span class="nc" id="L159">            return Response.ok(poll).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L160">        } catch (Exception ex) {</span>
+<span class="nc" id="L161">            LOG.error(&quot;[ Error when inactivating program poll {}] {}&quot;,pollId, ex.getStackTrace());</span>
+<span class="nc" id="L162">            throw ex;</span>
+        }
+    }
+
+    @POST
+    @Path(&quot;/list&quot;)
+    @RequiresFeature(UnionVMSFeature.viewMobileTerminalPolls)
+    public Response getPollBySearchCriteria(PollListQuery query) {
+<span class="nc" id="L170">        LOG.info(&quot;Get poll by search criteria invoked in rest layer:{}&quot;,query);</span>
+        try {
+<span class="nc" id="L172">        	PollChannelListDto pollChannelList = pollServiceBean.getPollBySearchCriteria(query);</span>
+<span class="nc" id="L173">            return Response.ok(pollChannelList).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L174">        } catch (Exception ex) {</span>
+<span class="nc" id="L175">            LOG.error(&quot;[ Error when getting poll by search criteria {}] {}&quot;,query, ex.getStackTrace());</span>
+<span class="nc" id="L176">            throw ex;</span>
+        }
+    }
+
+    @POST
+    @Path(&quot;/getPollable&quot;)
+    @RequiresFeature(UnionVMSFeature.viewMobileTerminalPolls)
+    public Response getPollableChannels(PollableQuery query) {
+<span class="nc" id="L184">        LOG.info(&quot;Get pollables invoked in rest layer:{}&quot;,query);</span>
+        try {
+<span class="nc" id="L186">            PollChannelListDto pollChannelList = mobileTerminalServiceBean.getPollableMobileTerminal(query);</span>
+<span class="nc" id="L187">            return Response.ok(pollChannelList).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L188">        } catch (Exception ex) {</span>
+<span class="nc" id="L189">            LOG.error(&quot;[ Error when getting poll by search criteria {}] {}&quot;, query, ex.getStackTrace());</span>
+<span class="nc" id="L190">            throw ex;</span>
+        }
+    }
+
+    @GET
+    @Path(&quot;/program/{pollProgramId}&quot;)
+    @RequiresFeature(UnionVMSFeature.viewMobileTerminalPolls)
+    public Response getPollProgram(@PathParam(&quot;pollProgramId&quot;) String pollProgramId) {
+        try {
+<span class="nc" id="L199">            ProgramPoll pollProgram = pollProgramDao.getProgramPollByGuid(pollProgramId);</span>
+<span class="nc" id="L200">            String returnString = jsonb.toJson(pollProgram);</span>
+<span class="nc" id="L201">            return Response.ok(returnString).header(&quot;MDC&quot;, MDC.get(&quot;requestId&quot;)).build();</span>
+<span class="nc" id="L202">        } catch (Exception ex) {</span>
+<span class="nc" id="L203">            LOG.error(&quot;getPollProgram&quot;, ex.getStackTrace());</span>
+<span class="nc" id="L204">            throw ex;</span>
+
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

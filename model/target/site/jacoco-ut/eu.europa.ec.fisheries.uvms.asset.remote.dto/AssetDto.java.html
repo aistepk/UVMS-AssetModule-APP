@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.remote.dto</a> &gt; <span class="el_source">AssetDto.java</span></div><h1>AssetDto.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.remote.dto;
+
+
+import eu.europa.ec.fisheries.uvms.asset.model.constants.UnitTonnage;
+
+import java.time.Instant;
+import java.util.UUID;
+
+<span class="nc" id="L19">public class AssetDto {</span>
+
+    private UUID id;
+
+    private UUID historyId;
+
+    private Boolean ircsIndicator;
+
+    private Boolean ersIndicator;
+
+    private Boolean aisIndicator;
+
+    private Boolean vmsIndicator;
+
+    private String hullMaterial;
+
+    private Instant commissionDate;
+
+    private String constructionYear;
+
+    private String constructionPlace;
+
+    private Instant updateTime;
+
+    private String source;
+
+    private String vesselType;
+
+    private Instant vesselDateOfEntry;
+
+    private String cfr;
+
+    private String imo;
+
+    private String ircs;
+
+    private String mmsi;
+
+    private String iccat;
+
+    private String uvi;
+
+    private String gfcm;
+
+    private Boolean active;
+
+    private String flagStateCode;
+
+    private String eventCode;
+
+    private String name;
+
+    private String externalMarking;
+
+    private Boolean agentIsAlsoOwner;
+
+    private Double lengthOverAll;
+
+    private Double lengthBetweenPerpendiculars;
+
+    private Double safteyGrossTonnage;
+
+    private Double otherTonnage;
+
+    private Double grossTonnage;
+
+<span class="nc" id="L85">    private UnitTonnage grossTonnageUnit = UnitTonnage.LONDON;</span>
+
+    private String portOfRegistration;
+
+    private Double powerOfAuxEngine;
+
+    private Double powerOfMainEngine;
+
+    private Boolean hasLicence;
+
+    private String licenceType;
+
+    private String mainFishingGearCode;
+
+    private String subFishingGearCode;
+
+    private String gearFishingType;
+
+    private String ownerName;
+
+    private Boolean hasVms;
+
+    private String ownerAddress;
+
+    private String assetAgentAddress;
+
+    private String countryOfImportOrExport;
+
+    private String typeOfExport;
+
+    private Instant administrativeDecisionDate;
+
+    private String segment;
+
+    private String segmentOfAdministrativeDecision;
+
+    private String publicAid;
+
+    private String registrationNumber;
+
+    private String updatedBy;
+
+    private String prodOrgCode;
+
+    private String prodOrgName;
+
+    private String comment;
+
+    private Long nationalId;
+
+    private Boolean parked;
+
+    public UUID getId() {
+<span class="nc" id="L138">        return id;</span>
+    }
+
+    public void setId(UUID id) {
+<span class="nc" id="L142">        this.id = id;</span>
+<span class="nc" id="L143">    }</span>
+
+    public UUID getHistoryId() {
+<span class="nc" id="L146">        return historyId;</span>
+    }
+
+    public void setHistoryId(UUID historyId) {
+<span class="nc" id="L150">        this.historyId = historyId;</span>
+<span class="nc" id="L151">    }</span>
+
+    public Boolean getIrcsIndicator() {
+<span class="nc" id="L154">        return ircsIndicator;</span>
+    }
+
+    public void setIrcsIndicator(Boolean ircsIndicator) {
+<span class="nc" id="L158">        this.ircsIndicator = ircsIndicator;</span>
+<span class="nc" id="L159">    }</span>
+
+    public Boolean getErsIndicator() {
+<span class="nc" id="L162">        return ersIndicator;</span>
+    }
+
+    public void setErsIndicator(Boolean ersIndicator) {
+<span class="nc" id="L166">        this.ersIndicator = ersIndicator;</span>
+<span class="nc" id="L167">    }</span>
+
+    public Boolean getAisIndicator() {
+<span class="nc" id="L170">        return aisIndicator;</span>
+    }
+
+    public void setAisIndicator(Boolean aisIndicator) {
+<span class="nc" id="L174">        this.aisIndicator = aisIndicator;</span>
+<span class="nc" id="L175">    }</span>
+
+    public Boolean getVmsIndicator() {
+<span class="nc" id="L178">        return vmsIndicator;</span>
+    }
+
+    public void setVmsIndicator(Boolean vmsIndicator) {
+<span class="nc" id="L182">        this.vmsIndicator = vmsIndicator;</span>
+<span class="nc" id="L183">    }</span>
+
+    public String getHullMaterial() {
+<span class="nc" id="L186">        return hullMaterial;</span>
+    }
+
+    public void setHullMaterial(String hullMaterial) {
+<span class="nc" id="L190">        this.hullMaterial = hullMaterial;</span>
+<span class="nc" id="L191">    }</span>
+
+    public Instant getCommissionDate() {
+<span class="nc" id="L194">        return commissionDate;</span>
+    }
+
+    public void setCommissionDate(Instant commissionDate) {
+<span class="nc" id="L198">        this.commissionDate = commissionDate;</span>
+<span class="nc" id="L199">    }</span>
+
+    public String getConstructionYear() {
+<span class="nc" id="L202">        return constructionYear;</span>
+    }
+
+    public void setConstructionYear(String constructionYear) {
+<span class="nc" id="L206">        this.constructionYear = constructionYear;</span>
+<span class="nc" id="L207">    }</span>
+
+    public String getConstructionPlace() {
+<span class="nc" id="L210">        return constructionPlace;</span>
+    }
+
+    public void setConstructionPlace(String constructionPlace) {
+<span class="nc" id="L214">        this.constructionPlace = constructionPlace;</span>
+<span class="nc" id="L215">    }</span>
+
+    public Instant getUpdateTime() {
+<span class="nc" id="L218">        return updateTime;</span>
+    }
+
+    public void setUpdateTime(Instant updateTime) {
+<span class="nc" id="L222">        this.updateTime = updateTime;</span>
+<span class="nc" id="L223">    }</span>
+
+    public String getSource() {
+<span class="nc" id="L226">        return source;</span>
+    }
+
+    public void setSource(String source) {
+<span class="nc" id="L230">        this.source = source;</span>
+<span class="nc" id="L231">    }</span>
+
+    public String getVesselType() {
+<span class="nc" id="L234">        return vesselType;</span>
+    }
+
+    public void setVesselType(String vesselType) {
+<span class="nc" id="L238">        this.vesselType = vesselType;</span>
+<span class="nc" id="L239">    }</span>
+
+    public Instant getVesselDateOfEntry() {
+<span class="nc" id="L242">        return vesselDateOfEntry;</span>
+    }
+
+    public void setVesselDateOfEntry(Instant vesselDateOfEntry) {
+<span class="nc" id="L246">        this.vesselDateOfEntry = vesselDateOfEntry;</span>
+<span class="nc" id="L247">    }</span>
+
+    public String getCfr() {
+<span class="nc" id="L250">        return cfr;</span>
+    }
+
+    public void setCfr(String cfr) {
+<span class="nc" id="L254">        this.cfr = cfr;</span>
+<span class="nc" id="L255">    }</span>
+
+    public String getImo() {
+<span class="nc" id="L258">        return imo;</span>
+    }
+
+    public void setImo(String imo) {
+<span class="nc" id="L262">        this.imo = imo;</span>
+<span class="nc" id="L263">    }</span>
+
+    public String getIrcs() {
+<span class="nc" id="L266">        return ircs;</span>
+    }
+
+    public void setIrcs(String ircs) {
+<span class="nc" id="L270">        this.ircs = ircs;</span>
+<span class="nc" id="L271">    }</span>
+
+    public String getMmsi() {
+<span class="nc" id="L274">        return mmsi;</span>
+    }
+
+    public void setMmsi(String mmsi) {
+<span class="nc" id="L278">        this.mmsi = mmsi;</span>
+<span class="nc" id="L279">    }</span>
+
+    public String getIccat() {
+<span class="nc" id="L282">        return iccat;</span>
+    }
+
+    public void setIccat(String iccat) {
+<span class="nc" id="L286">        this.iccat = iccat;</span>
+<span class="nc" id="L287">    }</span>
+
+    public String getUvi() {
+<span class="nc" id="L290">        return uvi;</span>
+    }
+
+    public void setUvi(String uvi) {
+<span class="nc" id="L294">        this.uvi = uvi;</span>
+<span class="nc" id="L295">    }</span>
+
+    public String getGfcm() {
+<span class="nc" id="L298">        return gfcm;</span>
+    }
+
+    public void setGfcm(String gfcm) {
+<span class="nc" id="L302">        this.gfcm = gfcm;</span>
+<span class="nc" id="L303">    }</span>
+
+    public Boolean getActive() {
+<span class="nc" id="L306">        return active;</span>
+    }
+
+    public void setActive(Boolean active) {
+<span class="nc" id="L310">        this.active = active;</span>
+<span class="nc" id="L311">    }</span>
+
+    public String getFlagStateCode() {
+<span class="nc" id="L314">        return flagStateCode;</span>
+    }
+
+    public void setFlagStateCode(String flagStateCode) {
+<span class="nc" id="L318">        this.flagStateCode = flagStateCode;</span>
+<span class="nc" id="L319">    }</span>
+
+    public String getEventCode() {
+<span class="nc" id="L322">        return eventCode;</span>
+    }
+
+    public void setEventCode(String eventCode) {
+<span class="nc" id="L326">        this.eventCode = eventCode;</span>
+<span class="nc" id="L327">    }</span>
+
+    public String getName() {
+<span class="nc" id="L330">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L334">        this.name = name;</span>
+<span class="nc" id="L335">    }</span>
+
+    public String getExternalMarking() {
+<span class="nc" id="L338">        return externalMarking;</span>
+    }
+
+    public void setExternalMarking(String externalMarking) {
+<span class="nc" id="L342">        this.externalMarking = externalMarking;</span>
+<span class="nc" id="L343">    }</span>
+
+    public Boolean getAgentIsAlsoOwner() {
+<span class="nc" id="L346">        return agentIsAlsoOwner;</span>
+    }
+
+    public void setAgentIsAlsoOwner(Boolean agentIsAlsoOwner) {
+<span class="nc" id="L350">        this.agentIsAlsoOwner = agentIsAlsoOwner;</span>
+<span class="nc" id="L351">    }</span>
+
+    public Double getLengthOverAll() {
+<span class="nc" id="L354">        return lengthOverAll;</span>
+    }
+
+    public void setLengthOverAll(Double lengthOverAll) {
+<span class="nc" id="L358">        this.lengthOverAll = lengthOverAll;</span>
+<span class="nc" id="L359">    }</span>
+
+    public Double getLengthBetweenPerpendiculars() {
+<span class="nc" id="L362">        return lengthBetweenPerpendiculars;</span>
+    }
+
+    public void setLengthBetweenPerpendiculars(Double lengthBetweenPerpendiculars) {
+<span class="nc" id="L366">        this.lengthBetweenPerpendiculars = lengthBetweenPerpendiculars;</span>
+<span class="nc" id="L367">    }</span>
+
+    public Double getSafteyGrossTonnage() {
+<span class="nc" id="L370">        return safteyGrossTonnage;</span>
+    }
+
+    public void setSafteyGrossTonnage(Double safteyGrossTonnage) {
+<span class="nc" id="L374">        this.safteyGrossTonnage = safteyGrossTonnage;</span>
+<span class="nc" id="L375">    }</span>
+
+    public Double getOtherTonnage() {
+<span class="nc" id="L378">        return otherTonnage;</span>
+    }
+
+    public void setOtherTonnage(Double otherTonnage) {
+<span class="nc" id="L382">        this.otherTonnage = otherTonnage;</span>
+<span class="nc" id="L383">    }</span>
+
+    public Double getGrossTonnage() {
+<span class="nc" id="L386">        return grossTonnage;</span>
+    }
+
+    public void setGrossTonnage(Double grossTonnage) {
+<span class="nc" id="L390">        this.grossTonnage = grossTonnage;</span>
+<span class="nc" id="L391">    }</span>
+
+    public UnitTonnage getGrossTonnageUnit() {
+<span class="nc" id="L394">        return grossTonnageUnit;</span>
+    }
+
+    public void setGrossTonnageUnit(UnitTonnage grossTonnageUnit) {
+<span class="nc" id="L398">        this.grossTonnageUnit = grossTonnageUnit;</span>
+<span class="nc" id="L399">    }</span>
+
+    public String getPortOfRegistration() {
+<span class="nc" id="L402">        return portOfRegistration;</span>
+    }
+
+    public void setPortOfRegistration(String portOfRegistration) {
+<span class="nc" id="L406">        this.portOfRegistration = portOfRegistration;</span>
+<span class="nc" id="L407">    }</span>
+
+    public Double getPowerOfAuxEngine() {
+<span class="nc" id="L410">        return powerOfAuxEngine;</span>
+    }
+
+    public void setPowerOfAuxEngine(Double powerOfAuxEngine) {
+<span class="nc" id="L414">        this.powerOfAuxEngine = powerOfAuxEngine;</span>
+<span class="nc" id="L415">    }</span>
+
+    public Double getPowerOfMainEngine() {
+<span class="nc" id="L418">        return powerOfMainEngine;</span>
+    }
+
+    public void setPowerOfMainEngine(Double powerOfMainEngine) {
+<span class="nc" id="L422">        this.powerOfMainEngine = powerOfMainEngine;</span>
+<span class="nc" id="L423">    }</span>
+
+    public Boolean getHasLicence() {
+<span class="nc" id="L426">        return hasLicence;</span>
+    }
+
+    public void setHasLicence(Boolean hasLicence) {
+<span class="nc" id="L430">        this.hasLicence = hasLicence;</span>
+<span class="nc" id="L431">    }</span>
+
+    public String getLicenceType() {
+<span class="nc" id="L434">        return licenceType;</span>
+    }
+
+    public void setLicenceType(String licenceType) {
+<span class="nc" id="L438">        this.licenceType = licenceType;</span>
+<span class="nc" id="L439">    }</span>
+
+    public String getMainFishingGearCode() {
+<span class="nc" id="L442">        return mainFishingGearCode;</span>
+    }
+
+    public void setMainFishingGearCode(String mainFishingGearCode) {
+<span class="nc" id="L446">        this.mainFishingGearCode = mainFishingGearCode;</span>
+<span class="nc" id="L447">    }</span>
+
+    public String getSubFishingGearCode() {
+<span class="nc" id="L450">        return subFishingGearCode;</span>
+    }
+
+    public void setSubFishingGearCode(String subFishingGearCode) {
+<span class="nc" id="L454">        this.subFishingGearCode = subFishingGearCode;</span>
+<span class="nc" id="L455">    }</span>
+
+    public String getGearFishingType() {
+<span class="nc" id="L458">        return gearFishingType;</span>
+    }
+
+    public void setGearFishingType(String gearFishingType) {
+<span class="nc" id="L462">        this.gearFishingType = gearFishingType;</span>
+<span class="nc" id="L463">    }</span>
+
+    public String getOwnerName() {
+<span class="nc" id="L466">        return ownerName;</span>
+    }
+
+    public void setOwnerName(String ownerName) {
+<span class="nc" id="L470">        this.ownerName = ownerName;</span>
+<span class="nc" id="L471">    }</span>
+
+    public Boolean getHasVms() {
+<span class="nc" id="L474">        return hasVms;</span>
+    }
+
+    public void setHasVms(Boolean hasVms) {
+<span class="nc" id="L478">        this.hasVms = hasVms;</span>
+<span class="nc" id="L479">    }</span>
+
+    public String getOwnerAddress() {
+<span class="nc" id="L482">        return ownerAddress;</span>
+    }
+
+    public void setOwnerAddress(String ownerAddress) {
+<span class="nc" id="L486">        this.ownerAddress = ownerAddress;</span>
+<span class="nc" id="L487">    }</span>
+
+    public String getAssetAgentAddress() {
+<span class="nc" id="L490">        return assetAgentAddress;</span>
+    }
+
+    public void setAssetAgentAddress(String assetAgentAddress) {
+<span class="nc" id="L494">        this.assetAgentAddress = assetAgentAddress;</span>
+<span class="nc" id="L495">    }</span>
+
+    public String getCountryOfImportOrExport() {
+<span class="nc" id="L498">        return countryOfImportOrExport;</span>
+    }
+
+    public void setCountryOfImportOrExport(String countryOfImportOrExport) {
+<span class="nc" id="L502">        this.countryOfImportOrExport = countryOfImportOrExport;</span>
+<span class="nc" id="L503">    }</span>
+
+    public String getTypeOfExport() {
+<span class="nc" id="L506">        return typeOfExport;</span>
+    }
+
+    public void setTypeOfExport(String typeOfExport) {
+<span class="nc" id="L510">        this.typeOfExport = typeOfExport;</span>
+<span class="nc" id="L511">    }</span>
+
+    public Instant getAdministrativeDecisionDate() {
+<span class="nc" id="L514">        return administrativeDecisionDate;</span>
+    }
+
+    public void setAdministrativeDecisionDate(Instant administrativeDecisionDate) {
+<span class="nc" id="L518">        this.administrativeDecisionDate = administrativeDecisionDate;</span>
+<span class="nc" id="L519">    }</span>
+
+    public String getSegment() {
+<span class="nc" id="L522">        return segment;</span>
+    }
+
+    public void setSegment(String segment) {
+<span class="nc" id="L526">        this.segment = segment;</span>
+<span class="nc" id="L527">    }</span>
+
+    public String getSegmentOfAdministrativeDecision() {
+<span class="nc" id="L530">        return segmentOfAdministrativeDecision;</span>
+    }
+
+    public void setSegmentOfAdministrativeDecision(String segmentOfAdministrativeDecision) {
+<span class="nc" id="L534">        this.segmentOfAdministrativeDecision = segmentOfAdministrativeDecision;</span>
+<span class="nc" id="L535">    }</span>
+
+    public String getPublicAid() {
+<span class="nc" id="L538">        return publicAid;</span>
+    }
+
+    public void setPublicAid(String publicAid) {
+<span class="nc" id="L542">        this.publicAid = publicAid;</span>
+<span class="nc" id="L543">    }</span>
+
+    public String getRegistrationNumber() {
+<span class="nc" id="L546">        return registrationNumber;</span>
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+<span class="nc" id="L550">        this.registrationNumber = registrationNumber;</span>
+<span class="nc" id="L551">    }</span>
+
+    public String getUpdatedBy() {
+<span class="nc" id="L554">        return updatedBy;</span>
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+<span class="nc" id="L558">        this.updatedBy = updatedBy;</span>
+<span class="nc" id="L559">    }</span>
+
+    public String getProdOrgCode() {
+<span class="nc" id="L562">        return prodOrgCode;</span>
+    }
+
+    public void setProdOrgCode(String prodOrgCode) {
+<span class="nc" id="L566">        this.prodOrgCode = prodOrgCode;</span>
+<span class="nc" id="L567">    }</span>
+
+    public String getProdOrgName() {
+<span class="nc" id="L570">        return prodOrgName;</span>
+    }
+
+    public void setProdOrgName(String prodOrgName) {
+<span class="nc" id="L574">        this.prodOrgName = prodOrgName;</span>
+<span class="nc" id="L575">    }</span>
+
+    public String getComment() {
+<span class="nc" id="L578">        return comment;</span>
+    }
+
+    public void setComment(String comment) {
+<span class="nc" id="L582">        this.comment = comment;</span>
+<span class="nc" id="L583">    }</span>
+
+    public Long getNationalId() {
+<span class="nc" id="L586">        return nationalId;</span>
+    }
+
+    public void setNationalId(Long nationalId) {
+<span class="nc" id="L590">        this.nationalId = nationalId;</span>
+<span class="nc" id="L591">    }</span>
+
+    public Boolean isLongTermParked() {
+<span class="nc" id="L594">        return parked;</span>
+    }
+
+    public void setParked(Boolean parked) {
+<span class="nc" id="L598">        this.parked = parked;</span>
+<span class="nc" id="L599">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

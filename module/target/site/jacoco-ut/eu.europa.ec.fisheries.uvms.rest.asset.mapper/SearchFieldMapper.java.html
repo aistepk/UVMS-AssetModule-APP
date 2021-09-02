@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchFieldMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.rest.asset.mapper</a> &gt; <span class="el_source">SearchFieldMapper.java</span></div><h1>SearchFieldMapper.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.rest.asset.mapper;
+
+import eu.europa.ec.fisheries.uvms.mobileterminal.search.MTSearchFields;
+import eu.europa.ec.fisheries.uvms.mobileterminal.search.MTSearchKeyValue;
+import eu.europa.ec.fisheries.uvms.rest.mobileterminal.dto.MTQuery;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class SearchFieldMapper {
+    
+    private SearchFieldMapper() {}
+    
+
+    public static List&lt;MTSearchKeyValue&gt; createSearchFields(MTQuery query) {
+<span class="nc" id="L29">        List&lt;MTSearchKeyValue&gt; searchValues = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L30" title="All 4 branches missed.">        if(query.getAntennas() != null &amp;&amp; !query.getAntennas().isEmpty()){</span>
+<span class="nc" id="L31">                searchValues.add(new MTSearchKeyValue(MTSearchFields.ANTENNA, query.getAntennas()));</span>
+        }
+<span class="nc bnc" id="L33" title="All 4 branches missed.">        if(query.getAssetIds() != null &amp;&amp; !query.getAssetIds().isEmpty()){</span>
+<span class="nc" id="L34">            searchValues.add(new MTSearchKeyValue(MTSearchFields.ASSET_ID, query.getAssetIds()));</span>
+        }
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(query.getDate() != null){</span>
+<span class="nc" id="L37">            searchValues.add(new MTSearchKeyValue(MTSearchFields.DATE, Arrays.asList(query.getDate().toString())));</span>
+        }
+<span class="nc bnc" id="L39" title="All 4 branches missed.">        if(query.getDnids() != null &amp;&amp; !query.getDnids().isEmpty()){</span>
+<span class="nc" id="L40">            searchValues.add(new MTSearchKeyValue(MTSearchFields.DNID, query.getDnids().stream().map(String::valueOf).collect(Collectors.toList())));</span>
+        }
+<span class="nc bnc" id="L42" title="All 4 branches missed.">        if(query.getHistoryIds() != null &amp;&amp; !query.getHistoryIds().isEmpty()){</span>
+<span class="nc" id="L43">            searchValues.add(new MTSearchKeyValue(MTSearchFields.HIST_GUID, query.getHistoryIds()));</span>
+        }
+<span class="nc bnc" id="L45" title="All 4 branches missed.">        if(query.getMemberNumbers() != null &amp;&amp; !query.getMemberNumbers().isEmpty()){</span>
+<span class="nc" id="L46">            searchValues.add(new MTSearchKeyValue(MTSearchFields.MEMBER_NUMBER, query.getMemberNumbers().stream().map(String::valueOf).collect(Collectors.toList())));</span>
+        }
+<span class="nc bnc" id="L48" title="All 4 branches missed.">        if(query.getMobileterminalIds() != null &amp;&amp; !query.getMobileterminalIds().isEmpty()){</span>
+<span class="nc" id="L49">            searchValues.add(new MTSearchKeyValue(MTSearchFields.MOBILETERMINAL_ID, query.getMobileterminalIds()));</span>
+        }
+<span class="nc bnc" id="L51" title="All 4 branches missed.">        if(query.getMobileterminalTypes() != null &amp;&amp; !query.getMobileterminalTypes().isEmpty()){</span>
+<span class="nc" id="L52">            searchValues.add(new MTSearchKeyValue(MTSearchFields.TERMINAL_TYPE, query.getMobileterminalTypes()));</span>
+        }
+<span class="nc bnc" id="L54" title="All 4 branches missed.">        if(query.getSateliteNumbers() != null &amp;&amp; !query.getSateliteNumbers().isEmpty()){</span>
+<span class="nc" id="L55">            searchValues.add(new MTSearchKeyValue(MTSearchFields.SATELLITE_NUMBER, query.getSateliteNumbers()));</span>
+        }
+<span class="nc bnc" id="L57" title="All 4 branches missed.">        if(query.getSerialNumbers() != null &amp;&amp; !query.getSerialNumbers().isEmpty()){</span>
+<span class="nc" id="L58">            searchValues.add(new MTSearchKeyValue(MTSearchFields.SERIAL_NUMBER, query.getSerialNumbers()));</span>
+        }
+<span class="nc bnc" id="L60" title="All 4 branches missed.">        if(query.getSoftwareVersions() != null &amp;&amp; !query.getSoftwareVersions().isEmpty()){</span>
+<span class="nc" id="L61">            searchValues.add(new MTSearchKeyValue(MTSearchFields.SOFTWARE_VERSION, query.getSoftwareVersions()));</span>
+        }
+<span class="nc bnc" id="L63" title="All 4 branches missed.">        if(query.getTranceiverTypes() != null &amp;&amp; !query.getTranceiverTypes().isEmpty()){</span>
+<span class="nc" id="L64">            searchValues.add(new MTSearchKeyValue(MTSearchFields.TRANSCEIVER_TYPE, query.getTranceiverTypes()));</span>
+        }
+
+
+<span class="nc" id="L68">        return searchValues;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

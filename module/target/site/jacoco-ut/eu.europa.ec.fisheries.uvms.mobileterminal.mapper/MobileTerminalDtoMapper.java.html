@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileTerminalDtoMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.mapper</a> &gt; <span class="el_source">MobileTerminalDtoMapper.java</span></div><h1>MobileTerminalDtoMapper.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.mobileterminal.mapper;
+
+import eu.europa.ec.fisheries.uvms.asset.mapper.HistoryMapper;
+import eu.europa.ec.fisheries.uvms.asset.remote.dto.ChangeHistoryRow;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.Channel;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.MobileTerminal;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.MobileTerminalPlugin;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.MobileTerminalPluginCapability;
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.dto.*;
+
+import java.util.*;
+
+<span class="nc" id="L13">public class MobileTerminalDtoMapper {</span>
+
+
+    public static Map&lt;UUID, ChangeHistoryRow&gt; mapToMobileTerminalRevisionsMap(List&lt;MobileTerminal&gt; mts) {
+<span class="nc" id="L17">        return HistoryMapper.mobileTerminalChangeHistory(mts);</span>
+    }
+
+    public static List&lt;MobileTerminalDto&gt; mapToMobileTerminalDtos(List&lt;MobileTerminal&gt; mts) {
+<span class="nc" id="L21">        List&lt;MobileTerminalDto&gt; dtos = new ArrayList&lt;&gt;(mts.size());</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        for (MobileTerminal mt : mts) {</span>
+<span class="nc" id="L23">            dtos.add(mapToMobileTerminalDto(mt));</span>
+<span class="nc" id="L24">        }</span>
+<span class="nc" id="L25">        return dtos;</span>
+    }
+
+    public static MobileTerminalDto mapToMobileTerminalDto(MobileTerminal mt){
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if(mt == null) {</span>
+<span class="nc" id="L30">            return null;</span>
+        }
+<span class="fc" id="L32">        MobileTerminalDto dto = new MobileTerminalDto();</span>
+<span class="fc" id="L33">        dto.setId(mt.getId());</span>
+<span class="fc" id="L34">        dto.setActive(mt.getActive());</span>
+<span class="fc" id="L35">        dto.setAntenna(mt.getAntenna());</span>
+<span class="fc" id="L36">        dto.setArchived(mt.getArchived());</span>
+
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        dto.setAssetId(mt.getAsset() == null ? null : mt.getAsset().getId().toString());</span>
+
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        dto.setChannels(mt.getChannels() == null ? null : mapToChannelDtos(mt.getChannels()));</span>
+
+<span class="fc" id="L42">        dto.setComment(mt.getComment());</span>
+<span class="fc" id="L43">        dto.setCreateTime(mt.getCreateTime());</span>
+<span class="fc" id="L44">        dto.setEastAtlanticOceanRegion(mt.getEastAtlanticOceanRegion());</span>
+<span class="fc" id="L45">        dto.setHistoryId(mt.getHistoryId());</span>
+<span class="fc" id="L46">        dto.setIndianOceanRegion(mt.getIndianOceanRegion());</span>
+<span class="fc" id="L47">        dto.setInstallDate(mt.getInstallDate());</span>
+<span class="fc" id="L48">        dto.setInstalledBy(mt.getInstalledBy());</span>
+<span class="fc" id="L49">        dto.setMobileTerminalType(mt.getMobileTerminalType());</span>
+<span class="fc" id="L50">        dto.setPacificOceanRegion(mt.getPacificOceanRegion());</span>
+
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        dto.setPlugin(mt.getPlugin() == null ? null : mapToMobileTerminalPluginDto(mt.getPlugin()));</span>
+
+<span class="fc" id="L54">        dto.setSatelliteNumber(mt.getSatelliteNumber());</span>
+<span class="fc" id="L55">        dto.setSerialNo(mt.getSerialNo());</span>
+<span class="fc" id="L56">        dto.setSoftwareVersion(mt.getSoftwareVersion());</span>
+<span class="fc" id="L57">        dto.setSource(mt.getSource());</span>
+<span class="fc" id="L58">        dto.setTransceiverType(mt.getTransceiverType());</span>
+<span class="fc" id="L59">        dto.setUninstallDate(mt.getUninstallDate());</span>
+<span class="fc" id="L60">        dto.setUpdatetime(mt.getUpdatetime());</span>
+<span class="fc" id="L61">        dto.setUpdateuser(mt.getUpdateuser());</span>
+<span class="fc" id="L62">        dto.setWestAtlanticOceanRegion(mt.getWestAtlanticOceanRegion());</span>
+
+<span class="fc" id="L64">        return dto;</span>
+    }
+
+    public static Set&lt;ChannelDto&gt; mapToChannelDtos(Set&lt;Channel&gt; channels){
+<span class="fc" id="L68">        Set&lt;ChannelDto&gt; dtoSet = new LinkedHashSet&lt;&gt;(channels.size());</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        for (Channel channel : channels) {</span>
+<span class="fc" id="L70">            dtoSet.add(mapToChannelDto(channel));</span>
+<span class="fc" id="L71">        }</span>
+<span class="fc" id="L72">        return dtoSet;</span>
+    }
+
+    public static ChannelDto mapToChannelDto(Channel channel){
+<span class="fc" id="L76">        ChannelDto dto = new ChannelDto();</span>
+<span class="fc" id="L77">        dto.setActive(channel.isActive());</span>
+<span class="fc" id="L78">        dto.setArchived(channel.getArchived());</span>
+<span class="fc" id="L79">        dto.setConfigChannel(channel.isConfigChannel());</span>
+<span class="fc" id="L80">        dto.setDefaultChannel(channel.isDefaultChannel());</span>
+<span class="fc" id="L81">        dto.setDnid(channel.getDnid());</span>
+<span class="fc" id="L82">        dto.setEndDate(channel.getEndDate());</span>
+<span class="fc" id="L83">        dto.setExpectedFrequency(channel.getExpectedFrequency());</span>
+<span class="fc" id="L84">        dto.setExpectedFrequencyInPort(channel.getExpectedFrequencyInPort());</span>
+<span class="fc" id="L85">        dto.setFrequencyGracePeriod(channel.getFrequencyGracePeriod());</span>
+<span class="fc" id="L86">        dto.setHistoryId(channel.getHistoryId());</span>
+<span class="fc" id="L87">        dto.setId(channel.getId());</span>
+<span class="fc" id="L88">        dto.setLesDescription(channel.getLesDescription());</span>
+<span class="fc" id="L89">        dto.setMemberNumber(channel.getMemberNumber());</span>
+
+        //dto.setMobileTerminal();
+
+<span class="fc" id="L93">        dto.setName(channel.getName());</span>
+<span class="fc" id="L94">        dto.setPollChannel(channel.isPollChannel());</span>
+<span class="fc" id="L95">        dto.setStartDate(channel.getStartDate());</span>
+<span class="fc" id="L96">        dto.setUpdateTime(channel.getUpdateTime());</span>
+<span class="fc" id="L97">        dto.setUpdateUser(channel.getUpdateUser());</span>
+
+<span class="fc" id="L99">        return dto;</span>
+    }
+
+    public static MobileTerminalPluginDto mapToMobileTerminalPluginDto(MobileTerminalPlugin plugin){
+<span class="nc" id="L103">        MobileTerminalPluginDto dto = new MobileTerminalPluginDto();</span>
+
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        dto.setCapabilities(plugin.getCapabilities() == null ? null : mapToMobileTerminalPluginCapabilityDtos(plugin.getCapabilities()));</span>
+
+<span class="nc" id="L107">        dto.setDescription(plugin.getDescription());</span>
+<span class="nc" id="L108">        dto.setId(plugin.getId());</span>
+<span class="nc" id="L109">        dto.setName(plugin.getName());</span>
+<span class="nc" id="L110">        dto.setPluginInactive(plugin.getPluginInactive());</span>
+<span class="nc" id="L111">        dto.setPluginSatelliteType(plugin.getPluginSatelliteType());</span>
+<span class="nc" id="L112">        dto.setPluginServiceName(plugin.getPluginServiceName());</span>
+<span class="nc" id="L113">        dto.setUpdatedBy(plugin.getUpdatedBy());</span>
+<span class="nc" id="L114">        dto.setUpdateTime(plugin.getUpdateTime());</span>
+
+<span class="nc" id="L116">        return dto;</span>
+    }
+
+    public static Set&lt;MobileTerminalPluginCapabilityDto&gt; mapToMobileTerminalPluginCapabilityDtos(Set&lt;MobileTerminalPluginCapability&gt; capabilities){
+<span class="nc" id="L120">        Set&lt;MobileTerminalPluginCapabilityDto&gt; dtos = new HashSet&lt;&gt;(capabilities.size());</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        for (MobileTerminalPluginCapability capability : capabilities) {</span>
+<span class="nc" id="L122">            dtos.add(mapToMobileTerminalPluginCapabilityDto(capability));</span>
+<span class="nc" id="L123">        }</span>
+<span class="nc" id="L124">        return dtos;</span>
+    }
+
+    public static MobileTerminalPluginCapabilityDto mapToMobileTerminalPluginCapabilityDto(MobileTerminalPluginCapability capability){
+<span class="nc" id="L128">        MobileTerminalPluginCapabilityDto dto = new MobileTerminalPluginCapabilityDto();</span>
+<span class="nc" id="L129">        dto.setId(capability.getId());</span>
+<span class="nc" id="L130">        dto.setName(capability.getName());</span>
+<span class="nc" id="L131">        dto.setPlugin(capability.getPlugin());</span>
+<span class="nc" id="L132">        dto.setUpdatedBy(capability.getUpdatedBy());</span>
+<span class="nc" id="L133">        dto.setUpdateTime(capability.getUpdateTime());</span>
+<span class="nc" id="L134">        dto.setValue(capability.getValue());</span>
+
+<span class="nc" id="L136">        return dto;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

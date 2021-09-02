@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetContact.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.wsdl.asset.types</a> &gt; <span class="el_source">AssetContact.java</span></div><h1>AssetContact.java</h1><pre class="source lang-java linenums">
+package eu.europa.ec.fisheries.wsdl.asset.types;
+
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+
+/**
+ * &lt;p&gt;Java class for AssetContact complex type.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+ * 
+ * &lt;pre&gt;
+ * &amp;lt;complexType name=&quot;AssetContact&quot;&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name=&quot;name&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;number&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;email&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;owner&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}boolean&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;source&quot; type=&quot;{types.asset.wsdl.fisheries.ec.europa.eu}ContactSource&quot;/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = &quot;AssetContact&quot;, propOrder = {
+    &quot;name&quot;,
+    &quot;number&quot;,
+    &quot;email&quot;,
+    &quot;owner&quot;,
+    &quot;source&quot;
+})
+<span class="nc" id="L47">public class AssetContact</span>
+    implements Serializable
+{
+
+    private final static long serialVersionUID = 1L;
+    @XmlElement(required = true)
+    protected String name;
+    @XmlElement(required = true)
+    protected String number;
+    @XmlElement(required = true)
+    protected String email;
+    protected boolean owner;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = &quot;string&quot;)
+    protected ContactSource source;
+
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getName() {
+<span class="nc" id="L72">        return name;</span>
+    }
+
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setName(String value) {
+<span class="nc" id="L84">        this.name = value;</span>
+<span class="nc" id="L85">    }</span>
+
+    /**
+     * Gets the value of the number property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNumber() {
+<span class="nc" id="L96">        return number;</span>
+    }
+
+    /**
+     * Sets the value of the number property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNumber(String value) {
+<span class="nc" id="L108">        this.number = value;</span>
+<span class="nc" id="L109">    }</span>
+
+    /**
+     * Gets the value of the email property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEmail() {
+<span class="nc" id="L120">        return email;</span>
+    }
+
+    /**
+     * Sets the value of the email property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEmail(String value) {
+<span class="nc" id="L132">        this.email = value;</span>
+<span class="nc" id="L133">    }</span>
+
+    /**
+     * Gets the value of the owner property.
+     * 
+     */
+    public boolean isOwner() {
+<span class="nc" id="L140">        return owner;</span>
+    }
+
+    /**
+     * Sets the value of the owner property.
+     * 
+     */
+    public void setOwner(boolean value) {
+<span class="nc" id="L148">        this.owner = value;</span>
+<span class="nc" id="L149">    }</span>
+
+    /**
+     * Gets the value of the source property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ContactSource }
+     *     
+     */
+    public ContactSource getSource() {
+<span class="nc" id="L160">        return source;</span>
+    }
+
+    /**
+     * Sets the value of the source property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ContactSource }
+     *     
+     */
+    public void setSource(ContactSource value) {
+<span class="nc" id="L172">        this.source = value;</span>
+<span class="nc" id="L173">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L177">        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+    }
+
+    @Override
+    public boolean equals(Object that) {
+<span class="nc" id="L182">        return EqualsBuilder.reflectionEquals(this, that);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L187">        return HashCodeBuilder.reflectionHashCode(this);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

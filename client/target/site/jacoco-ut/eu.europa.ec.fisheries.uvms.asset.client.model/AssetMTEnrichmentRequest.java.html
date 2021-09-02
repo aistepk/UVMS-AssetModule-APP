@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetMTEnrichmentRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-client</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.client.model</a> &gt; <span class="el_source">AssetMTEnrichmentRequest.java</span></div><h1>AssetMTEnrichmentRequest.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.asset.client.model;
+
+
+import java.util.UUID;
+
+public class AssetMTEnrichmentRequest {
+
+
+<span class="nc" id="L9">    private String transpondertypeValue = null;  // the server only looks for TRANSPONDER_TYPE</span>
+<span class="nc" id="L10">    private String pluginType= null;</span>
+<span class="nc" id="L11">    private String user= null;</span>
+
+    // for mobileTerminal
+<span class="nc" id="L14">    private String dnidValue = null;</span>
+<span class="nc" id="L15">    private String memberNumberValue = null;</span>
+<span class="nc" id="L16">    private String serialNumberValue = null;</span>
+<span class="nc" id="L17">    private String lesValue = null;</span>
+
+    // for Asset
+<span class="nc" id="L20">    private UUID id = null;</span>
+<span class="nc" id="L21">    private String assetName = null;</span>
+<span class="nc" id="L22">    private String flagState = null;</span>
+<span class="nc" id="L23">    private String cfrValue = null;</span>
+<span class="nc" id="L24">    private String ircsValue = null;</span>
+<span class="nc" id="L25">    private String imoValue = null;</span>
+<span class="nc" id="L26">    private String mmsiValue = null;</span>
+<span class="nc" id="L27">    private String gfcmValue = null;</span>
+<span class="nc" id="L28">    private String uviValue = null;</span>
+<span class="nc" id="L29">    private String iccatValue = null;</span>
+<span class="nc" id="L30">    private String externalMarking = null;</span>
+
+
+<span class="nc" id="L33">    public AssetMTEnrichmentRequest(){</span>
+
+<span class="nc" id="L35">    }</span>
+
+    public String getTranspondertypeValue() {
+<span class="nc" id="L38">        return transpondertypeValue;</span>
+    }
+
+    public void setTranspondertypeValue(String transpondertypeValue) {
+<span class="nc" id="L42">        this.transpondertypeValue = transpondertypeValue;</span>
+<span class="nc" id="L43">    }</span>
+
+    public String getDnidValue() {
+<span class="nc" id="L46">        return dnidValue;</span>
+    }
+
+    public void setDnidValue(String dnidValue) {
+<span class="nc" id="L50">        this.dnidValue = dnidValue;</span>
+<span class="nc" id="L51">    }</span>
+
+    public String getMemberNumberValue() {
+<span class="nc" id="L54">        return memberNumberValue;</span>
+    }
+
+    public void setMemberNumberValue(String memberNumberValue) {
+<span class="nc" id="L58">        this.memberNumberValue = memberNumberValue;</span>
+<span class="nc" id="L59">    }</span>
+
+    public String getSerialNumberValue() {
+<span class="nc" id="L62">        return serialNumberValue;</span>
+    }
+
+    public void setSerialNumberValue(String serialNumberValue) {
+<span class="nc" id="L66">        this.serialNumberValue = serialNumberValue;</span>
+<span class="nc" id="L67">    }</span>
+
+    public String getLesValue() {
+<span class="nc" id="L70">        return lesValue;</span>
+    }
+
+    public void setLesValue(String lesValue) {
+<span class="nc" id="L74">        this.lesValue = lesValue;</span>
+<span class="nc" id="L75">    }</span>
+
+    public String getCfrValue() {
+<span class="nc" id="L78">        return cfrValue;</span>
+    }
+
+    public void setCfrValue(String cfrValue) {
+<span class="nc" id="L82">        this.cfrValue = cfrValue;</span>
+<span class="nc" id="L83">    }</span>
+
+    public String getIrcsValue() {
+<span class="nc" id="L86">        return ircsValue;</span>
+    }
+
+    public void setIrcsValue(String ircsValue) {
+<span class="nc" id="L90">        this.ircsValue = ircsValue;</span>
+<span class="nc" id="L91">    }</span>
+
+    public String getImoValue() {
+<span class="nc" id="L94">        return imoValue;</span>
+    }
+
+    public void setImoValue(String imoValue) {
+<span class="nc" id="L98">        this.imoValue = imoValue;</span>
+<span class="nc" id="L99">    }</span>
+
+    public String getMmsiValue() {
+<span class="nc" id="L102">        return mmsiValue;</span>
+    }
+
+    public void setMmsiValue(String mmsiValue) {
+<span class="nc" id="L106">        this.mmsiValue = mmsiValue;</span>
+<span class="nc" id="L107">    }</span>
+
+    public UUID getIdValue() {
+<span class="nc" id="L110">        return id;</span>
+    }
+
+    public void  setIdValue(UUID id) {
+<span class="nc" id="L114">        this.id = id;</span>
+<span class="nc" id="L115">    }</span>
+
+    public String getGfcmValue() {
+<span class="nc" id="L118">        return gfcmValue;</span>
+    }
+
+    public void setGfcmValue(String gfcmValue) {
+<span class="nc" id="L122">        this.gfcmValue = gfcmValue;</span>
+<span class="nc" id="L123">    }</span>
+
+    public String getUviValue() {
+<span class="nc" id="L126">        return uviValue;</span>
+    }
+
+    public void setUviValue(String uviValue) {
+<span class="nc" id="L130">        this.uviValue = uviValue;</span>
+<span class="nc" id="L131">    }</span>
+
+    public String getIccatValue() {
+<span class="nc" id="L134">        return iccatValue;</span>
+    }
+
+    public void setIccatValue(String iccatValue) {
+<span class="nc" id="L138">        this.iccatValue = iccatValue;</span>
+<span class="nc" id="L139">    }</span>
+
+    public String getPluginType() {
+<span class="nc" id="L142">        return pluginType;</span>
+    }
+
+    public void setPluginType(String pluginType) {
+<span class="nc" id="L146">        this.pluginType = pluginType;</span>
+<span class="nc" id="L147">    }</span>
+
+    public String getUser() {
+<span class="nc" id="L150">        return user;</span>
+    }
+
+    public void setUser(String user) {
+<span class="nc" id="L154">        this.user = user;</span>
+<span class="nc" id="L155">    }</span>
+
+    public String getAssetName() {
+<span class="nc" id="L158">        return assetName;</span>
+    }
+
+    public void setAssetName(String assetName) {
+<span class="nc" id="L162">        this.assetName = assetName;</span>
+<span class="nc" id="L163">    }</span>
+
+    public String getFlagState() {
+<span class="nc" id="L166">        return flagState;</span>
+    }
+
+    public void setFlagState(String flagState) {
+<span class="nc" id="L170">        this.flagState = flagState;</span>
+<span class="nc" id="L171">    }</span>
+
+    public String getExternalMarking() {
+<span class="nc" id="L174">        return externalMarking;</span>
+    }
+
+    public void setExternalMarking(String externalMarking) {
+<span class="nc" id="L178">        this.externalMarking = externalMarking;</span>
+<span class="nc" id="L179">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

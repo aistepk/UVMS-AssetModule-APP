@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileTerminalBaseRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.schema.mobileterminal.types.v1</a> &gt; <span class="el_source">MobileTerminalBaseRequest.java</span></div><h1>MobileTerminalBaseRequest.java</h1><pre class="source lang-java linenums">
+package eu.europa.ec.fisheries.schema.mobileterminal.types.v1;
+
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
+import eu.europa.ec.fisheries.schema.mobileterminal.config.v1.ComchannelNameRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.config.v1.ConfigRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.config.v1.TerminalSystemListRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.config.v1.UpdatedDNIDListRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.config.v1.UpsertPluginListRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.CreatePollRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.GetPollListRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.GetPollProgramListRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.GetPollableRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.SetStatusPollProgramRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.CreateMobileTerminalRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.GetMobileTerminalRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.HistoryMobileTerminalListRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.MobileTerminalAssignRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.MobileTerminalListRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.MobileTerminalUnAssignRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.PingRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.SetStatusMobileTerminalRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.UpdateMobileTerminalRequest;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.UpsertMobileTerminalRequest;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+
+/**
+ * &lt;p&gt;Java class for MobileTerminalBaseRequest complex type.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+ * 
+ * &lt;pre&gt;
+ * &amp;lt;complexType name=&quot;MobileTerminalBaseRequest&quot;&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name=&quot;method&quot; type=&quot;{urn:types.mobileterminal.schema.fisheries.ec.europa.eu:v1}MobileTerminalDataSourceMethod&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;comment&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;username&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = &quot;MobileTerminalBaseRequest&quot;, propOrder = {
+    &quot;method&quot;,
+    &quot;comment&quot;,
+    &quot;username&quot;
+})
+@XmlSeeAlso({
+    PingRequest.class,
+    HistoryMobileTerminalListRequest.class,
+    SetStatusMobileTerminalRequest.class,
+    MobileTerminalUnAssignRequest.class,
+    MobileTerminalAssignRequest.class,
+    MobileTerminalListRequest.class,
+    UpsertMobileTerminalRequest.class,
+    UpdateMobileTerminalRequest.class,
+    GetMobileTerminalRequest.class,
+    CreateMobileTerminalRequest.class,
+    UpdatedDNIDListRequest.class,
+    UpsertPluginListRequest.class,
+    ConfigRequest.class,
+    ComchannelNameRequest.class,
+    TerminalSystemListRequest.class,
+    GetPollableRequest.class,
+    GetPollListRequest.class,
+    SetStatusPollProgramRequest.class,
+    GetPollProgramListRequest.class,
+    CreatePollRequest.class
+})
+<span class="fc" id="L86">public abstract class MobileTerminalBaseRequest</span>
+    implements Serializable
+{
+
+    private final static long serialVersionUID = 1L;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = &quot;string&quot;)
+    protected MobileTerminalDataSourceMethod method;
+    @XmlElement(required = true)
+    protected String comment;
+    @XmlElement(required = true)
+    protected String username;
+
+    /**
+     * Gets the value of the method property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MobileTerminalDataSourceMethod }
+     *     
+     */
+    public MobileTerminalDataSourceMethod getMethod() {
+<span class="nc" id="L108">        return method;</span>
+    }
+
+    /**
+     * Sets the value of the method property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MobileTerminalDataSourceMethod }
+     *     
+     */
+    public void setMethod(MobileTerminalDataSourceMethod value) {
+<span class="fc" id="L120">        this.method = value;</span>
+<span class="fc" id="L121">    }</span>
+
+    /**
+     * Gets the value of the comment property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getComment() {
+<span class="fc" id="L132">        return comment;</span>
+    }
+
+    /**
+     * Sets the value of the comment property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setComment(String value) {
+<span class="fc" id="L144">        this.comment = value;</span>
+<span class="fc" id="L145">    }</span>
+
+    /**
+     * Gets the value of the username property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUsername() {
+<span class="fc" id="L156">        return username;</span>
+    }
+
+    /**
+     * Sets the value of the username property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUsername(String value) {
+<span class="fc" id="L168">        this.username = value;</span>
+<span class="fc" id="L169">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L173">        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+    }
+
+    @Override
+    public boolean equals(Object that) {
+<span class="nc" id="L178">        return EqualsBuilder.reflectionEquals(this, that);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L183">        return HashCodeBuilder.reflectionHashCode(this);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

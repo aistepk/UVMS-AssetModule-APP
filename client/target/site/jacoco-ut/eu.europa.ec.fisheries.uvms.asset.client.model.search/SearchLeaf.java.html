@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchLeaf.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-client</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.client.model.search</a> &gt; <span class="el_source">SearchLeaf.java</span></div><h1>SearchLeaf.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.client.model.search;
+
+import javax.json.bind.annotation.JsonbTransient;
+
+
+public class SearchLeaf implements AssetSearchInterface {
+
+	private SearchFields searchField;
+	private String searchValue;
+	private String operator;
+
+    public SearchLeaf() {
+<span class="nc" id="L24">        super();</span>
+<span class="nc" id="L25">    }</span>
+
+<span class="nc" id="L27">    public SearchLeaf(SearchFields searchField, String searchValue) {</span>
+<span class="nc" id="L28">        this.searchField = searchField;</span>
+<span class="nc" id="L29">        this.searchValue = searchValue;</span>
+<span class="nc" id="L30">        this.operator = &quot;&quot;;</span>
+<span class="nc" id="L31">    }</span>
+    
+<span class="nc" id="L33">    public SearchLeaf(SearchFields searchField, String searchValue, String operator) {</span>
+<span class="nc" id="L34">        this.searchField = searchField;</span>
+<span class="nc" id="L35">        this.searchValue = searchValue;</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if(operator != null) {</span>
+<span class="nc" id="L37">        	this.operator = operator;</span>
+        }else {
+<span class="nc" id="L39">        	this.operator = &quot;=&quot;;</span>
+        }
+<span class="nc" id="L41">    }</span>
+
+	@Override
+	@JsonbTransient
+	public boolean isLeaf() {
+<span class="nc" id="L46">		return true;</span>
+	}
+
+    public SearchFields getSearchField() {
+<span class="nc" id="L50">		return searchField;</span>
+	}
+    
+	public void setSearchField(SearchFields searchField) {
+<span class="nc" id="L54">		this.searchField = searchField;</span>
+<span class="nc" id="L55">	}</span>
+
+	public String getSearchValue() {
+<span class="nc" id="L58">		return searchValue;</span>
+	}
+
+	public void setSearchValue(String searchValue) {
+<span class="nc" id="L62">		this.searchValue = searchValue;</span>
+<span class="nc" id="L63">	}</span>
+
+	public String getOperator() {
+<span class="nc" id="L66">		return operator;</span>
+	}
+
+	public void setOperator(String operator) {
+<span class="nc" id="L70">		this.operator = operator;</span>
+<span class="nc" id="L71">	}</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

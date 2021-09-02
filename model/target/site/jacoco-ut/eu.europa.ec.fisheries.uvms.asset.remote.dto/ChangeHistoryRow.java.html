@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChangeHistoryRow.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.remote.dto</a> &gt; <span class="el_source">ChangeHistoryRow.java</span></div><h1>ChangeHistoryRow.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.asset.remote.dto;
+
+import java.time.Instant;
+import java.util.*;
+
+public class ChangeHistoryRow {
+
+    private String updatedBy;
+    private Instant updateTime;
+    private UUID id;
+    private UUID historyId;
+    private ChangeType changeType;
+    private String assetName;
+
+<span class="nc" id="L15">    private Map&lt;UUID, ChannelChangeHistory&gt; channelChanges = new HashMap&lt;&gt;();</span>
+
+<span class="nc" id="L17">    private List&lt;ChangeHistoryItem&gt; changes = new ArrayList&lt;&gt;();</span>
+
+    private Object snapshot;
+
+<span class="nc" id="L21">    public ChangeHistoryRow(String updatedBy, Instant updateTime) {</span>
+<span class="nc" id="L22">        this.updatedBy = updatedBy;</span>
+<span class="nc" id="L23">        this.updateTime = updateTime;</span>
+<span class="nc" id="L24">    }</span>
+
+<span class="nc" id="L26">    public ChangeHistoryRow() {</span>
+<span class="nc" id="L27">    }</span>
+
+    public void addNewItem(String field, Object oldValue, Object newValue){
+<span class="nc" id="L30">        changes.add(new ChangeHistoryItem(field, oldValue, newValue));</span>
+<span class="nc" id="L31">    }</span>
+
+
+    public String getUpdatedBy() {
+<span class="nc" id="L35">        return updatedBy;</span>
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+<span class="nc" id="L39">        this.updatedBy = updatedBy;</span>
+<span class="nc" id="L40">    }</span>
+
+    public Instant getUpdateTime() {
+<span class="nc" id="L43">        return updateTime;</span>
+    }
+
+    public void setUpdateTime(Instant updateTime) {
+<span class="nc" id="L47">        this.updateTime = updateTime;</span>
+<span class="nc" id="L48">    }</span>
+
+    public List&lt;ChangeHistoryItem&gt; getChanges() {
+<span class="nc" id="L51">        return changes;</span>
+    }
+
+    public void setChanges(List&lt;ChangeHistoryItem&gt; changes) {
+<span class="nc" id="L55">        this.changes = changes;</span>
+<span class="nc" id="L56">    }</span>
+
+    public Map&lt;UUID, ChannelChangeHistory&gt; getChannelChanges() {
+<span class="nc" id="L59">        return channelChanges;</span>
+    }
+
+    public void setChannelChanges(Map&lt;UUID, ChannelChangeHistory&gt; channelChanges) {
+<span class="nc" id="L63">        this.channelChanges = channelChanges;</span>
+<span class="nc" id="L64">    }</span>
+
+    public Object getSnapshot() {
+<span class="nc" id="L67">        return snapshot;</span>
+    }
+
+    public void setSnapshot(Object snapshot) {
+<span class="nc" id="L71">        this.snapshot = snapshot;</span>
+<span class="nc" id="L72">    }</span>
+
+    public UUID getId() {
+<span class="nc" id="L75">        return id;</span>
+    }
+
+    public void setId(UUID id) {
+<span class="nc" id="L79">        this.id = id;</span>
+<span class="nc" id="L80">    }</span>
+
+    public UUID getHistoryId() {
+<span class="nc" id="L83">        return historyId;</span>
+    }
+
+    public void setHistoryId(UUID historyId) {
+<span class="nc" id="L87">        this.historyId = historyId;</span>
+<span class="nc" id="L88">    }</span>
+
+    public ChangeType getChangeType() {
+<span class="nc" id="L91">        return changeType;</span>
+    }
+
+    public void setChangeType(ChangeType changeType) {
+<span class="nc" id="L95">        this.changeType = changeType;</span>
+<span class="nc" id="L96">    }</span>
+    
+    public String getAssetName() {
+<span class="nc" id="L99">        return assetName;</span>
+    }
+    
+    public void setAssetName(String assetName) {
+<span class="nc" id="L103">        this.assetName = assetName;</span>
+<span class="nc" id="L104">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

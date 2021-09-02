@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetProdOrgModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.wsdl.asset.types</a> &gt; <span class="el_source">AssetProdOrgModel.java</span></div><h1>AssetProdOrgModel.java</h1><pre class="source lang-java linenums">
+package eu.europa.ec.fisheries.wsdl.asset.types;
+
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+
+/**
+ * &lt;p&gt;Java class for AssetProdOrgModel complex type.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+ * 
+ * &lt;pre&gt;
+ * &amp;lt;complexType name=&quot;AssetProdOrgModel&quot;&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name=&quot;id&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}long&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;code&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;name&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;address&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;zipcode&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}int&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;city&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;phone&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;mobile&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;fax&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = &quot;AssetProdOrgModel&quot;, propOrder = {
+    &quot;id&quot;,
+    &quot;code&quot;,
+    &quot;name&quot;,
+    &quot;address&quot;,
+    &quot;zipcode&quot;,
+    &quot;city&quot;,
+    &quot;phone&quot;,
+    &quot;mobile&quot;,
+    &quot;fax&quot;
+})
+<span class="nc" id="L54">public class AssetProdOrgModel</span>
+    implements Serializable
+{
+
+    private final static long serialVersionUID = 1L;
+    protected long id;
+    @XmlElement(required = true)
+    protected String code;
+    @XmlElement(required = true)
+    protected String name;
+    @XmlElement(required = true)
+    protected String address;
+    protected int zipcode;
+    @XmlElement(required = true)
+    protected String city;
+    @XmlElement(required = true)
+    protected String phone;
+    @XmlElement(required = true)
+    protected String mobile;
+    @XmlElement(required = true)
+    protected String fax;
+
+    /**
+     * Gets the value of the id property.
+     * 
+     */
+    public long getId() {
+<span class="nc" id="L81">        return id;</span>
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     */
+    public void setId(long value) {
+<span class="nc" id="L89">        this.id = value;</span>
+<span class="nc" id="L90">    }</span>
+
+    /**
+     * Gets the value of the code property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCode() {
+<span class="nc" id="L101">        return code;</span>
+    }
+
+    /**
+     * Sets the value of the code property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCode(String value) {
+<span class="nc" id="L113">        this.code = value;</span>
+<span class="nc" id="L114">    }</span>
+
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getName() {
+<span class="nc" id="L125">        return name;</span>
+    }
+
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setName(String value) {
+<span class="nc" id="L137">        this.name = value;</span>
+<span class="nc" id="L138">    }</span>
+
+    /**
+     * Gets the value of the address property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAddress() {
+<span class="nc" id="L149">        return address;</span>
+    }
+
+    /**
+     * Sets the value of the address property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAddress(String value) {
+<span class="nc" id="L161">        this.address = value;</span>
+<span class="nc" id="L162">    }</span>
+
+    /**
+     * Gets the value of the zipcode property.
+     * 
+     */
+    public int getZipcode() {
+<span class="nc" id="L169">        return zipcode;</span>
+    }
+
+    /**
+     * Sets the value of the zipcode property.
+     * 
+     */
+    public void setZipcode(int value) {
+<span class="nc" id="L177">        this.zipcode = value;</span>
+<span class="nc" id="L178">    }</span>
+
+    /**
+     * Gets the value of the city property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCity() {
+<span class="nc" id="L189">        return city;</span>
+    }
+
+    /**
+     * Sets the value of the city property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCity(String value) {
+<span class="nc" id="L201">        this.city = value;</span>
+<span class="nc" id="L202">    }</span>
+
+    /**
+     * Gets the value of the phone property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPhone() {
+<span class="nc" id="L213">        return phone;</span>
+    }
+
+    /**
+     * Sets the value of the phone property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPhone(String value) {
+<span class="nc" id="L225">        this.phone = value;</span>
+<span class="nc" id="L226">    }</span>
+
+    /**
+     * Gets the value of the mobile property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMobile() {
+<span class="nc" id="L237">        return mobile;</span>
+    }
+
+    /**
+     * Sets the value of the mobile property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMobile(String value) {
+<span class="nc" id="L249">        this.mobile = value;</span>
+<span class="nc" id="L250">    }</span>
+
+    /**
+     * Gets the value of the fax property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFax() {
+<span class="nc" id="L261">        return fax;</span>
+    }
+
+    /**
+     * Sets the value of the fax property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFax(String value) {
+<span class="nc" id="L273">        this.fax = value;</span>
+<span class="nc" id="L274">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L278">        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+    }
+
+    @Override
+    public boolean equals(Object that) {
+<span class="nc" id="L283">        return EqualsBuilder.reflectionEquals(this, that);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L288">        return HashCodeBuilder.reflectionHashCode(this);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

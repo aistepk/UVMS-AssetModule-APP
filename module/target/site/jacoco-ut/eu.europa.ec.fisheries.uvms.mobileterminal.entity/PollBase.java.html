@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PollBase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.entity</a> &gt; <span class="el_source">PollBase.java</span></div><h1>PollBase.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.mobileterminal.entity;
+
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.types.PollTypeEnum;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+
+@Entity
+@Table(name = &quot;pollbase&quot;, indexes = { @Index(columnList = &quot;channel_guid&quot;, name = &quot;pollbase_channel_FK_INX10&quot;, unique = false),
+        @Index(columnList = &quot;mobileterminal_id&quot;, name = &quot;pollbase_mobterm_FK_INX10&quot;, unique = false),})
+@Inheritance(strategy = InheritanceType.JOINED)
+@XmlRootElement
+@NamedQueries({
+        @NamedQuery(name = PollBase.FIND_ALL, query = &quot;SELECT p FROM PollBase p&quot;),
+        @NamedQuery(name = PollBase.FIND_BY_TYPE, query = &quot;SELECT p FROM PollBase p WHERE p.pollTypeEnum = :pollTypeEnum&quot;),
+        @NamedQuery(name = PollBase.FIND_BY_USER, query = &quot;SELECT p FROM PollBase p WHERE p.creator = :pollUserCreator&quot;),
+        @NamedQuery(name = PollBase.FIND_BY_ASSET_IN_TIMESPAN, query = &quot;SELECT p FROM PollBase p WHERE p.assetId = :assetId AND p.createTime BETWEEN :start AND :stop&quot;),
+})
+public class PollBase implements Serializable {
+
+    public static final String FIND_ALL = &quot;Poll.findAll&quot;;
+    public static final String FIND_BY_TYPE = &quot;Poll.findByPollType&quot;;
+    public static final String FIND_BY_USER = &quot;Poll.findByPollUserCreator&quot;;
+    public static final String FIND_BY_ASSET_IN_TIMESPAN = &quot;Poll.findByAssetInTimespan&quot;;
+
+    @Id
+    @GeneratedValue(generator = &quot;POLLBASE_UUID&quot;)
+    @GenericGenerator(name = &quot;POLLBASE_UUID&quot;, strategy = &quot;org.hibernate.id.UUIDGenerator&quot;)
+    @Column(name = &quot;id&quot;)
+    private UUID id;
+
+    @Column(name = &quot;comment&quot;)
+    @NotNull
+    private String comment;
+
+    @Size(max = 60)
+    @Column(name = &quot;createuser&quot;)
+    private String creator;
+
+    @Column(name = &quot;channel_guid&quot;)
+    @NotNull
+    private UUID channelId;
+
+    @Column(name = &quot;createtime&quot;)
+    private Instant createTime;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = &quot;mobileterminal_id&quot;, foreignKey = @ForeignKey(name = &quot;PollBase_MobileTerminal_FK&quot;))
+    @NotNull
+    private MobileTerminal mobileterminal;
+
+    @Size(max = 60)
+    @Column(name = &quot;upuser&quot;)
+    private String updatedBy;
+
+    @Column(name = &quot;asset_id&quot;)
+    private UUID assetId;
+
+    @Column(name = &quot;poll_type&quot;)
+    @Enumerated(EnumType.STRING)
+    private PollTypeEnum pollTypeEnum;
+
+    private static final long serialVersionUID = 1L;
+
+    public PollBase() {
+<span class="fc" id="L84">        super();</span>
+<span class="fc" id="L85">    }</span>
+
+    public UUID getId() {
+<span class="fc" id="L88">        return id;</span>
+    }
+
+    public void setId(UUID id) {
+<span class="fc" id="L92">        this.id = id;</span>
+<span class="fc" id="L93">    }</span>
+
+    public String getComment() {
+<span class="fc" id="L96">        return comment;</span>
+    }
+
+    public void setComment(String comment) {
+<span class="fc" id="L100">        this.comment = comment;</span>
+<span class="fc" id="L101">    }</span>
+
+    public String getCreator() {
+<span class="nc" id="L104">        return creator;</span>
+    }
+
+    public void setCreator(String creator) {
+<span class="fc" id="L108">        this.creator = creator;</span>
+<span class="fc" id="L109">    }</span>
+
+    public UUID getChannelId() {
+<span class="nc" id="L112">        return channelId;</span>
+    }
+
+    public void setChannelId(UUID channelId) {
+<span class="fc" id="L116">        this.channelId = channelId;</span>
+<span class="fc" id="L117">    }</span>
+
+    public Instant getCreateTime() {
+<span class="nc" id="L120">        return createTime;</span>
+    }
+
+    public void setCreateTime(Instant updateTime) {
+<span class="fc" id="L124">        this.createTime = updateTime;</span>
+<span class="fc" id="L125">    }</span>
+
+    public MobileTerminal getMobileterminal() {
+<span class="fc" id="L128">        return mobileterminal;</span>
+    }
+
+    public void setMobileterminal(MobileTerminal mobileterminal) {
+<span class="fc" id="L132">        this.mobileterminal = mobileterminal;</span>
+<span class="fc" id="L133">    }</span>
+
+    public String getUpdatedBy() {
+<span class="nc" id="L136">        return updatedBy;</span>
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+<span class="fc" id="L140">        this.updatedBy = updatedBy;</span>
+<span class="fc" id="L141">    }</span>
+
+    public UUID getAssetId() {
+<span class="fc" id="L144">        return assetId;</span>
+    }
+
+    public void setAssetId(UUID terminalConnect) {
+<span class="fc" id="L148">        this.assetId = terminalConnect;</span>
+<span class="fc" id="L149">    }</span>
+
+    public PollTypeEnum getPollTypeEnum() {
+<span class="nc" id="L152">        return pollTypeEnum;</span>
+    }
+
+    public void setPollTypeEnum(PollTypeEnum pollTypeEnum) {
+<span class="fc" id="L156">        this.pollTypeEnum = pollTypeEnum;</span>
+<span class="fc" id="L157">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L161" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L162" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L163">        PollBase pollBase = (PollBase) o;</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">        return Objects.equals(id, pollBase.id) &amp;&amp;</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">                Objects.equals(comment, pollBase.comment) &amp;&amp;</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">                Objects.equals(creator, pollBase.creator) &amp;&amp;</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">                Objects.equals(channelId, pollBase.channelId) &amp;&amp;</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">                Objects.equals(createTime, pollBase.createTime) &amp;&amp;</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">                Objects.equals(mobileterminal, pollBase.mobileterminal) &amp;&amp;</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">                Objects.equals(updatedBy, pollBase.updatedBy) &amp;&amp;</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">                Objects.equals(assetId, pollBase.assetId) &amp;&amp;</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">                Objects.equals(pollTypeEnum, pollBase.pollTypeEnum);</span>
+    }
+
+    @Override
+    public int hashCode() {
+
+<span class="nc" id="L178">        return Objects.hash(id, comment, creator, channelId, createTime, mobileterminal, updatedBy, assetId, pollTypeEnum);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PollableQuery.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1</a> &gt; <span class="el_source">PollableQuery.java</span></div><h1>PollableQuery.java</h1><pre class="source lang-java linenums">
+package eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import eu.europa.ec.fisheries.schema.mobileterminal.types.v1.ListPagination;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+
+/**
+ * &lt;p&gt;Java class for PollableQuery complex type.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+ * 
+ * &lt;pre&gt;
+ * &amp;lt;complexType name=&quot;PollableQuery&quot;&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name=&quot;pagination&quot; type=&quot;{urn:types.mobileterminal.schema.fisheries.ec.europa.eu:v1}ListPagination&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;connectIdList&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = &quot;PollableQuery&quot;, propOrder = {
+    &quot;pagination&quot;,
+    &quot;connectIdList&quot;
+})
+<span class="nc" id="L43">public class PollableQuery</span>
+    implements Serializable
+{
+
+    private final static long serialVersionUID = 1L;
+    @XmlElement(required = true)
+    protected ListPagination pagination;
+    protected List&lt;String&gt; connectIdList;
+
+    /**
+     * Gets the value of the pagination property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ListPagination }
+     *     
+     */
+    public ListPagination getPagination() {
+<span class="nc" id="L61">        return pagination;</span>
+    }
+
+    /**
+     * Sets the value of the pagination property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ListPagination }
+     *     
+     */
+    public void setPagination(ListPagination value) {
+<span class="nc" id="L73">        this.pagination = value;</span>
+<span class="nc" id="L74">    }</span>
+
+    /**
+     * Gets the value of the connectIdList property.
+     * 
+     * &lt;p&gt;
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a &lt;CODE&gt;set&lt;/CODE&gt; method for the connectIdList property.
+     * 
+     * &lt;p&gt;
+     * For example, to add a new item, do as follows:
+     * &lt;pre&gt;
+     *    getConnectIdList().add(newItem);
+     * &lt;/pre&gt;
+     * 
+     * 
+     * &lt;p&gt;
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List&lt;String&gt; getConnectIdList() {
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        if (connectIdList == null) {</span>
+<span class="nc" id="L100">            connectIdList = new ArrayList&lt;String&gt;();</span>
+        }
+<span class="nc" id="L102">        return this.connectIdList;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L107">        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+    }
+
+    @Override
+    public boolean equals(Object that) {
+<span class="nc" id="L112">        return EqualsBuilder.reflectionEquals(this, that);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L117">        return HashCodeBuilder.reflectionHashCode(this);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

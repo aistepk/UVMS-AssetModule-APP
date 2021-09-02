@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetModuleMethod.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.wsdl.asset.module</a> &gt; <span class="el_source">AssetModuleMethod.java</span></div><h1>AssetModuleMethod.java</h1><pre class="source lang-java linenums">
+package eu.europa.ec.fisheries.wsdl.asset.module;
+
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * &lt;p&gt;Java class for AssetModuleMethod.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+ * &lt;pre&gt;
+ * &amp;lt;simpleType name=&quot;AssetModuleMethod&quot;&amp;gt;
+ *   &amp;lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;&amp;gt;
+ *     &amp;lt;enumeration value=&quot;GET_ASSET&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;ASSET_LIST&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;ASSET_GROUP&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;ASSET_LIST_BY_GROUP&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;PING&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;ASSET_GROUP_LIST_BY_ASSET_GUID&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;ASSET_LIST_GROUP_BY_FLAGSTATE&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;UPSERT_ASSET&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;FISHING_GEAR_LIST&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;FISHING_GEAR_BY_ID&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;FISHING_GEAR_BY_EXT_ID&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;FISHING_GEAR_UPSERT&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;GET_FLAGSTATE_BY_ID_AND_DATE&quot;/&amp;gt;
+ *     &amp;lt;enumeration value=&quot;GET_ASSET_FROMASSETID_AND_DATE&quot;/&amp;gt;
+ *   &amp;lt;/restriction&amp;gt;
+ * &amp;lt;/simpleType&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ */
+<span class="nc" id="L34">@XmlType(name = &quot;AssetModuleMethod&quot;)</span>
+@XmlEnum
+public enum AssetModuleMethod {
+
+<span class="nc" id="L38">    GET_ASSET,</span>
+<span class="nc" id="L39">    ASSET_LIST,</span>
+<span class="nc" id="L40">    ASSET_GROUP,</span>
+<span class="nc" id="L41">    ASSET_LIST_BY_GROUP,</span>
+<span class="nc" id="L42">    PING,</span>
+<span class="nc" id="L43">    ASSET_GROUP_LIST_BY_ASSET_GUID,</span>
+<span class="nc" id="L44">    ASSET_LIST_GROUP_BY_FLAGSTATE,</span>
+<span class="nc" id="L45">    UPSERT_ASSET,</span>
+<span class="nc" id="L46">    FISHING_GEAR_LIST,</span>
+<span class="nc" id="L47">    FISHING_GEAR_BY_ID,</span>
+<span class="nc" id="L48">    FISHING_GEAR_BY_EXT_ID,</span>
+<span class="nc" id="L49">    FISHING_GEAR_UPSERT,</span>
+<span class="nc" id="L50">    GET_FLAGSTATE_BY_ID_AND_DATE,</span>
+<span class="nc" id="L51">    GET_ASSET_FROMASSETID_AND_DATE;</span>
+
+    public String value() {
+<span class="nc" id="L54">        return name();</span>
+    }
+
+    public static AssetModuleMethod fromValue(String v) {
+<span class="nc" id="L58">        return valueOf(v);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

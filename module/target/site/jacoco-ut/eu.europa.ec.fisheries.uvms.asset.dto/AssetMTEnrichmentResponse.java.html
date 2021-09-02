@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetMTEnrichmentResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.dto</a> &gt; <span class="el_source">AssetMTEnrichmentResponse.java</span></div><h1>AssetMTEnrichmentResponse.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.asset.dto;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class AssetMTEnrichmentResponse implements Serializable {
+
+<span class="nc" id="L8">    private String mobileTerminalConnectId = null;</span>
+<span class="nc" id="L9">    private String mobileTerminalType = null;</span>
+<span class="nc" id="L10">    private String channelGuid = null;</span>
+
+    private String assetName;
+<span class="nc" id="L13">    private List&lt;String&gt; assetFilterList = null;</span>
+<span class="nc" id="L14">    private String assetUUID = null;</span>
+<span class="nc" id="L15">    private String assetHistoryId = null;</span>
+<span class="nc" id="L16">    private String flagstate = null;</span>
+<span class="nc" id="L17">    private String vesselType = null;</span>
+    private boolean parked;
+
+<span class="nc" id="L20">    private String externalMarking = null;</span>
+<span class="nc" id="L21">    private String gearType = null;</span>
+<span class="nc" id="L22">    private String cfr = null;</span>
+<span class="nc" id="L23">    private String ircs = null;</span>
+<span class="nc" id="L24">    private String assetStatus = null;</span>
+<span class="nc" id="L25">    private String mmsi = null;</span>
+<span class="nc" id="L26">    private String imo = null;</span>
+<span class="nc" id="L27">    private String dnid = null;</span>
+<span class="nc" id="L28">    private String mobileTerminalGuid = null;</span>
+<span class="nc" id="L29">    private String memberNumber = null;</span>
+<span class="nc" id="L30">    private String serialNumber = null;</span>
+<span class="nc" id="L31">    private Boolean mobileTerminalIsInactive = null;</span>
+
+<span class="nc" id="L33">    public AssetMTEnrichmentResponse(){}</span>
+
+    public String getAssetName() {
+<span class="nc" id="L36">        return assetName;</span>
+    }
+
+    public void setAssetName(String assetName) {
+<span class="nc" id="L40">        this.assetName = assetName;</span>
+<span class="nc" id="L41">    }</span>
+
+    public List&lt;String&gt; getAssetFilterList() {
+<span class="nc" id="L44">        return assetFilterList;</span>
+    }
+
+    public void setAssetFilterList(List&lt;String&gt; assetFilterList) {
+<span class="nc" id="L48">        this.assetFilterList = assetFilterList;</span>
+<span class="nc" id="L49">    }</span>
+
+    public String getFlagstate() {
+<span class="nc" id="L52">        return flagstate;</span>
+    }
+
+    public void setFlagstate(String flagstate) {
+<span class="nc" id="L56">        this.flagstate = flagstate;</span>
+<span class="nc" id="L57">    }</span>
+
+    public String getVesselType() {
+<span class="nc" id="L60">        return vesselType;</span>
+    }
+
+    public void setVesselType(String vesselType) {
+<span class="nc" id="L64">        this.vesselType = vesselType;</span>
+<span class="nc" id="L65">    }</span>
+
+    public String getMobileTerminalConnectId() {
+<span class="nc" id="L68">        return mobileTerminalConnectId;</span>
+    }
+
+    public void setMobileTerminalConnectId(String mobileTerminalConnectId) {
+<span class="nc" id="L72">        this.mobileTerminalConnectId = mobileTerminalConnectId;</span>
+<span class="nc" id="L73">    }</span>
+
+    public String getMobileTerminalType() {
+<span class="nc" id="L76">        return mobileTerminalType;</span>
+    }
+
+    public void setMobileTerminalType(String mobileTerminalType) {
+<span class="nc" id="L80">        this.mobileTerminalType = mobileTerminalType;</span>
+<span class="nc" id="L81">    }</span>
+
+    public String getAssetUUID() {
+<span class="nc" id="L84">        return assetUUID;</span>
+    }
+
+    public void setAssetUUID(String assetUUID) {
+<span class="nc" id="L88">        this.assetUUID = assetUUID;</span>
+<span class="nc" id="L89">    }</span>
+
+    public String getChannelGuid() {
+<span class="nc" id="L92">        return channelGuid;</span>
+    }
+
+    public void setChannelGuid(String channelGuid) {
+<span class="nc" id="L96">        this.channelGuid = channelGuid;</span>
+<span class="nc" id="L97">    }</span>
+
+    public String getAssetHistoryId() {
+<span class="nc" id="L100">        return assetHistoryId;</span>
+    }
+
+    public void setAssetHistoryId(String assetHistoryId) {
+<span class="nc" id="L104">        this.assetHistoryId = assetHistoryId;</span>
+<span class="nc" id="L105">    }</span>
+
+    public String getExternalMarking() {
+<span class="nc" id="L108">        return externalMarking;</span>
+    }
+
+    public void setExternalMarking(String externalMarking) {
+<span class="nc" id="L112">        this.externalMarking = externalMarking;</span>
+<span class="nc" id="L113">    }</span>
+
+    public String getGearType() {
+<span class="nc" id="L116">        return gearType;</span>
+    }
+
+    public void setGearType(String gearType) {
+<span class="nc" id="L120">        this.gearType = gearType;</span>
+<span class="nc" id="L121">    }</span>
+
+    public String getCfr() {
+<span class="nc" id="L124">        return cfr;</span>
+    }
+
+    public void setCfr(String cfr) {
+<span class="nc" id="L128">        this.cfr = cfr;</span>
+<span class="nc" id="L129">    }</span>
+
+    public String getIrcs() {
+<span class="nc" id="L132">        return ircs;</span>
+    }
+
+    public void setIrcs(String ircs) {
+<span class="nc" id="L136">        this.ircs = ircs;</span>
+<span class="nc" id="L137">    }</span>
+
+    public String getAssetStatus() {
+<span class="nc" id="L140">        return assetStatus;</span>
+    }
+
+    public void setAssetStatus(String assetStatus) {
+<span class="nc" id="L144">        this.assetStatus = assetStatus;</span>
+<span class="nc" id="L145">    }</span>
+
+    public String getMmsi() {
+<span class="nc" id="L148">        return mmsi;</span>
+    }
+
+    public void setMmsi(String mmsi) {
+<span class="nc" id="L152">        this.mmsi = mmsi;</span>
+<span class="nc" id="L153">    }</span>
+
+    public String getImo() {
+<span class="nc" id="L156">        return imo;</span>
+    }
+
+    public void setImo(String imo) {
+<span class="nc" id="L160">        this.imo = imo;</span>
+<span class="nc" id="L161">    }</span>
+
+    public String getMobileTerminalGuid() {
+<span class="nc" id="L164">        return mobileTerminalGuid;</span>
+    }
+
+    public void setMobileTerminalGuid(String mobileTerminalGuid) {
+<span class="nc" id="L168">        this.mobileTerminalGuid = mobileTerminalGuid;</span>
+<span class="nc" id="L169">    }</span>
+
+    public String getDNID() {
+<span class="nc" id="L172">        return dnid;</span>
+    }
+
+    public void setDNID(String dnid) {
+<span class="nc" id="L176">        this.dnid = dnid;</span>
+<span class="nc" id="L177">    }</span>
+
+    public String getMemberNumber() {
+<span class="nc" id="L180">        return memberNumber;</span>
+    }
+
+    public void setMemberNumber(String memberNumber) {
+<span class="nc" id="L184">        this.memberNumber = memberNumber;</span>
+<span class="nc" id="L185">    }</span>
+
+    public String getSerialNumber() {
+<span class="nc" id="L188">        return serialNumber;</span>
+    }
+
+    public void setSerialNumber(String serialNumber) {
+<span class="nc" id="L192">        this.serialNumber = serialNumber;</span>
+<span class="nc" id="L193">    }</span>
+
+    public Boolean getMobileTerminalIsInactive() {
+<span class="nc" id="L196">        return mobileTerminalIsInactive;</span>
+    }
+
+    public void setMobileTerminalIsInactive(Boolean mobileTerminalIsInactive) {
+<span class="nc" id="L200">        this.mobileTerminalIsInactive = mobileTerminalIsInactive;</span>
+<span class="nc" id="L201">    }</span>
+
+    public boolean isParked() {
+<span class="nc" id="L204">        return parked;</span>
+    }
+
+    public void setParked(boolean parked) {
+<span class="nc" id="L208">        this.parked = parked;</span>
+<span class="nc" id="L209">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProgramPoll.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.entity</a> &gt; <span class="el_source">ProgramPoll.java</span></div><h1>ProgramPoll.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.mobileterminal.entity;
+
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.ProgramPollStatus;
+
+import javax.persistence.*;
+import java.time.Instant;
+import java.util.Objects;
+
+@Entity
+@Table(name = &quot;poll_program&quot;)
+@NamedQueries({
+        @NamedQuery(name = ProgramPoll.PROGRAM_FIND_ALL, query = &quot;SELECT p FROM ProgramPoll p&quot;),
+        @NamedQuery(name = ProgramPoll.PROGRAM_FIND_BY_ID, query = &quot;SELECT p FROM ProgramPoll p WHERE p.id = :id&quot;),
+        @NamedQuery(name = ProgramPoll.PROGRAM_FIND_ALIVE, query = &quot;SELECT p FROM ProgramPoll  p WHERE p.stopDate &gt; :currentDate &quot; +
+                &quot;AND p.pollState &lt;&gt; eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.ProgramPollStatus.ARCHIVED&quot;),
+        @NamedQuery(name = ProgramPoll.PROGRAM_FIND_RUNNING_AND_STARTED,
+                query = &quot;SELECT p FROM ProgramPoll  p WHERE p.startDate &lt; :currentDate AND p.pollState = eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.ProgramPollStatus.STARTED&quot;) })
+<span class="fc" id="L18">public class ProgramPoll extends PollBase {</span>
+
+    public static final String PROGRAM_FIND_ALL = &quot;PollProgram.findAll&quot;;
+    public static final String PROGRAM_FIND_BY_ID = &quot;PollProgram.findById&quot;;
+    public static final String PROGRAM_FIND_ALIVE = &quot;PollProgram.findAlive&quot;;
+    public static final String PROGRAM_FIND_RUNNING_AND_STARTED = &quot;PollProgram.findRunningAndStarted&quot;;
+
+    @Column(name = &quot;frequency&quot;)
+    private Integer frequency;
+
+    @Column(name = &quot;startdate&quot;)
+    private Instant startDate;
+
+    @Column(name = &quot;stopdate&quot;)
+    private Instant stopDate;
+
+    @Column(name = &quot;latestruntime&quot;)
+    private Instant latestRun;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = &quot;pollstate&quot;)
+    private ProgramPollStatus pollState;
+
+    public Integer getFrequency() {
+<span class="fc" id="L42">        return frequency;</span>
+    }
+
+    public void setFrequency(Integer frequency) {
+<span class="fc" id="L46">        this.frequency = frequency;</span>
+<span class="fc" id="L47">    }</span>
+
+    public Instant getStartDate() {
+<span class="fc" id="L50">        return startDate;</span>
+    }
+
+    public void setStartDate(Instant startDate) {
+<span class="fc" id="L54">        this.startDate = startDate;</span>
+<span class="fc" id="L55">    }</span>
+
+    public Instant getStopDate() {
+<span class="fc" id="L58">        return stopDate;</span>
+    }
+
+    public void setStopDate(Instant stopDate) {
+<span class="fc" id="L62">        this.stopDate = stopDate;</span>
+<span class="fc" id="L63">    }</span>
+
+    public Instant getLatestRun() {
+<span class="nc" id="L66">        return latestRun;</span>
+    }
+
+    public void setLatestRun(Instant latestRun) {
+<span class="nc" id="L70">        this.latestRun = latestRun;</span>
+<span class="nc" id="L71">    }</span>
+
+    public ProgramPollStatus getPollState() {
+<span class="fc" id="L74">        return pollState;</span>
+    }
+
+    public void setPollState(ProgramPollStatus pollState) {
+<span class="fc" id="L78">        this.pollState = pollState;</span>
+<span class="fc" id="L79">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L84" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L85">        ProgramPoll that = (ProgramPoll) o;</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        return Objects.equals(getId(), that.getId()) &amp;&amp;</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">                Objects.equals(frequency, that.frequency) &amp;&amp;</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">                Objects.equals(startDate, that.startDate) &amp;&amp;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">                Objects.equals(stopDate, that.stopDate) &amp;&amp;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">                Objects.equals(latestRun, that.latestRun) &amp;&amp;</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                Objects.equals(pollState, that.pollState);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L96">        return Objects.hash(getId(), frequency, startDate, stopDate, latestRun, pollState);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

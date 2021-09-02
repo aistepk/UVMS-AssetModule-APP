@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuditServiceBean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.bean</a> &gt; <span class="el_source">AuditServiceBean.java</span></div><h1>AuditServiceBean.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.bean;
+
+import javax.ejb.Asynchronous;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import eu.europa.ec.fisheries.uvms.asset.domain.entity.Asset;
+import eu.europa.ec.fisheries.uvms.asset.mapper.AuditModuleRequestMapper;
+import eu.europa.ec.fisheries.uvms.asset.message.AuditProducer;
+
+@Stateless
+<span class="nc" id="L23">public class AuditServiceBean {</span>
+
+<span class="nc" id="L25">    private static final Logger LOG = LoggerFactory.getLogger(AuditServiceBean.class);</span>
+    
+    @Inject
+    private AuditProducer auditProducer;
+
+    @Asynchronous
+    public void logAssetCreated(Asset asset, String username) {
+        try {
+<span class="nc" id="L33">            String auditData = AuditModuleRequestMapper.mapAuditLogAssetCreated(asset.getId().toString(),</span>
+                    username);
+<span class="nc" id="L35">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L36">        } catch (Exception e) {</span>
+<span class="nc" id="L37">            LOG.warn(&quot;Failed to send audit log message! Asset with guid {} was created &quot;, asset.getId());</span>
+<span class="nc" id="L38">        }</span>
+<span class="nc" id="L39">    }</span>
+
+    @Asynchronous
+    public void logAssetUpdated(Asset asset, String comment, String username) {
+        try {
+<span class="nc" id="L44">            String auditData = AuditModuleRequestMapper.mapAuditLogAssetUpdated(asset.getId().toString(), comment,</span>
+                    username);
+<span class="nc" id="L46">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L47">        } catch (Exception e) {</span>
+<span class="nc" id="L48">            LOG.error(&quot;Failed to send audit log message! Asset with guid {} was updated &quot;,</span>
+<span class="nc" id="L49">                    asset.getId().toString());</span>
+<span class="nc" id="L50">        }</span>
+<span class="nc" id="L51">    }</span>
+
+    @Asynchronous
+    public void logAssetArchived(Asset asset, String comment, String username) {
+        try {
+<span class="nc" id="L56">            String auditData = AuditModuleRequestMapper.mapAuditLogAssetArchived(asset.getId().toString(), comment,</span>
+                    username);
+<span class="nc" id="L58">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L59">        } catch (Exception e) {</span>
+<span class="nc" id="L60">            LOG.error(&quot;Failed to send audit log message! Asset with guid {} was archived &quot;,</span>
+<span class="nc" id="L61">                    asset.getId().toString());</span>
+<span class="nc" id="L62">        }</span>
+<span class="nc" id="L63">    }</span>
+
+    @Asynchronous
+    public void logAssetUnarchived(Asset asset, String comment, String username) {
+        try {
+<span class="nc" id="L68">            String auditData = AuditModuleRequestMapper.mapAuditLogAssetUnarchived(asset.getId().toString(), comment,</span>
+                    username);
+<span class="nc" id="L70">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L71">        } catch (Exception e) {</span>
+<span class="nc" id="L72">            LOG.error(&quot;Failed to send audit log message! Asset with guid {} was archived &quot;,</span>
+<span class="nc" id="L73">                    asset.getId().toString());</span>
+<span class="nc" id="L74">        }</span>
+<span class="nc" id="L75">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

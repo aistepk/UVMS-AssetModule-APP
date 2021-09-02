@@ -1,0 +1,16 @@
+eu\europa\ec\fisheries\uvms\mobileterminal\mapper\EnumMapper$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\constants\CapabilitiesInmarsatC$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\bean\ConfigServiceBeanMT$1.class
+eu\europa\ec\fisheries\uvms\asset\message\MessageConsumerBean$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\mapper\PluginMapper$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\mapper\AuditModuleRequestMapper$1.class
+eu\europa\ec\fisheries\uvms\asset\mapper\PollToCommandRequestMapper$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\bean\MobileTerminalServiceBean$1.class
+eu\europa\ec\fisheries\uvms\asset\domain\dao\AssetDao$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\search\poll\PollSearchMapper$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\bean\PollServiceBean$1.class
+eu\europa\ec\fisheries\uvms\asset\message\event\SearchFieldMapper$1.class
+eu\europa\ec\fisheries\uvms\asset\message\event\AssetModelMapper$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\mapper\PollModelToEntityMapper$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\mapper\PollEntityToModelMapper$1.class
+eu\europa\ec\fisheries\uvms\mobileterminal\constants\CapabilitiesIridium$1.class

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileTerminal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-client</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.client.model.mt</a> &gt; <span class="el_source">MobileTerminal.java</span></div><h1>MobileTerminal.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.client.model.mt;
+
+import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.UUID;
+
+<span class="nc" id="L19">public class MobileTerminal {</span>
+
+	private UUID id;
+
+	private UUID historyId;
+
+<span class="nc" id="L25">	private Boolean archived = false;</span>
+
+<span class="nc" id="L27">	private Boolean active = true;</span>
+
+	private String source;
+
+	private String mobileTerminalType;
+
+	private Instant updatetime;
+
+	private Instant createTime;
+
+	private String updateuser;
+
+	private String serialNo;
+
+	private String satelliteNumber;
+
+	private String antenna;
+
+	private String transceiverType;
+
+	private String softwareVersion;
+
+	private Set&lt;Channel&gt; channels;
+
+	private String assetId;
+
+	private String comment;
+
+<span class="nc" id="L55">	private Boolean eastAtlanticOceanRegion = false;</span>
+
+<span class="nc" id="L57">	private Boolean westAtlanticOceanRegion = false;</span>
+
+<span class="nc" id="L59">	private Boolean pacificOceanRegion = false;</span>
+
+<span class="nc" id="L61">	private Boolean indianOceanRegion = false;</span>
+
+    private Instant installDate;
+
+    private Instant uninstallDate;
+
+	private String installedBy;
+
+	public UUID getId() {
+<span class="nc" id="L70">		return id;</span>
+	}
+
+	public void setId(UUID id) {
+<span class="nc" id="L74">		this.id = id;</span>
+<span class="nc" id="L75">	}</span>
+
+	public UUID getHistoryId() {
+<span class="nc" id="L78">		return historyId;</span>
+	}
+
+	public void setHistoryId(UUID historyId) {
+<span class="nc" id="L82">		this.historyId = historyId;</span>
+<span class="nc" id="L83">	}</span>
+
+	public Boolean getArchived() {
+<span class="nc" id="L86">		return archived;</span>
+	}
+
+	public void setArchived(Boolean archived) {
+<span class="nc" id="L90">		this.archived = archived;</span>
+<span class="nc" id="L91">	}</span>
+
+	public Boolean getActive() {
+<span class="nc" id="L94">		return active;</span>
+	}
+
+	public void setActive(Boolean active) {
+<span class="nc bnc" id="L98" title="All 2 branches missed.">		if(active != null){this.active = active;}</span>
+<span class="nc" id="L99">	}</span>
+
+	public Instant getUpdatetime() {
+<span class="nc" id="L102">		return updatetime;</span>
+	}
+
+	public void setUpdatetime(Instant updatetime) {
+<span class="nc" id="L106">		this.updatetime = updatetime;</span>
+<span class="nc" id="L107">	}</span>
+
+	public String getUpdateuser() {
+<span class="nc" id="L110">		return updateuser;</span>
+	}
+
+	public void setUpdateuser(String updateuser) {
+<span class="nc" id="L114">		this.updateuser = updateuser;</span>
+<span class="nc" id="L115">	}</span>
+
+	public String getSerialNo() {
+<span class="nc" id="L118">		return serialNo;</span>
+	}
+
+	public void setSerialNo(String serialNo) {
+<span class="nc" id="L122">		this.serialNo = serialNo;</span>
+<span class="nc" id="L123">	}</span>
+
+	public Instant getCreateTime() {
+<span class="nc" id="L126">		return createTime;</span>
+	}
+
+	public void setCreateTime(Instant createTime) {
+<span class="nc" id="L130">		this.createTime = createTime;</span>
+<span class="nc" id="L131">	}</span>
+
+	public Set&lt;Channel&gt; getChannels() {
+<span class="nc bnc" id="L134" title="All 2 branches missed.">		if(channels == null)</span>
+<span class="nc" id="L135">			channels = new LinkedHashSet&lt;&gt;();</span>
+<span class="nc" id="L136">		return channels;</span>
+	}
+
+	public void setChannels(Set&lt;Channel&gt; channels) {
+<span class="nc" id="L140">		this.channels = channels;</span>
+<span class="nc" id="L141">	}</span>
+
+	public String getAssetId() {
+<span class="nc" id="L144">		return assetId;</span>
+	}
+
+	public void setAssetId(String assetId) {
+<span class="nc" id="L148">		this.assetId = assetId;</span>
+<span class="nc" id="L149">	}</span>
+
+	public String getSatelliteNumber() {
+<span class="nc" id="L152">		return satelliteNumber;</span>
+	}
+
+	public void setSatelliteNumber(String satelliteNumber) {
+<span class="nc" id="L156">		this.satelliteNumber = satelliteNumber;</span>
+<span class="nc" id="L157">	}</span>
+
+	public String getAntenna() {
+<span class="nc" id="L160">		return antenna;</span>
+	}
+
+	public void setAntenna(String antenna) {
+<span class="nc" id="L164">		this.antenna = antenna;</span>
+<span class="nc" id="L165">	}</span>
+
+	public String getTransceiverType() {
+<span class="nc" id="L168">		return transceiverType;</span>
+	}
+
+	public void setTransceiverType(String transceiverType) {
+<span class="nc" id="L172">		this.transceiverType = transceiverType;</span>
+<span class="nc" id="L173">	}</span>
+
+	public String getSoftwareVersion() {
+<span class="nc" id="L176">		return softwareVersion;</span>
+	}
+
+	public void setSoftwareVersion(String softwareVersion) {
+<span class="nc" id="L180">		this.softwareVersion = softwareVersion;</span>
+<span class="nc" id="L181">	}</span>
+
+	public String getComment() {
+<span class="nc" id="L184">		return comment;</span>
+	}
+
+	public void setComment(String comment) {
+<span class="nc" id="L188">		this.comment = comment;</span>
+<span class="nc" id="L189">	}</span>
+
+	public Boolean getEastAtlanticOceanRegion() {
+<span class="nc" id="L192">		return eastAtlanticOceanRegion;</span>
+	}
+
+	public void setEastAtlanticOceanRegion(Boolean eastAtlanticOceanRegion) {
+<span class="nc" id="L196">		this.eastAtlanticOceanRegion = eastAtlanticOceanRegion;</span>
+<span class="nc" id="L197">	}</span>
+
+	public Boolean getWestAtlanticOceanRegion() {
+<span class="nc" id="L200">		return westAtlanticOceanRegion;</span>
+	}
+
+	public void setWestAtlanticOceanRegion(Boolean westAtlanticOceanRegion) {
+<span class="nc" id="L204">		this.westAtlanticOceanRegion = westAtlanticOceanRegion;</span>
+<span class="nc" id="L205">	}</span>
+
+	public Boolean getPacificOceanRegion() {
+<span class="nc" id="L208">		return pacificOceanRegion;</span>
+	}
+
+	public void setPacificOceanRegion(Boolean pacificOceanRegion) {
+<span class="nc" id="L212">		this.pacificOceanRegion = pacificOceanRegion;</span>
+<span class="nc" id="L213">	}</span>
+
+	public Boolean getIndianOceanRegion() {
+<span class="nc" id="L216">		return indianOceanRegion;</span>
+	}
+
+	public void setIndianOceanRegion(Boolean indianOceanRegion) {
+<span class="nc" id="L220">		this.indianOceanRegion = indianOceanRegion;</span>
+<span class="nc" id="L221">	}</span>
+
+    public Instant getInstallDate() {
+<span class="nc" id="L224">        return installDate;</span>
+    }
+
+    public void setInstallDate(Instant installDate) {
+<span class="nc" id="L228">        this.installDate = installDate;</span>
+<span class="nc" id="L229">    }</span>
+
+    public Instant getUninstallDate() {
+<span class="nc" id="L232">        return uninstallDate;</span>
+    }
+
+    public void setUninstallDate(Instant uninstallDate) {
+<span class="nc" id="L236">        this.uninstallDate = uninstallDate;</span>
+<span class="nc" id="L237">    }</span>
+
+	public String getInstalledBy() {
+<span class="nc" id="L240">		return installedBy;</span>
+	}
+
+	public void setInstalledBy(String installedBy) {
+<span class="nc" id="L244">		this.installedBy = installedBy;</span>
+<span class="nc" id="L245">	}</span>
+
+	public String getSource() {
+<span class="nc" id="L248">		return source;</span>
+	}
+
+	public void setSource(String source) {
+<span class="nc" id="L252">		this.source = source;</span>
+<span class="nc" id="L253">	}</span>
+
+	public String getMobileTerminalType() {
+<span class="nc" id="L256">		return mobileTerminalType;</span>
+	}
+
+	public void setMobileTerminalType(String mobileTerminalType) {
+<span class="nc" id="L260">		this.mobileTerminalType = mobileTerminalType;</span>
+<span class="nc" id="L261">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

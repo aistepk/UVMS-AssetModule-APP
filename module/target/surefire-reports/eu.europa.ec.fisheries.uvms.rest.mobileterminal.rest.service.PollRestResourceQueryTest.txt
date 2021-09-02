@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.693 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest

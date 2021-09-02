@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetMessageEvent.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.message.event</a> &gt; <span class="el_source">AssetMessageEvent.java</span></div><h1>AssetMessageEvent.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.message.event;
+
+import eu.europa.ec.fisheries.wsdl.asset.module.AssetGroupListByUserRequest;
+import eu.europa.ec.fisheries.wsdl.asset.module.GetAssetFromAssetIdAndDateRequest;
+import eu.europa.ec.fisheries.wsdl.asset.module.GetFlagStateByGuidAndDateRequest;
+import eu.europa.ec.fisheries.wsdl.asset.types.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import javax.jms.TextMessage;
+
+public class AssetMessageEvent {
+
+    private TextMessage message;
+    private AssetId assetId;
+    private AssetListQuery query;
+    private AssetGroupListByUserRequest request;
+    private AssetFault fault;
+    private String assetGuid;
+    private Asset asset;
+    private String username;
+    private FishingGear fishingGear;
+    private GetFlagStateByGuidAndDateRequest getFlagStateByGuidAndDateRequest;
+    private GetAssetFromAssetIdAndDateRequest getAssetFromAssetIdAndDateRequest;
+
+
+<span class="nc" id="L40">    public AssetMessageEvent(TextMessage message) {</span>
+<span class="nc" id="L41">        this.message = message;</span>
+<span class="nc" id="L42">    }</span>
+
+
+<span class="nc" id="L45">    public AssetMessageEvent(TextMessage message, AssetId assetId) {</span>
+<span class="nc" id="L46">        this.message = message;</span>
+<span class="nc" id="L47">        this.assetId = assetId;</span>
+<span class="nc" id="L48">    }</span>
+
+<span class="nc" id="L50">    public AssetMessageEvent(TextMessage message, AssetListQuery query) {</span>
+<span class="nc" id="L51">        this.message = message;</span>
+<span class="nc" id="L52">        this.query = query;</span>
+<span class="nc" id="L53">    }</span>
+
+<span class="nc" id="L55">    public AssetMessageEvent(TextMessage message, AssetGroupListByUserRequest query) {</span>
+<span class="nc" id="L56">        this.message = message;</span>
+<span class="nc" id="L57">        this.request = query;</span>
+<span class="nc" id="L58">    }</span>
+
+<span class="nc" id="L60">    public AssetMessageEvent(TextMessage message, AssetFault fault) {</span>
+<span class="nc" id="L61">        this.message = message;</span>
+<span class="nc" id="L62">        this.fault = fault;</span>
+<span class="nc" id="L63">    }</span>
+
+<span class="nc" id="L65">    public AssetMessageEvent(TextMessage message, String assetGuid) {</span>
+<span class="nc" id="L66">        this.message = message;</span>
+<span class="nc" id="L67">        this.assetGuid = assetGuid;</span>
+<span class="nc" id="L68">    }</span>
+
+<span class="nc" id="L70">    public AssetMessageEvent(TextMessage message, Asset asset, String username){</span>
+<span class="nc" id="L71">        this.message = message;</span>
+<span class="nc" id="L72">        this.asset = asset;</span>
+<span class="nc" id="L73">        this.username = username;</span>
+<span class="nc" id="L74">    }</span>
+
+<span class="nc" id="L76">    public AssetMessageEvent(TextMessage message, FishingGear fishingGear, String username){</span>
+<span class="nc" id="L77">        this.message = message;</span>
+<span class="nc" id="L78">        this.username = username;</span>
+<span class="nc" id="L79">        this.fishingGear = fishingGear;</span>
+<span class="nc" id="L80">    }</span>
+
+    public TextMessage getMessage() {
+<span class="nc" id="L83">        return message;</span>
+    }
+
+<span class="nc" id="L86">    public AssetMessageEvent(TextMessage message, GetFlagStateByGuidAndDateRequest getFlagStateByGuidAndDateRequest){</span>
+<span class="nc" id="L87">        this.message = message;</span>
+<span class="nc" id="L88">        this.getFlagStateByGuidAndDateRequest = getFlagStateByGuidAndDateRequest;</span>
+<span class="nc" id="L89">    }</span>
+
+<span class="nc" id="L91">    public AssetMessageEvent(TextMessage message, GetAssetFromAssetIdAndDateRequest getAssetFromAssetIdAndDateRequest){</span>
+<span class="nc" id="L92">        this.message = message;</span>
+<span class="nc" id="L93">        this.getAssetFromAssetIdAndDateRequest = getAssetFromAssetIdAndDateRequest;</span>
+<span class="nc" id="L94">    }</span>
+
+    public void setMessage(TextMessage message) {
+<span class="nc" id="L97">        this.message = message;</span>
+<span class="nc" id="L98">    }</span>
+
+    public AssetId getAssetId() {
+<span class="nc" id="L101">        return assetId;</span>
+    }
+
+    public AssetListQuery getQuery() {
+<span class="nc" id="L105">        return query;</span>
+    }
+
+    public AssetFault getFault() {
+<span class="nc" id="L109">        return fault;</span>
+    }
+
+    public void setFault(AssetFault fault) {
+<span class="nc" id="L113">        this.fault = fault;</span>
+<span class="nc" id="L114">    }</span>
+
+    public AssetGroupListByUserRequest getRequest() {
+<span class="nc" id="L117">        return request;</span>
+    }
+
+    public void setRequest(AssetGroupListByUserRequest request) {
+<span class="nc" id="L121">        this.request = request;</span>
+<span class="nc" id="L122">    }</span>
+
+
+    public String getAssetGuid() {
+<span class="nc" id="L126">        return assetGuid;</span>
+    }
+
+    public void setAssetGuid(String assetGuid) {
+<span class="nc" id="L130">        this.assetGuid = assetGuid;</span>
+<span class="nc" id="L131">    }</span>
+
+    public Asset getAsset() {
+<span class="nc" id="L134">        return asset;</span>
+    }
+
+    public void setAsset(Asset asset) {
+<span class="nc" id="L138">        this.asset = asset;</span>
+<span class="nc" id="L139">    }</span>
+
+    public String getUsername() {
+<span class="nc" id="L142">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L146">        this.username = username;</span>
+<span class="nc" id="L147">    }</span>
+
+    public FishingGear getFishingGear() {
+<span class="nc" id="L150">        return fishingGear;</span>
+    }
+
+    public void setFishingGear(FishingGear fishingGear) {
+<span class="nc" id="L154">        this.fishingGear = fishingGear;</span>
+<span class="nc" id="L155">    }</span>
+    
+    @Override
+    public String toString() {
+<span class="nc" id="L159">        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+    }
+
+    @Override
+    public boolean equals(Object that) {
+<span class="nc" id="L164">        return EqualsBuilder.reflectionEquals(this, that);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L169">        return HashCodeBuilder.reflectionHashCode(this);</span>
+    }
+
+
+    public GetFlagStateByGuidAndDateRequest getGetFlagStateByGuidAndDateRequest() {
+<span class="nc" id="L174">        return getFlagStateByGuidAndDateRequest;</span>
+    }
+
+    public void setGetFlagStateByGuidAndDateRequest(GetFlagStateByGuidAndDateRequest getFlagStateByGuidAndDateRequest) {
+<span class="nc" id="L178">        this.getFlagStateByGuidAndDateRequest = getFlagStateByGuidAndDateRequest;</span>
+<span class="nc" id="L179">    }</span>
+
+    public GetAssetFromAssetIdAndDateRequest getGetAssetFromAssetIdAndDateRequest() {
+<span class="nc" id="L182">        return getAssetFromAssetIdAndDateRequest;</span>
+    }
+
+    public void setGetAssetFromAssetIdAndDateRequest(GetAssetFromAssetIdAndDateRequest getAssetFromAssetIdAndDateRequest) {
+<span class="nc" id="L186">        this.getAssetFromAssetIdAndDateRequest = getAssetFromAssetIdAndDateRequest;</span>
+<span class="nc" id="L187">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

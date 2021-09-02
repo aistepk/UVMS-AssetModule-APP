@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PollProgramDaoBean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.dao</a> &gt; <span class="el_source">PollProgramDaoBean.java</span></div><h1>PollProgramDaoBean.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.mobileterminal.dao;
+
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.ProgramPoll;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Stateless
+<span class="nc" id="L28">public class PollProgramDaoBean {</span>
+
+    @PersistenceContext
+    private EntityManager em;
+
+    public void removeProgramPollAfterTests(String id){
+<span class="nc" id="L34">        ProgramPoll pollProgram = getProgramPollById(UUID.fromString(id));</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        em.remove(em.contains(pollProgram) ? pollProgram : em.merge(pollProgram));</span>
+<span class="nc" id="L36">    }</span>
+
+    public void createProgramPoll(ProgramPoll pollProgram) {
+<span class="nc" id="L39">        em.persist(pollProgram);</span>
+<span class="nc" id="L40">    }</span>
+
+    public ProgramPoll updateProgramPoll(ProgramPoll pollProgram) {
+<span class="nc" id="L43">        pollProgram = em.merge(pollProgram);</span>
+<span class="nc" id="L44">        return pollProgram;</span>
+    }
+
+    public List&lt;ProgramPoll&gt; getProgramPollsAlive()  {
+<span class="nc" id="L48">        TypedQuery&lt;ProgramPoll&gt; query = em.createNamedQuery(ProgramPoll.PROGRAM_FIND_ALIVE, ProgramPoll.class);</span>
+<span class="nc" id="L49">        query.setParameter(&quot;currentDate&quot;, Instant.now());</span>
+<span class="nc" id="L50">        return query.getResultList();</span>
+    }
+
+    public List&lt;ProgramPoll&gt; getProgramPollRunningAndStarted()  {
+<span class="nc" id="L54">        TypedQuery&lt;ProgramPoll&gt; query = em.createNamedQuery(ProgramPoll.PROGRAM_FIND_RUNNING_AND_STARTED, ProgramPoll.class);</span>
+<span class="nc" id="L55">        query.setParameter(&quot;currentDate&quot;, Instant.now());</span>
+<span class="nc" id="L56">        return query.getResultList();</span>
+    }
+
+    public ProgramPoll getProgramPollByGuid(String guid) {
+<span class="nc" id="L60">        return getProgramPollById(UUID.fromString(guid));</span>
+    }
+
+    public ProgramPoll getProgramPollById(UUID id) {
+        try {
+<span class="nc" id="L65">            return em.find(ProgramPoll.class, id);</span>
+<span class="nc" id="L66">        } catch (NoResultException e) {</span>
+<span class="nc" id="L67">            return null;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.util</a> &gt; <span class="el_source">AssetUtil.java</span></div><h1>AssetUtil.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.asset.util;
+
+import eu.europa.ec.fisheries.uvms.asset.domain.entity.Asset;
+import eu.europa.ec.fisheries.uvms.asset.dto.AssetMTEnrichmentRequest;
+import eu.europa.ec.fisheries.wsdl.asset.types.CarrierSource;
+
+import java.time.Instant;
+
+
+<span class="nc" id="L10">public class AssetUtil {</span>
+
+    public static Asset createNewAssetFromRequest(AssetMTEnrichmentRequest request,int shipNumber){
+<span class="nc" id="L13">        Asset asset = new Asset();</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        asset.setName((request.getAssetName() == null) ? (&quot;Unknown: &quot; + shipNumber) : request.getAssetName());</span>
+<span class="nc" id="L15">        asset.setUpdateTime(Instant.now());</span>
+<span class="nc" id="L16">        asset.setSource(CarrierSource.INTERNAL.toString());</span>
+<span class="nc" id="L17">        asset.setUpdatedBy(&quot;Movement from source: &quot; + request.getPluginType());</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        asset.setFlagStateCode((request.getFlagState() == null) ? (&quot;UNK&quot;) : request.getFlagState());</span>
+<span class="nc" id="L19">        asset.setActive(true);</span>
+<span class="nc" id="L20">        asset.setCfr(request.getCfrValue());</span>
+<span class="nc" id="L21">        asset.setImo(request.getImoValue());</span>
+<span class="nc bnc" id="L22" title="All 4 branches missed.">        asset.setIrcs( ((request.getIrcsValue() == null || request.getIrcsValue().length() &gt; 8) ? null : request.getIrcsValue()) );</span>
+<span class="nc" id="L23">        asset.setGfcm(request.getGfcmValue());</span>
+<span class="nc" id="L24">        asset.setIccat(request.getIccatValue());</span>
+<span class="nc" id="L25">        asset.setMmsi(request.getMmsiValue());</span>
+<span class="nc" id="L26">        asset.setUvi(request.getUviValue());</span>
+<span class="nc" id="L27">        asset.setExternalMarking(request.getExternalMarking());</span>
+<span class="nc" id="L28">        return asset;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetHistoryId.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.wsdl.asset.types</a> &gt; <span class="el_source">AssetHistoryId.java</span></div><h1>AssetHistoryId.java</h1><pre class="source lang-java linenums">
+package eu.europa.ec.fisheries.wsdl.asset.types;
+
+import java.io.Serializable;
+import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.w3._2001.xmlschema.Adapter1;
+
+
+/**
+ * &lt;p&gt;Java class for AssetHistoryId complex type.
+ * 
+ * &lt;p&gt;The following schema fragment specifies the expected content contained within this class.
+ * 
+ * &lt;pre&gt;
+ * &amp;lt;complexType name=&quot;AssetHistoryId&quot;&amp;gt;
+ *   &amp;lt;complexContent&amp;gt;
+ *     &amp;lt;restriction base=&quot;{http://www.w3.org/2001/XMLSchema}anyType&quot;&amp;gt;
+ *       &amp;lt;sequence&amp;gt;
+ *         &amp;lt;element name=&quot;eventId&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}string&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;eventCode&quot; type=&quot;{types.asset.wsdl.fisheries.ec.europa.eu}EventCode&quot;/&amp;gt;
+ *         &amp;lt;element name=&quot;eventDate&quot; type=&quot;{http://www.w3.org/2001/XMLSchema}dateTime&quot;/&amp;gt;
+ *       &amp;lt;/sequence&amp;gt;
+ *     &amp;lt;/restriction&amp;gt;
+ *   &amp;lt;/complexContent&amp;gt;
+ * &amp;lt;/complexType&amp;gt;
+ * &lt;/pre&gt;
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = &quot;AssetHistoryId&quot;, propOrder = {
+    &quot;eventId&quot;,
+    &quot;eventCode&quot;,
+    &quot;eventDate&quot;
+})
+<span class="nc" id="L46">public class AssetHistoryId</span>
+    implements Serializable
+{
+
+    private final static long serialVersionUID = 1L;
+    @XmlElement(required = true)
+    protected String eventId;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = &quot;string&quot;)
+    protected EventCode eventCode;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = &quot;dateTime&quot;)
+    protected Date eventDate;
+
+    /**
+     * Gets the value of the eventId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEventId() {
+<span class="nc" id="L70">        return eventId;</span>
+    }
+
+    /**
+     * Sets the value of the eventId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEventId(String value) {
+<span class="nc" id="L82">        this.eventId = value;</span>
+<span class="nc" id="L83">    }</span>
+
+    /**
+     * Gets the value of the eventCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link EventCode }
+     *     
+     */
+    public EventCode getEventCode() {
+<span class="nc" id="L94">        return eventCode;</span>
+    }
+
+    /**
+     * Sets the value of the eventCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EventCode }
+     *     
+     */
+    public void setEventCode(EventCode value) {
+<span class="nc" id="L106">        this.eventCode = value;</span>
+<span class="nc" id="L107">    }</span>
+
+    /**
+     * Gets the value of the eventDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Date getEventDate() {
+<span class="nc" id="L118">        return eventDate;</span>
+    }
+
+    /**
+     * Sets the value of the eventDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEventDate(Date value) {
+<span class="nc" id="L130">        this.eventDate = value;</span>
+<span class="nc" id="L131">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L135">        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);</span>
+    }
+
+    @Override
+    public boolean equals(Object that) {
+<span class="nc" id="L140">        return EqualsBuilder.reflectionEquals(this, that);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L145">        return HashCodeBuilder.reflectionHashCode(this);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

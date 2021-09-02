@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.MobileTerminalServiceIntTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.612 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.MobileTerminalServiceIntTest

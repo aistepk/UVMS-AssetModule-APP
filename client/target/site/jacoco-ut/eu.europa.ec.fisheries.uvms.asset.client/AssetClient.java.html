@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-client</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.client</a> &gt; <span class="el_source">AssetClient.java</span></div><h1>AssetClient.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.client;
+
+import eu.europa.ec.fisheries.uvms.asset.client.model.*;
+import eu.europa.ec.fisheries.uvms.asset.client.model.mt.MobileTerminal;
+import eu.europa.ec.fisheries.uvms.asset.client.model.mt.VmsBillingDto;
+import eu.europa.ec.fisheries.uvms.asset.client.model.search.SearchBranch;
+import eu.europa.ec.fisheries.uvms.commons.date.DateUtils;
+import eu.europa.ec.fisheries.uvms.commons.date.JsonBConfigurator;
+import eu.europa.ec.fisheries.uvms.rest.security.InternalRestTokenHandler;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.jms.Destination;
+import javax.jms.JMSContext;
+import javax.jms.JMSException;
+import javax.jms.TextMessage;
+import javax.json.bind.Jsonb;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+@RequestScoped
+<span class="nc" id="L44">public class AssetClient {</span>
+
+    private WebTarget webTarget;
+
+    @Resource(name = &quot;java:global/asset_endpoint&quot;)
+    private String assetEndpoint;
+
+    @Inject
+    private JMSContext context;
+    
+    @Resource(mappedName = &quot;java:/jms/queue/UVMSAssetEvent&quot;)
+    private Destination destination;
+
+    @Inject
+    private InternalRestTokenHandler tokenHandler;
+
+    @PostConstruct
+    private void setUpClient() {
+<span class="nc" id="L62">        ClientBuilder clientBuilder = ClientBuilder.newBuilder();</span>
+<span class="nc" id="L63">        clientBuilder.connectTimeout(30, TimeUnit.SECONDS);</span>
+<span class="nc" id="L64">        clientBuilder.readTimeout(30, TimeUnit.SECONDS);</span>
+<span class="nc" id="L65">        Client client = clientBuilder.build();</span>
+<span class="nc" id="L66">        client.register(JsonBConfigurator.class);</span>
+<span class="nc" id="L67">        webTarget = client.target(assetEndpoint + &quot;/internal&quot;);</span>
+<span class="nc" id="L68">    }</span>
+
+    public AssetDTO getAssetById(AssetIdentifier type, String value) {
+<span class="nc" id="L71">        Response response = webTarget</span>
+<span class="nc" id="L72">                .path(&quot;asset&quot;)</span>
+<span class="nc" id="L73">                .path(type.toString().toLowerCase())</span>
+<span class="nc" id="L74">                .path(value)</span>
+<span class="nc" id="L75">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L76">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L77">                .get(Response.class);</span>
+
+<span class="nc" id="L79">        checkForErrorResponse(response);</span>
+<span class="nc" id="L80">        return response.readEntity(AssetDTO.class);</span>
+    }
+    
+    public List&lt;AssetDTO&gt; getAssetList(SearchBranch query) {
+<span class="nc" id="L84">        Response response = webTarget</span>
+<span class="nc" id="L85">                .path(&quot;query&quot;)</span>
+<span class="nc" id="L86">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L87">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L88">                .post(Entity.json(query), Response.class);</span>
+
+<span class="nc" id="L90">        checkForErrorResponse(response);</span>
+<span class="nc" id="L91">        AssetListResponse assetResponse = response.readEntity(AssetListResponse.class);</span>
+<span class="nc" id="L92">        return assetResponse.getAssetList();</span>
+    }
+
+    public List&lt;AssetDTO&gt; getAssetList(String query, int page, int size, boolean includeInactivated) {
+<span class="nc" id="L96">        Response response = webTarget</span>
+<span class="nc" id="L97">                .path(&quot;query&quot;)</span>
+<span class="nc" id="L98">                .queryParam(&quot;page&quot;, page)</span>
+<span class="nc" id="L99">                .queryParam(&quot;size&quot;, size)</span>
+<span class="nc" id="L100">                .queryParam(&quot;includeInactivated&quot;, includeInactivated)</span>
+<span class="nc" id="L101">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L102">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L103">                .post(Entity.json(query), Response.class);</span>
+
+<span class="nc" id="L105">        checkForErrorResponse(response);</span>
+<span class="nc" id="L106">        AssetListResponse assetResponse = response.readEntity(AssetListResponse.class);</span>
+<span class="nc" id="L107">        return assetResponse.getAssetList();</span>
+    }
+
+    public List&lt;String&gt; getAssetIdList(SearchBranch query, int page, int size, boolean includeInactivated) {
+<span class="nc" id="L111">        Response response = webTarget</span>
+<span class="nc" id="L112">                .path(&quot;queryIdOnly&quot;)</span>
+<span class="nc" id="L113">                .queryParam(&quot;page&quot;, page)</span>
+<span class="nc" id="L114">                .queryParam(&quot;size&quot;, size)</span>
+<span class="nc" id="L115">                .queryParam(&quot;includeInactivated&quot;, includeInactivated)</span>
+<span class="nc" id="L116">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L117">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L118">                .post(Entity.json(query), Response.class);</span>
+
+<span class="nc" id="L120">        checkForErrorResponse(response);</span>
+<span class="nc" id="L121">        return response.readEntity(new GenericType&lt;List&lt;String&gt;&gt;() {});</span>
+    }
+    
+    public List&lt;AssetDTO&gt; getAssetList(SearchBranch query, int page, int size) {
+<span class="nc" id="L125">        Response response = webTarget</span>
+<span class="nc" id="L126">                    .path(&quot;query&quot;)</span>
+<span class="nc" id="L127">                    .queryParam(&quot;page&quot;, page)</span>
+<span class="nc" id="L128">                    .queryParam(&quot;size&quot;, size)</span>
+<span class="nc" id="L129">                    .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L130">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L131">                    .post(Entity.json(query), Response.class);</span>
+
+<span class="nc" id="L133">        checkForErrorResponse(response);</span>
+<span class="nc" id="L134">        AssetListResponse assetResponse = response.readEntity(AssetListResponse.class);</span>
+<span class="nc" id="L135">        return assetResponse.getAssetList();</span>
+    }
+    
+    public List&lt;AssetDTO&gt; getAssetHistoryListByAssetId(UUID id) {
+<span class="nc" id="L139">        Response response = webTarget</span>
+<span class="nc" id="L140">                .path(&quot;history/asset&quot;)</span>
+<span class="nc" id="L141">                .path(id.toString())</span>
+<span class="nc" id="L142">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L143">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L144">                .get(Response.class);</span>
+
+<span class="nc" id="L146">        checkForErrorResponse(response);</span>
+<span class="nc" id="L147">        return response.readEntity(new GenericType&lt;List&lt;AssetDTO&gt;&gt;() {});</span>
+    }
+    
+    public AssetDTO getAssetFromAssetIdAndDate(AssetIdentifier type, String value, Instant date) {
+<span class="nc" id="L151">        String formattedDate = DateUtils.dateToEpochMilliseconds(date);</span>
+<span class="nc" id="L152">        Response response = webTarget</span>
+<span class="nc" id="L153">                .path(&quot;history&quot;)</span>
+<span class="nc" id="L154">                .path(type.name().toLowerCase())</span>
+<span class="nc" id="L155">                .path(value)</span>
+<span class="nc" id="L156">                .path(formattedDate)</span>
+<span class="nc" id="L157">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L158">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L159">                .get(Response.class);</span>
+
+<span class="nc" id="L161">        checkForErrorResponse(response);</span>
+<span class="nc" id="L162">        return response.readEntity(AssetDTO.class);</span>
+    }
+
+    public List&lt;AssetDTO&gt; getAssetsAtDate(List&lt;UUID&gt; assetIdList, Instant date) {
+<span class="nc" id="L166">        String formattedDate = DateUtils.dateToEpochMilliseconds(date);</span>
+<span class="nc" id="L167">        Response response = webTarget</span>
+<span class="nc" id="L168">                .path(&quot;assets&quot;)</span>
+<span class="nc" id="L169">                .path(formattedDate)</span>
+<span class="nc" id="L170">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L171">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L172">                .post(Entity.json(assetIdList), Response.class);</span>
+
+<span class="nc" id="L174">        checkForErrorResponse(response);</span>
+<span class="nc" id="L175">        return response.readEntity(new GenericType&lt;List&lt;AssetDTO&gt;&gt;() {});</span>
+    }
+
+    public AssetDTO getAssetHistoryByAssetHistGuid(UUID historyId) {
+<span class="nc" id="L179">        Response response = webTarget</span>
+<span class="nc" id="L180">                .path(&quot;history&quot;)</span>
+<span class="nc" id="L181">                .path(historyId.toString())</span>
+<span class="nc" id="L182">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L183">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L184">                .get(Response.class);</span>
+
+<span class="nc" id="L186">        checkForErrorResponse(response);</span>
+<span class="nc" id="L187">        return response.readEntity(AssetDTO.class);</span>
+    }
+    
+    public AssetBO upsertAsset(AssetBO asset) {
+<span class="nc" id="L191">        Response response = webTarget</span>
+<span class="nc" id="L192">                .path(&quot;asset&quot;)</span>
+<span class="nc" id="L193">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L194">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L195">                .post(Entity.json(asset), Response.class);</span>
+
+<span class="nc" id="L197">        checkForErrorResponse(response);</span>
+<span class="nc" id="L198">        return response.readEntity(AssetBO.class);</span>
+    }
+
+    public String createPollForAsset(UUID assetId, String username, String comment, PollType pollType) {
+<span class="nc" id="L202">        SimpleCreatePoll createPoll = new SimpleCreatePoll();</span>
+<span class="nc" id="L203">        createPoll.setComment(comment);</span>
+<span class="nc" id="L204">        createPoll.setPollType(pollType);</span>
+
+<span class="nc" id="L206">        Response response = webTarget</span>
+<span class="nc" id="L207">                .path(&quot;createPollForAsset&quot;)</span>
+<span class="nc" id="L208">                .path(assetId.toString())</span>
+<span class="nc" id="L209">                .queryParam(&quot;username&quot;, username)</span>
+<span class="nc" id="L210">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L211">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L212">                .post(Entity.json(createPoll), Response.class);</span>
+
+<span class="nc" id="L214">        checkForErrorResponse(response);</span>
+<span class="nc" id="L215">        CreatePollResultDto createdPollResponse = response.readEntity(CreatePollResultDto.class);</span>
+
+<span class="nc bnc" id="L217" title="All 2 branches missed.">        if(createdPollResponse.isUnsentPoll()){</span>
+<span class="nc" id="L218">            return createdPollResponse.getUnsentPolls().get(0);</span>
+        }else{
+<span class="nc" id="L220">            return createdPollResponse.getSentPolls().get(0);</span>
+        }
+    }
+
+    public void upsertAssetAsync(AssetBO asset) throws JMSException {
+<span class="nc" id="L225">        Jsonb jsonb = new JsonBConfigurator().getContext(AssetBO.class);</span>
+
+<span class="nc" id="L227">        TextMessage message = context.createTextMessage(jsonb.toJson(asset));</span>
+<span class="nc" id="L228">        message.setStringProperty(&quot;METHOD&quot;, &quot;UPSERT_ASSET&quot;);</span>
+<span class="nc" id="L229">        context.createProducer().send(destination, message);</span>
+<span class="nc" id="L230">    }</span>
+
+    public String ping() {
+<span class="nc" id="L233">        Response response = webTarget</span>
+<span class="nc" id="L234">                .path(&quot;ping&quot;)</span>
+<span class="nc" id="L235">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L236">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L237">                .get(Response.class);</span>
+
+<span class="nc" id="L239">        checkForErrorResponse(response);</span>
+<span class="nc" id="L240">        return response.readEntity(String.class);</span>
+    }
+
+    public CustomCode createCustomCode(CustomCode customCode) {
+<span class="nc" id="L244">        Response response = webTarget</span>
+<span class="nc" id="L245">                .path(&quot;customcode&quot;)</span>
+<span class="nc" id="L246">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L247">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L248">                .post(Entity.json(customCode), Response.class);</span>
+
+<span class="nc" id="L250">        checkForErrorResponse(response);</span>
+<span class="nc" id="L251">        return response.readEntity(CustomCode.class);</span>
+    }
+
+    public List&lt;String&gt; getConstants() {
+<span class="nc" id="L255">        Response response = webTarget</span>
+<span class="nc" id="L256">                .path(&quot;listconstants&quot;)</span>
+<span class="nc" id="L257">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L258">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L259">                .get(Response.class);</span>
+
+<span class="nc" id="L261">        checkForErrorResponse(response);</span>
+<span class="nc" id="L262">        return response.readEntity(new GenericType&lt;List&lt;String&gt;&gt;() {});</span>
+        
+    }
+
+    public List&lt;CustomCode&gt; getCodesForConstant(String constant) {
+<span class="nc" id="L267">        Response response = webTarget</span>
+<span class="nc" id="L268">                .path(&quot;listcodesforconstant&quot;)</span>
+<span class="nc" id="L269">                .path(constant)</span>
+<span class="nc" id="L270">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L271">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L272">                .get(Response.class);</span>
+
+<span class="nc" id="L274">        checkForErrorResponse(response);</span>
+<span class="nc" id="L275">        return response.readEntity(new GenericType&lt;List&lt;CustomCode&gt;&gt;() {});</span>
+    }
+
+    public Boolean isCodeValid(String constant, String code, Instant date){
+<span class="nc" id="L279">        String theDate = DateUtils.dateToEpochMilliseconds(date);</span>
+<span class="nc" id="L280">        Response response = webTarget</span>
+<span class="nc" id="L281">                .path(constant)</span>
+<span class="nc" id="L282">                .path(code)</span>
+<span class="nc" id="L283">                .path(&quot;verify&quot;)</span>
+<span class="nc" id="L284">                .queryParam(&quot;date&quot;, theDate)</span>
+<span class="nc" id="L285">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L286">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L287">                .get(Response.class);</span>
+
+<span class="nc" id="L289">        checkForErrorResponse(response);</span>
+<span class="nc" id="L290">        String boolResponse = response.readEntity(String.class);</span>
+<span class="nc" id="L291">        return Boolean.valueOf(boolResponse);</span>
+    }
+
+    public List&lt;CustomCode&gt; getCodeForDate(String constant, String code, Instant date) {
+<span class="nc" id="L295">        String theDate = DateUtils.dateToEpochMilliseconds(date);</span>
+<span class="nc" id="L296">        Response response = webTarget</span>
+<span class="nc" id="L297">                .path(constant)</span>
+<span class="nc" id="L298">                .path(code)</span>
+<span class="nc" id="L299">                .path(&quot;getfordate&quot;)</span>
+<span class="nc" id="L300">                .queryParam(&quot;date&quot;, theDate)</span>
+<span class="nc" id="L301">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L302">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L303">                .get(Response.class);</span>
+
+<span class="nc" id="L305">        checkForErrorResponse(response);</span>
+<span class="nc" id="L306">        return response.readEntity(new GenericType&lt;List&lt;CustomCode&gt;&gt;() {});</span>
+    }
+
+    public CustomCode replace(CustomCode customCode) {
+<span class="nc" id="L310">        Response response = webTarget</span>
+<span class="nc" id="L311">                .path(&quot;replace&quot;)</span>
+<span class="nc" id="L312">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L313">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L314">                .post(Entity.json(customCode), Response.class);</span>
+
+<span class="nc" id="L316">        checkForErrorResponse(response);</span>
+<span class="nc" id="L317">        return response.readEntity(CustomCode.class);</span>
+    }
+
+    public AssetMTEnrichmentResponse collectAssetMT(AssetMTEnrichmentRequest request) {
+<span class="nc" id="L321">        Response response = webTarget</span>
+<span class="nc" id="L322">                .path(&quot;collectassetmt&quot;)</span>
+<span class="nc" id="L323">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L324">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L325">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L326">                .post(Entity.json(request), Response.class);</span>
+
+<span class="nc" id="L328">        checkForErrorResponse(response);</span>
+<span class="nc" id="L329">        return response.readEntity(AssetMTEnrichmentResponse.class);</span>
+    }
+
+    public String getMicroAssetList(List&lt;String&gt; assetIdList){
+<span class="nc" id="L333">        Response response = webTarget</span>
+<span class="nc" id="L334">                .path(&quot;microAssets&quot;)</span>
+<span class="nc" id="L335">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L336">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L337">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L338">                .post(Entity.json(assetIdList), Response.class);</span>
+
+<span class="nc" id="L340">        checkForErrorResponse(response);</span>
+<span class="nc" id="L341">        return response.readEntity(String.class);</span>
+    }
+
+    public List&lt;SanePollDto&gt; getPollsForAssetInTheLastDay(UUID assetId){
+<span class="nc" id="L345">        Response response = webTarget</span>
+<span class="nc" id="L346">                .path(&quot;pollListForAsset&quot;)</span>
+<span class="nc" id="L347">                .path(assetId.toString())</span>
+<span class="nc" id="L348">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L349">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L350">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L351">                .get(Response.class);</span>
+
+<span class="nc" id="L353">        checkForErrorResponse(response);</span>
+<span class="nc" id="L354">        return response.readEntity(new GenericType&lt;List&lt;SanePollDto&gt;&gt;() {});</span>
+    }
+
+    public SanePollDto getPollInfo(UUID pollId){
+<span class="nc" id="L358">        Response response = webTarget</span>
+<span class="nc" id="L359">                .path(&quot;pollInfo&quot;)</span>
+<span class="nc" id="L360">                .path(pollId.toString())</span>
+<span class="nc" id="L361">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L362">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L363">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L364">                .get(Response.class);</span>
+
+<span class="nc" id="L366">        checkForErrorResponse(response);</span>
+<span class="nc" id="L367">        return response.readEntity(SanePollDto.class);</span>
+    }
+
+    public List&lt;MobileTerminal&gt; getMobileTerminals(boolean includeArchived, boolean includeHistory) {
+<span class="nc" id="L371">        Response response = webTarget</span>
+<span class="nc" id="L372">                .path(&quot;mobileterminals&quot;)</span>
+<span class="nc" id="L373">                .queryParam(&quot;includeArchived&quot;, includeArchived)</span>
+<span class="nc" id="L374">                .queryParam(&quot;includeHistory&quot;, includeHistory)</span>
+<span class="nc" id="L375">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L376">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L377">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L378">                .get(Response.class);</span>
+
+<span class="nc" id="L380">        checkForErrorResponse(response);</span>
+<span class="nc" id="L381">        return response.readEntity(new GenericType&lt;List&lt;MobileTerminal&gt;&gt;() {});</span>
+    }
+
+    public MobileTerminal getMtAtDate(UUID mtId, Instant date){
+<span class="nc" id="L385">        Response response = webTarget</span>
+<span class="nc" id="L386">                .path(&quot;mobileTerminalAtDate&quot;)</span>
+<span class="nc" id="L387">                .path(mtId.toString())</span>
+<span class="nc" id="L388">                .queryParam(&quot;date&quot;, &quot;&quot; + date.toEpochMilli())</span>
+<span class="nc" id="L389">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L390">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L391">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L392">                .get(Response.class);</span>
+
+<span class="nc" id="L394">        checkForErrorResponse(response);</span>
+<span class="nc" id="L395">        return response.readEntity(MobileTerminal.class);</span>
+    }
+    
+    public MobileTerminal getMtFromMemberNumberAndDnidAtDate(Integer membernumber,Integer dnid, Instant date){
+<span class="nc" id="L399">        Response response = webTarget</span>
+<span class="nc" id="L400">                .path(&quot;revision&quot;)</span>
+<span class="nc" id="L401">                .queryParam(&quot;memberNumber&quot;, &quot;&quot; + membernumber)</span>
+<span class="nc" id="L402">                .queryParam(&quot;dnid&quot;, &quot;&quot; + dnid)</span>
+<span class="nc" id="L403">                .queryParam(&quot;date&quot;, &quot;&quot; + date.toEpochMilli())</span>
+<span class="nc" id="L404">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L405">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L406">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L407">                .get(Response.class);</span>
+
+<span class="nc" id="L409">        checkForErrorResponse(response);</span>
+<span class="nc" id="L410">        return response.readEntity(MobileTerminal.class);</span>
+    }
+    
+    public List&lt;VmsBillingDto&gt; getVmsBillingList(){
+<span class="nc" id="L414">        Response response = webTarget</span>
+<span class="nc" id="L415">                .path(&quot;vmsBilling&quot;)</span>
+<span class="nc" id="L416">                .request(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L417">                .accept(MediaType.APPLICATION_JSON)</span>
+<span class="nc" id="L418">                .header(HttpHeaders.AUTHORIZATION, tokenHandler.createAndFetchToken(&quot;user&quot;))</span>
+<span class="nc" id="L419">                .get(Response.class);</span>
+
+<span class="nc" id="L421">        checkForErrorResponse(response);</span>
+<span class="nc" id="L422">        return response.readEntity(new GenericType&lt;List&lt;VmsBillingDto&gt;&gt;() {});</span>
+    }
+
+    private void checkForErrorResponse(Response response){
+<span class="nc bnc" id="L426" title="All 2 branches missed.">        if(response.getStatus() != 200){</span>
+<span class="nc" id="L427">            throw new RuntimeException(&quot;Statuscode from asset was: &quot; + response.getStatus() + &quot; with payload &quot; + response.readEntity(String.class));</span>
+        }
+<span class="nc" id="L429">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

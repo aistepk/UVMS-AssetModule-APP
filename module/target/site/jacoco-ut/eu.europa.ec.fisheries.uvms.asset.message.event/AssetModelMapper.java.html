@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssetModelMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.message.event</a> &gt; <span class="el_source">AssetModelMapper.java</span></div><h1>AssetModelMapper.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.message.event;
+
+import eu.europa.ec.fisheries.uvms.asset.bean.AssetServiceBean;
+import eu.europa.ec.fisheries.uvms.asset.domain.constant.AssetIdentifier;
+import eu.europa.ec.fisheries.uvms.asset.domain.entity.Asset;
+import eu.europa.ec.fisheries.uvms.asset.domain.entity.ContactInfo;
+import eu.europa.ec.fisheries.uvms.asset.domain.entity.Note;
+import eu.europa.ec.fisheries.uvms.asset.dto.AssetBO;
+import eu.europa.ec.fisheries.uvms.asset.dto.AssetListResponse;
+import eu.europa.ec.fisheries.uvms.asset.model.constants.UnitTonnage;
+import eu.europa.ec.fisheries.uvms.commons.date.DateUtils;
+import eu.europa.ec.fisheries.wsdl.asset.types.*;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Stateless
+<span class="nc" id="L32">public class AssetModelMapper {</span>
+
+    @Inject
+    private AssetServiceBean assetService;
+    
+    public Asset toAssetEntity(eu.europa.ec.fisheries.wsdl.asset.types.Asset assetModel) {
+<span class="nc" id="L38">        Asset asset = new Asset();</span>
+        
+<span class="nc bnc" id="L40" title="All 4 branches missed.">        if (assetModel.getAssetId() != null &amp;&amp; assetModel.getAssetId().getGuid() != null) {</span>
+<span class="nc" id="L41">            asset.setId(UUID.fromString(assetModel.getAssetId().getGuid()));</span>
+        }
+        
+<span class="nc" id="L44">        asset.setActive(assetModel.isActive());</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (assetModel.getSource() != null) {</span>
+<span class="nc" id="L46">            asset.setSource(assetModel.getSource().toString());</span>
+        }
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (assetModel.getEventHistory() != null) {</span>
+<span class="nc" id="L49">            asset.setHistoryId(UUID.fromString(assetModel.getEventHistory().getEventId()));</span>
+<span class="nc" id="L50">            Instant instant = assetModel.getEventHistory().getEventDate().toInstant();</span>
+<span class="nc" id="L51">            asset.setUpdateTime(instant);</span>
+<span class="nc" id="L52">            asset.setEventCode(assetModel.getEventHistory().getEventCode().toString());</span>
+        }
+<span class="nc" id="L54">        asset.setName(assetModel.getName());</span>
+<span class="nc" id="L55">        asset.setFlagStateCode(assetModel.getCountryCode());</span>
+<span class="nc" id="L56">        asset.setGearFishingType(assetModel.getGearType());</span>
+<span class="nc" id="L57">        asset.setIrcsIndicator(assetModel.getHasIrcs().equals(&quot;Y&quot;));</span>
+<span class="nc" id="L58">        asset.setIrcs(assetModel.getIrcs());</span>
+<span class="nc" id="L59">        asset.setExternalMarking(assetModel.getExternalMarking());</span>
+<span class="nc" id="L60">        asset.setCfr(assetModel.getCfr());</span>
+<span class="nc" id="L61">        asset.setImo(assetModel.getImo());</span>
+<span class="nc" id="L62">        asset.setMmsi(assetModel.getMmsiNo());</span>
+<span class="nc" id="L63">        asset.setHasLicence(assetModel.isHasLicense());</span>
+<span class="nc" id="L64">        asset.setPortOfRegistration(assetModel.getHomePort());</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (assetModel.getLengthOverAll() != null) {</span>
+<span class="nc" id="L66">            asset.setLengthOverAll(assetModel.getLengthOverAll().doubleValue());</span>
+        }
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if (assetModel.getLengthBetweenPerpendiculars() != null) {</span>
+<span class="nc" id="L69">            asset.setLengthBetweenPerpendiculars(assetModel.getLengthBetweenPerpendiculars().doubleValue());</span>
+        }
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (assetModel.getGrossTonnage() != null) {</span>
+<span class="nc" id="L72">            asset.setGrossTonnage(assetModel.getGrossTonnage().doubleValue());</span>
+        }
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (assetModel.getGrossTonnageUnit() != null) {</span>
+<span class="nc" id="L75">            asset.setGrossTonnageUnit(UnitTonnage.getType(assetModel.getGrossTonnageUnit()));</span>
+        }
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if (assetModel.getOtherGrossTonnage() != null) {</span>
+<span class="nc" id="L78">            asset.setOtherTonnage(assetModel.getOtherGrossTonnage().doubleValue());</span>
+        }
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (assetModel.getSafetyGrossTonnage() != null) {</span>
+<span class="nc" id="L81">            asset.setSafteyGrossTonnage(assetModel.getSafetyGrossTonnage().doubleValue());</span>
+        } 
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if (assetModel.getPowerMain() != null) {</span>
+<span class="nc" id="L84">            asset.setPowerOfMainEngine(assetModel.getPowerMain().doubleValue());</span>
+        }
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        if (assetModel.getPowerAux() != null) {</span>
+<span class="nc" id="L87">            asset.setPowerOfAuxEngine(assetModel.getPowerAux().doubleValue());</span>
+        }
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if (assetModel.getProducer() != null) {</span>
+<span class="nc" id="L90">            asset.setProdOrgCode(assetModel.getProducer().getCode());</span>
+<span class="nc" id="L91">            asset.setProdOrgName(assetModel.getProducer().getName());</span>
+        }
+<span class="nc" id="L93">        asset.setIccat(assetModel.getIccat());</span>
+<span class="nc" id="L94">        asset.setUvi(assetModel.getUvi());</span>
+<span class="nc" id="L95">        asset.setGfcm(assetModel.getGfcm());</span>
+        
+<span class="nc" id="L97">        return asset;</span>
+    }
+    
+    public AssetBO toAssetBO(eu.europa.ec.fisheries.wsdl.asset.types.Asset assetModel) {
+<span class="nc" id="L101">        AssetBO assetBo = new AssetBO();</span>
+<span class="nc" id="L102">        assetBo.setAsset(toAssetEntity(assetModel));</span>
+<span class="nc" id="L103">        assetBo.setContacts(toAssetContacts(assetModel.getContact()));</span>
+<span class="nc" id="L104">        assetBo.setNotes(toAssetNotes(assetModel.getNotes()));</span>
+<span class="nc" id="L105">        return assetBo;</span>
+    }
+    
+    public eu.europa.ec.fisheries.wsdl.asset.types.Asset toAssetModel(Asset assetEntity) {
+<span class="nc bnc" id="L109" title="All 2 branches missed.">        if (assetEntity == null) {</span>
+<span class="nc" id="L110">            return null;</span>
+        }
+
+<span class="nc" id="L113">        eu.europa.ec.fisheries.wsdl.asset.types.Asset assetModel = new eu.europa.ec.fisheries.wsdl.asset.types.Asset();</span>
+        
+<span class="nc" id="L115">        AssetId assetId = new AssetId();</span>
+<span class="nc" id="L116">        assetId.setGuid(assetEntity.getId().toString());</span>
+<span class="nc" id="L117">        assetId.setValue(assetEntity.getId().toString());</span>
+<span class="nc" id="L118">        assetId.setType(AssetIdType.GUID);</span>
+        
+<span class="nc" id="L120">        assetModel.setAssetId(assetId);</span>
+<span class="nc" id="L121">        assetModel.setActive(assetEntity.getActive());</span>
+<span class="nc bnc" id="L122" title="All 4 branches missed.">        if (assetEntity.getSource() !=  null &amp;&amp; !assetEntity.getSource().isEmpty()) {</span>
+<span class="nc" id="L123">            assetModel.setSource(CarrierSource.fromValue(assetEntity.getSource()));</span>
+        }
+<span class="nc" id="L125">        AssetHistoryId assetHistory = new AssetHistoryId();</span>
+<span class="nc" id="L126">        assetHistory.setEventId(assetEntity.getHistoryId().toString());</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (assetEntity.getUpdateTime() != null) {</span>
+<span class="nc" id="L128">            Date d = Date.from(assetEntity.getUpdateTime());</span>
+<span class="nc" id="L129">            assetHistory.setEventDate(d);</span>
+        }
+<span class="nc bnc" id="L131" title="All 4 branches missed.">        if (assetEntity.getEventCode() != null &amp;&amp; !assetEntity.getEventCode().isEmpty()) {</span>
+<span class="nc" id="L132">            assetHistory.setEventCode(getEventCode(assetEntity));</span>
+        }
+<span class="nc" id="L134">        assetModel.setEventHistory(assetHistory);</span>
+<span class="nc" id="L135">        assetModel.setName(assetEntity.getName());</span>
+<span class="nc" id="L136">        assetModel.setCountryCode(assetEntity.getFlagStateCode());</span>
+<span class="nc" id="L137">        assetModel.setGearType(assetEntity.getGearFishingType());</span>
+<span class="nc bnc" id="L138" title="All 4 branches missed.">        assetModel.setHasIrcs(assetEntity.getIrcsIndicator() != null &amp;&amp; assetEntity.getIrcsIndicator() ? &quot;Y&quot; : &quot;N&quot;);</span>
+<span class="nc" id="L139">        assetModel.setIrcs(assetEntity.getIrcs());</span>
+<span class="nc" id="L140">        assetModel.setExternalMarking(assetEntity.getExternalMarking());</span>
+<span class="nc" id="L141">        assetModel.setCfr(assetEntity.getCfr());</span>
+<span class="nc" id="L142">        assetModel.setImo(assetEntity.getImo());</span>
+<span class="nc" id="L143">        assetModel.setMmsiNo(assetEntity.getMmsi());</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (assetEntity.getHasLicence() != null) {</span>
+<span class="nc" id="L145">            assetModel.setHasLicense(assetEntity.getHasLicence());</span>
+        }
+<span class="nc" id="L147">        assetModel.setHomePort(assetEntity.getPortOfRegistration());</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        if (assetEntity.getLengthOverAll() != null) {</span>
+<span class="nc" id="L149">            assetModel.setLengthOverAll(BigDecimal.valueOf(assetEntity.getLengthOverAll()));</span>
+        }
+<span class="nc bnc" id="L151" title="All 2 branches missed.">        if (assetEntity.getLengthBetweenPerpendiculars() != null) {</span>
+<span class="nc" id="L152">            assetModel.setLengthBetweenPerpendiculars(BigDecimal.valueOf(assetEntity.getLengthBetweenPerpendiculars()));</span>
+        }
+<span class="nc bnc" id="L154" title="All 2 branches missed.">        if (assetEntity.getGrossTonnage() != null) {</span>
+<span class="nc" id="L155">            assetModel.setGrossTonnage(BigDecimal.valueOf(assetEntity.getGrossTonnage()));</span>
+        }
+<span class="nc bnc" id="L157" title="All 2 branches missed.">        if (assetEntity.getGrossTonnageUnit() != null) {</span>
+<span class="nc" id="L158">            assetModel.setGrossTonnageUnit(assetEntity.getGrossTonnageUnit().toString());</span>
+        }
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        if (assetEntity.getOtherTonnage() != null) {</span>
+<span class="nc" id="L161">            assetModel.setOtherGrossTonnage(BigDecimal.valueOf(assetEntity.getOtherTonnage()));</span>
+        }
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        if (assetEntity.getSafteyGrossTonnage() != null) {</span>
+<span class="nc" id="L164">            assetModel.setSafetyGrossTonnage(BigDecimal.valueOf(assetEntity.getSafteyGrossTonnage()));</span>
+        }
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        if (assetEntity.getPowerOfMainEngine() != null) {</span>
+<span class="nc" id="L167">            assetModel.setPowerMain(BigDecimal.valueOf(assetEntity.getPowerOfMainEngine()));</span>
+        }
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        if (assetEntity.getPowerOfAuxEngine() != null) {</span>
+<span class="nc" id="L170">            assetModel.setPowerAux(BigDecimal.valueOf(assetEntity.getPowerOfAuxEngine()));</span>
+        }
+<span class="nc" id="L172">        AssetProdOrgModel prodOrg = new AssetProdOrgModel();</span>
+<span class="nc" id="L173">        prodOrg.setCode(assetEntity.getProdOrgCode());</span>
+<span class="nc" id="L174">        prodOrg.setName(assetEntity.getProdOrgName());</span>
+<span class="nc" id="L175">        assetModel.setProducer(prodOrg);</span>
+        
+<span class="nc" id="L177">        Collection&lt;Note&gt; notes = assetService.getNotesForAsset(assetEntity.getId()).values();</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">        for (Note note : notes) {</span>
+<span class="nc" id="L179">            AssetNotes assetNote = new AssetNotes();</span>
+<span class="nc" id="L180">            assetNote.setId(note.getId().toString());</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            if (note.getCreatedOn() != null) {</span>
+<span class="nc" id="L182">                assetNote.setDate(DateUtils.dateToEpochMilliseconds(note.getCreatedOn()));</span>
+            }
+<span class="nc" id="L184">            assetNote.setNotes(note.getNote());</span>
+<span class="nc" id="L185">            assetModel.getNotes().add(assetNote);</span>
+<span class="nc" id="L186">        }</span>
+
+<span class="nc" id="L188">        List&lt;ContactInfo&gt; contacts = assetService.getContactInfoForAsset(assetEntity.getId());</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">        for (ContactInfo contactInfo : contacts) {</span>
+<span class="nc" id="L190">            AssetContact contact = new AssetContact();</span>
+<span class="nc" id="L191">            contact.setName(contactInfo.getName());</span>
+<span class="nc" id="L192">            contact.setNumber(contactInfo.getPhoneNumber());</span>
+<span class="nc" id="L193">            contact.setEmail(contactInfo.getEmail());</span>
+<span class="nc bnc" id="L194" title="All 2 branches missed.">            if (contactInfo.getOwner() != null) { </span>
+<span class="nc" id="L195">                contact.setOwner(contactInfo.getOwner());</span>
+            }
+<span class="nc bnc" id="L197" title="All 2 branches missed.">            if (contactInfo.getSource() != null) {</span>
+<span class="nc" id="L198">                contact.setSource(ContactSource.fromValue(contactInfo.getSource()));</span>
+            }
+<span class="nc" id="L200">            assetModel.getContact().add(contact);</span>
+<span class="nc" id="L201">        }</span>
+        
+<span class="nc" id="L203">        assetModel.setIccat(assetEntity.getIccat());</span>
+<span class="nc" id="L204">        assetModel.setUvi(assetEntity.getUvi());</span>
+<span class="nc" id="L205">        assetModel.setGfcm(assetEntity.getGfcm());</span>
+        
+<span class="nc" id="L207">        return assetModel;</span>
+    }
+
+    private EventCode getEventCode(Asset assetEntity) {
+        try {
+<span class="nc" id="L212">            return EventCode.fromValue(assetEntity.getEventCode());</span>
+<span class="nc" id="L213">        } catch (Exception e) {</span>
+<span class="nc" id="L214">            return EventCode.UNK;</span>
+        }
+    }
+    
+
+    public AssetIdentifier mapToAssetIdentity(AssetIdType assetIdType) {
+<span class="nc bnc" id="L220" title="All 9 branches missed.">        switch (assetIdType) {</span>
+            case CFR:
+<span class="nc" id="L222">                return AssetIdentifier.CFR;</span>
+            case GFCM:
+<span class="nc" id="L224">                return AssetIdentifier.GFCM;</span>
+            case GUID:
+<span class="nc" id="L226">                return AssetIdentifier.GUID;</span>
+            case ICCAT:
+<span class="nc" id="L228">                return AssetIdentifier.ICCAT;</span>
+            case IMO:
+<span class="nc" id="L230">                return AssetIdentifier.IMO;</span>
+            case IRCS:
+<span class="nc" id="L232">                return AssetIdentifier.IRCS;</span>
+            case MMSI:
+<span class="nc" id="L234">                return AssetIdentifier.MMSI;</span>
+            case UVI:
+<span class="nc" id="L236">                return AssetIdentifier.UVI;</span>
+            default:
+<span class="nc" id="L238">                throw new IllegalArgumentException(&quot;Asset identifier is not valid/supported!&quot;);</span>
+        }
+    }
+    
+    public ListAssetResponse toListAssetResponse(AssetListResponse assetListResponse) {
+<span class="nc" id="L243">        ListAssetResponse listAssetResponse = new ListAssetResponse();</span>
+<span class="nc" id="L244">        listAssetResponse.setCurrentPage(assetListResponse.getCurrentPage());</span>
+<span class="nc" id="L245">        listAssetResponse.setTotalNumberOfPages(assetListResponse.getTotalNumberOfPages());</span>
+<span class="nc" id="L246">        listAssetResponse.getAsset().addAll(assetListResponse.getAssetList().stream()</span>
+<span class="nc" id="L247">                                                        .map(this::toAssetModel)</span>
+<span class="nc" id="L248">                                                        .collect(Collectors.toList()));</span>
+<span class="nc" id="L249">        return listAssetResponse;</span>
+    }
+    
+    public List&lt;Note&gt; toAssetNotes(List&lt;AssetNotes&gt; assetNotes) {
+<span class="nc" id="L253">        List&lt;Note&gt; notes = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">        for (AssetNotes assetNote : assetNotes) {</span>
+<span class="nc" id="L255">            Note note = new Note();</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">            if(assetNote.getId() != null) {</span>
+<span class="nc" id="L257">                note.setId(UUID.fromString(assetNote.getId()));</span>
+            }
+<span class="nc bnc" id="L259" title="All 2 branches missed.">            if (assetNote.getDate() != null) {</span>
+<span class="nc" id="L260">                note.setCreatedOn(DateUtils.stringToDate(assetNote.getDate()));</span>
+            }
+<span class="nc" id="L262">            note.setNote(assetNote.getNotes());</span>
+<span class="nc" id="L263">            notes.add(note);</span>
+<span class="nc" id="L264">        }</span>
+<span class="nc" id="L265">        return notes;</span>
+    }
+    
+    public List&lt;ContactInfo&gt; toAssetContacts(List&lt;AssetContact&gt; contacts) {
+<span class="nc" id="L269">        List&lt;ContactInfo&gt; contactInfos = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L270" title="All 2 branches missed.">        for (AssetContact assetContact : contacts) {</span>
+<span class="nc" id="L271">            ContactInfo contactInfo = new ContactInfo();</span>
+<span class="nc" id="L272">            contactInfo.setName(assetContact.getName());</span>
+<span class="nc" id="L273">            contactInfo.setPhoneNumber(assetContact.getNumber());</span>
+<span class="nc" id="L274">            contactInfo.setEmail(assetContact.getEmail());</span>
+<span class="nc" id="L275">            contactInfo.setOwner(assetContact.isOwner());</span>
+<span class="nc bnc" id="L276" title="All 2 branches missed.">            if (assetContact.getSource() != null) {</span>
+<span class="nc" id="L277">                contactInfo.setSource(assetContact.getSource().toString());</span>
+            }
+<span class="nc" id="L279">            contactInfos.add(contactInfo);</span>
+<span class="nc" id="L280">        }</span>
+<span class="nc" id="L281">        return contactInfos;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

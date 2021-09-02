@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConfigServiceBean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.bean</a> &gt; <span class="el_source">ConfigServiceBean.java</span></div><h1>ConfigServiceBean.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.asset.bean;
+
+import eu.europa.ec.fisheries.schema.config.types.v1.SettingType;
+import eu.europa.ec.fisheries.uvms.asset.domain.constant.UnitLength;
+import eu.europa.ec.fisheries.uvms.asset.model.constants.UnitTonnage;
+import eu.europa.ec.fisheries.uvms.asset.exception.AssetServiceException;
+import eu.europa.ec.fisheries.uvms.config.service.ParameterService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@Stateless
+<span class="nc" id="L30">public class ConfigServiceBean {</span>
+<span class="nc" id="L31">	private static final Logger LOG = LoggerFactory.getLogger(ConfigServiceBean.class);</span>
+
+	@EJB
+	private ParameterService parameterService;
+
+	public Map&lt;String, String&gt; getParameters() throws AssetServiceException {
+		try {
+<span class="nc" id="L38">			Map&lt;String, String&gt; parameters = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L39">			List&lt;SettingType&gt; allSettings = parameterService.getAllSettings();</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">			for (SettingType settingType : allSettings) {</span>
+<span class="nc" id="L41">				parameters.put(settingType.getKey(), settingType.getValue());</span>
+<span class="nc" id="L42">			}</span>
+<span class="nc" id="L43">			return parameters;</span>
+<span class="nc" id="L44">		} catch (Exception e) {</span>
+<span class="nc" id="L45">			LOG.error(&quot;[ Error when getting asset parameters from local database. ] {}&quot;, e);</span>
+<span class="nc" id="L46">			throw new AssetServiceException(&quot;Couldn't get parameters&quot;);</span>
+		}
+	}
+
+	private  List&lt;String&gt; getGearTypes() {
+<span class="nc" id="L51">		List&lt;String&gt; values = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L52">		return values;</span>
+	}
+
+	private  List&lt;String&gt; getLengthUnit() {
+<span class="nc" id="L56">		List&lt;String&gt; values = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">		for (UnitLength unit : UnitLength.values()) {</span>
+<span class="nc" id="L58">			values.add(unit.name());</span>
+		}
+<span class="nc" id="L60">		return values;</span>
+	}
+
+	private  List&lt;String&gt; getTonnageUnit() {
+<span class="nc" id="L64">		List&lt;String&gt; values = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		for (UnitTonnage unit : UnitTonnage.values()) {</span>
+<span class="nc" id="L66">			values.add(unit.name());</span>
+		}
+<span class="nc" id="L68">		return values;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

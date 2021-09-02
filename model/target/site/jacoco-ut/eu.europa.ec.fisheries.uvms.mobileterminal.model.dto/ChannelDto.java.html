@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChannelDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.model.dto</a> &gt; <span class="el_source">ChannelDto.java</span></div><h1>ChannelDto.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.mobileterminal.model.dto;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.UUID;
+
+<span class="nc" id="L7">public class ChannelDto {</span>
+    private UUID id;
+
+    private UUID historyId;
+
+<span class="nc" id="L12">    private Boolean archived = false;</span>
+
+    private Instant updateTime;
+
+    private String updateUser;
+
+    private MobileTerminalDto mobileTerminal;
+
+    private String name;
+
+<span class="nc" id="L22">    private boolean active = true;</span>
+
+    private boolean defaultChannel;
+
+    private boolean configChannel;
+
+    private boolean pollChannel;
+
+    private Integer dnid;
+
+    private Duration expectedFrequency;
+
+    private Duration expectedFrequencyInPort;
+
+    private Duration frequencyGracePeriod;
+
+    private String lesDescription;
+
+    private Integer memberNumber;
+
+    private Instant startDate;
+
+    private Instant endDate;
+
+    public UUID getId() {
+<span class="nc" id="L47">        return id;</span>
+    }
+
+    public void setId(UUID id) {
+<span class="nc" id="L51">        this.id = id;</span>
+<span class="nc" id="L52">    }</span>
+
+    public UUID getHistoryId() {
+<span class="nc" id="L55">        return historyId;</span>
+    }
+
+    public void setHistoryId(UUID historyId) {
+<span class="nc" id="L59">        this.historyId = historyId;</span>
+<span class="nc" id="L60">    }</span>
+
+    public Boolean getArchived() {
+<span class="nc" id="L63">        return archived;</span>
+    }
+
+    public void setArchived(Boolean archived) {
+<span class="nc" id="L67">        this.archived = archived;</span>
+<span class="nc" id="L68">    }</span>
+
+    public Instant getUpdateTime() {
+<span class="nc" id="L71">        return updateTime;</span>
+    }
+
+    public void setUpdateTime(Instant updateTime) {
+<span class="nc" id="L75">        this.updateTime = updateTime;</span>
+<span class="nc" id="L76">    }</span>
+
+    public String getUpdateUser() {
+<span class="nc" id="L79">        return updateUser;</span>
+    }
+
+    public void setUpdateUser(String updateUser) {
+<span class="nc" id="L83">        this.updateUser = updateUser;</span>
+<span class="nc" id="L84">    }</span>
+
+    public MobileTerminalDto getMobileTerminal() {
+<span class="nc" id="L87">        return mobileTerminal;</span>
+    }
+
+    public void setMobileTerminal(MobileTerminalDto mobileTerminal) {
+<span class="nc" id="L91">        this.mobileTerminal = mobileTerminal;</span>
+<span class="nc" id="L92">    }</span>
+
+    public String getName() {
+<span class="nc" id="L95">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L99">        this.name = name;</span>
+<span class="nc" id="L100">    }</span>
+
+    public boolean isActive() {
+<span class="nc" id="L103">        return active;</span>
+    }
+
+    public void setActive(boolean active) {
+<span class="nc" id="L107">        this.active = active;</span>
+<span class="nc" id="L108">    }</span>
+
+    public boolean isDefaultChannel() {
+<span class="nc" id="L111">        return defaultChannel;</span>
+    }
+
+    public void setDefaultChannel(boolean defaultChannel) {
+<span class="nc" id="L115">        this.defaultChannel = defaultChannel;</span>
+<span class="nc" id="L116">    }</span>
+
+    public boolean isConfigChannel() {
+<span class="nc" id="L119">        return configChannel;</span>
+    }
+
+    public void setConfigChannel(boolean configChannel) {
+<span class="nc" id="L123">        this.configChannel = configChannel;</span>
+<span class="nc" id="L124">    }</span>
+
+    public boolean isPollChannel() {
+<span class="nc" id="L127">        return pollChannel;</span>
+    }
+
+    public void setPollChannel(boolean pollChannel) {
+<span class="nc" id="L131">        this.pollChannel = pollChannel;</span>
+<span class="nc" id="L132">    }</span>
+
+    public Integer getDnid() {
+<span class="nc" id="L135">        return dnid;</span>
+    }
+
+    public void setDnid(Integer dnid) {
+<span class="nc" id="L139">        this.dnid = dnid;</span>
+<span class="nc" id="L140">    }</span>
+
+    public Duration getExpectedFrequency() {
+<span class="nc" id="L143">        return expectedFrequency;</span>
+    }
+
+    public void setExpectedFrequency(Duration expectedFrequency) {
+<span class="nc" id="L147">        this.expectedFrequency = expectedFrequency;</span>
+<span class="nc" id="L148">    }</span>
+
+    public Duration getExpectedFrequencyInPort() {
+<span class="nc" id="L151">        return expectedFrequencyInPort;</span>
+    }
+
+    public void setExpectedFrequencyInPort(Duration expectedFrequencyInPort) {
+<span class="nc" id="L155">        this.expectedFrequencyInPort = expectedFrequencyInPort;</span>
+<span class="nc" id="L156">    }</span>
+
+    public Duration getFrequencyGracePeriod() {
+<span class="nc" id="L159">        return frequencyGracePeriod;</span>
+    }
+
+    public void setFrequencyGracePeriod(Duration frequencyGracePeriod) {
+<span class="nc" id="L163">        this.frequencyGracePeriod = frequencyGracePeriod;</span>
+<span class="nc" id="L164">    }</span>
+
+    public String getLesDescription() {
+<span class="nc" id="L167">        return lesDescription;</span>
+    }
+
+    public void setLesDescription(String lesDescription) {
+<span class="nc" id="L171">        this.lesDescription = lesDescription;</span>
+<span class="nc" id="L172">    }</span>
+
+    public Integer getMemberNumber() {
+<span class="nc" id="L175">        return memberNumber;</span>
+    }
+
+    public void setMemberNumber(Integer memberNumber) {
+<span class="nc" id="L179">        this.memberNumber = memberNumber;</span>
+<span class="nc" id="L180">    }</span>
+
+    public Instant getStartDate() {
+<span class="nc" id="L183">        return startDate;</span>
+    }
+
+    public void setStartDate(Instant startDate) {
+<span class="nc" id="L187">        this.startDate = startDate;</span>
+<span class="nc" id="L188">    }</span>
+
+    public Instant getEndDate() {
+<span class="nc" id="L191">        return endDate;</span>
+    }
+
+    public void setEndDate(Instant endDate) {
+<span class="nc" id="L195">        this.endDate = endDate;</span>
+<span class="nc" id="L196">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

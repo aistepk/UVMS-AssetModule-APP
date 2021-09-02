@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileTerminalDataSourceRequestValidator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.model.validator</a> &gt; <span class="el_source">MobileTerminalDataSourceRequestValidator.java</span></div><h1>MobileTerminalDataSourceRequestValidator.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.mobileterminal.model.validator;
+
+import eu.europa.ec.fisheries.schema.mobileterminal.types.v1.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+<span class="nc" id="L22">public class MobileTerminalDataSourceRequestValidator {</span>
+
+<span class="fc" id="L24">    private static Logger LOG = LoggerFactory.getLogger(MobileTerminalDataSourceRequestValidator.class);</span>
+<span class="fc" id="L25">    private static String IRIDIUM = &quot;IRIDIUM&quot;;</span>
+
+    public static void validateCreateMobileTerminalType(MobileTerminalType mobTermType) {
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if(mobTermType.isInactive()){</span>
+<span class="nc" id="L29">            throw new RuntimeException(&quot;Cannot create a Mobile Terminal with status set to inactive&quot;);</span>
+        }
+<span class="nc" id="L31">        validateMobileTerminalAttributes(mobTermType.getAttributes());</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        if(!IRIDIUM.equalsIgnoreCase(mobTermType.getType())) {</span>
+<span class="nc" id="L33">            validateComChannels(mobTermType);</span>
+        }
+<span class="nc" id="L35">    }</span>
+	
+    public static void validateMobileTerminalType(MobileTerminalType mobTermType) {
+<span class="nc" id="L38">        validateMobileTerminalId(mobTermType.getMobileTerminalId());</span>
+<span class="nc" id="L39">        validateMobileTerminalAttributes(mobTermType.getAttributes());</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        if(!IRIDIUM.equalsIgnoreCase(mobTermType.getType())) {</span>
+<span class="nc" id="L41">            validateComChannels(mobTermType);</span>
+        }
+<span class="nc" id="L43">    }</span>
+
+    public static void validateMobileTerminalId(MobileTerminalId id) {
+<span class="fc bfc" id="L46" title="All 6 branches covered.">    	if(id == null || id.getGuid() == null || id.getGuid().isEmpty()) {</span>
+<span class="fc" id="L47">    		throw new NullPointerException(&quot;Non valid mobile terminal id&quot;);</span>
+    	}
+<span class="fc" id="L49">    }</span>
+
+    public static void validateMobileTerminalAttributes(List&lt;MobileTerminalAttribute&gt; attributes) {
+<span class="fc" id="L52">        Set&lt;String&gt; uniqueFields = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for (MobileTerminalAttribute attr : attributes) {</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        	if(!&quot;MULTIPLE_OCEAN&quot;.equalsIgnoreCase(attr.getType())) {</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        		if (!uniqueFields.add(attr.getType())) {</span>
+<span class="fc" id="L56">                    throw new IllegalArgumentException(&quot;Non unique attribute field &quot; + attr.getType());</span>
+                }
+        	}
+<span class="fc" id="L59">        }</span>
+<span class="fc" id="L60">    }</span>
+
+    public static void validateComChannels(MobileTerminalType type) {
+    	//TODO terminaltype -&gt; comchannelvaluetype instead of channeltype when validate
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        for (ComChannelType channel : type.getChannels()) {</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        	if(&quot;VMS&quot;.equalsIgnoreCase(channel.getName())) {</span>
+<span class="fc" id="L66">        		validateVMS(channel);</span>
+        	}
+        	else {
+<span class="nc" id="L69">        	    LOG.debug(&quot;Channel name is not VMS. Will not validate further, and will probably fail validation in the future.&quot;);</span>
+        	}
+        	//	throw new MobileTerminalModelValidationException(&quot;ComChannel with SystemType &quot; + type.getType() + &quot; validation not implemented&quot;);
+<span class="fc" id="L72">        }</span>
+<span class="fc" id="L73">    }</span>
+
+    private static void validateVMS(ComChannelType channel) {
+<span class="fc" id="L76">        Set&lt;String&gt; fields = new HashSet&lt;&gt;();</span>
+
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        for (ComChannelAttribute attribute : channel.getAttributes()) {</span>
+<span class="fc" id="L79">            fields.add(attribute.getType());</span>
+<span class="fc" id="L80">        }</span>
+
+<span class="fc" id="L82">        boolean dnid = fields.contains(&quot;DNID&quot;);</span>
+<span class="fc" id="L83">        boolean memberId = fields.contains(&quot;MEMBER_NUMBER&quot;);</span>
+
+<span class="pc bpc" id="L85" title="1 of 4 branches missed.">        if (!dnid || !memberId) {</span>
+<span class="fc" id="L86">            throw new IllegalArgumentException(&quot;A Com channel with channelType &quot; + channel.getName() + &quot; must contain DNID and Member Number&quot;);</span>
+        }
+
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if (fields.size() != channel.getAttributes().size()) {</span>
+<span class="fc" id="L90">            throw new IllegalArgumentException(&quot;ChannelType ids can only occur once!&quot;);</span>
+        }
+<span class="fc" id="L92">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

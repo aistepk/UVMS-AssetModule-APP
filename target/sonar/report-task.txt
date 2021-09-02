@@ -1,0 +1,6 @@
+projectKey=Asset5
+serverUrl=http://localhost
+serverVersion=9.0.1.46107
+dashboardUrl=http://localhost/dashboard?id=Asset5
+ceTaskId=AXumW_YCYgvLbic8cMxG
+ceTaskUrl=http://localhost/api/ce/task?id=AXumW_YCYgvLbic8cMxG

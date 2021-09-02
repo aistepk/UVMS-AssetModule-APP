@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ParameterKey.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.asset.constants</a> &gt; <span class="el_source">ParameterKey.java</span></div><h1>ParameterKey.java</h1><pre class="source lang-java linenums">/*
+
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+
+© European Union, 2015-2016.
+
+
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+
+ */
+
+package eu.europa.ec.fisheries.uvms.asset.constants;
+
+<span class="nc" id="L25">public enum ParameterKey {</span>
+
+<span class="nc" id="L27">	NATIONAL_USE(&quot;ASSET.NATIONAL.USE&quot;),</span>
+
+<span class="nc" id="L29">	USE_NATIONAL(&quot;mobileterminal.national.use&quot;),</span>
+
+<span class="nc" id="L31">	EU_USE(&quot;ASSET.EU.USE&quot;),</span>
+
+<span class="nc" id="L33">	NATIONAL_SERVICE_ENDPOINT(&quot;NATIONAL_SERVICE_ENDPOINT&quot;),</span>
+
+<span class="nc" id="L35">	DEFAULT_FLAG_STATE(&quot;ASSET.DEFAULT.FLAGSTATE&quot;),</span>
+
+	// XEU PARAMS
+
+<span class="nc" id="L39">	XEU_SERVICE_ENDPOINT(&quot;ASSET.EU.SERVICE.ENDPOINT&quot;),</span>
+
+<span class="nc" id="L41">	CERT_HEADER(&quot;ASSET.EU.SERVICE.CLIENT.CERT.HEADER&quot;),</span>
+
+<span class="nc" id="L43">	CERT_VALUE(&quot;ASSET.EU.SERVICE.CLIENT.CERT.VALUE&quot;),</span>
+
+<span class="nc" id="L45">	FLUX_DATAFLOW(&quot;ASSET.EU.SERVICE.DATAFLOW&quot;),</span>
+
+<span class="nc" id="L47">	FLUX_AD(&quot;ASSET.EU.SERVICE.FLUX.AD&quot;),</span>
+
+<span class="nc" id="L49">	NATIONAL_VESSEL_COMP_SERVICE_ENDPOINT(&quot;NATIONAL_VESSEL_COMP_SERVICE_ENDPOINT&quot;),</span>
+
+<span class="nc" id="L51">	NATIONAL_VESSEL_NATIONS(&quot;NATIONAL_VESSEL_NATIONS&quot;),</span>
+
+<span class="nc" id="L53">	NATIONAL_GENERAL_NOTIFICATION_SERVICE_ENDPOINT(&quot;NATIONAL_GENERAL_NOTIFICATION_SERVICE_ENDPOINT&quot;),</span>
+
+<span class="nc" id="L55">	NATIONAL_EQUIPMENT_SERVICE_ENDPOINT(&quot;NATIONAL_EQUIPMENT_SERVICE_ENDPOINT&quot;);</span>
+
+	private final String key;
+
+<span class="nc" id="L59">	private ParameterKey(String key) {</span>
+<span class="nc" id="L60">		this.key = key;</span>
+<span class="nc" id="L61">	}</span>
+
+	public String getKey() {
+<span class="nc" id="L64">		return key;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

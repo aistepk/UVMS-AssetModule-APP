@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileTerminalServiceBean.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-module</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.bean</a> &gt; <span class="el_source">MobileTerminalServiceBean.java</span></div><h1>MobileTerminalServiceBean.java</h1><pre class="source lang-java linenums">/*
+﻿Developed with the contribution of the European Commission - Directorate General for Maritime Affairs and Fisheries
+© European Union, 2015-2016.
+
+This file is part of the Integrated Fisheries Data Management (IFDM) Suite. The IFDM Suite is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or any later version. The IFDM Suite is distributed in
+the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a
+copy of the GNU General Public License along with the IFDM Suite. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ */
+package eu.europa.ec.fisheries.uvms.mobileterminal.bean;
+
+import eu.europa.ec.fisheries.schema.mobileterminal.polltypes.v1.PollableQuery;
+import eu.europa.ec.fisheries.schema.mobileterminal.source.v1.MobileTerminalListResponse;
+import eu.europa.ec.fisheries.schema.mobileterminal.types.v1.MobileTerminalType;
+import eu.europa.ec.fisheries.uvms.asset.domain.dao.AssetDao;
+import eu.europa.ec.fisheries.uvms.asset.domain.entity.Asset;
+import eu.europa.ec.fisheries.uvms.asset.dto.AssetMTEnrichmentRequest;
+import eu.europa.ec.fisheries.uvms.asset.mapper.AssetDtoMapper;
+import eu.europa.ec.fisheries.uvms.asset.message.AuditProducer;
+import eu.europa.ec.fisheries.uvms.asset.remote.dto.AssetDto;
+import eu.europa.ec.fisheries.uvms.asset.remote.dto.ChangeHistoryRow;
+import eu.europa.ec.fisheries.uvms.mobileterminal.dao.TerminalDaoBean;
+import eu.europa.ec.fisheries.uvms.mobileterminal.dto.MTListResponse;
+import eu.europa.ec.fisheries.uvms.mobileterminal.dto.PollChannelDto;
+import eu.europa.ec.fisheries.uvms.mobileterminal.dto.PollChannelListDto;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.Channel;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.MobileTerminal;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.MobileTerminalPlugin;
+import eu.europa.ec.fisheries.uvms.mobileterminal.entity.types.MobileTerminalStatus;
+import eu.europa.ec.fisheries.uvms.mobileterminal.mapper.AuditModuleRequestMapper;
+import eu.europa.ec.fisheries.uvms.mobileterminal.mapper.MobileTerminalDtoMapper;
+import eu.europa.ec.fisheries.uvms.mobileterminal.mapper.PollDtoMapper;
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.constants.TerminalSourceEnum;
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.dto.ListResponseDto;
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.dto.MobileTerminalDto;
+import eu.europa.ec.fisheries.uvms.mobileterminal.search.MTSearchKeyValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.jms.JMSException;
+import java.time.Instant;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Stateless
+@LocalBean
+<span class="nc" id="L53">public class MobileTerminalServiceBean {</span>
+
+<span class="fc" id="L55">    private static final Logger LOG = LoggerFactory.getLogger(MobileTerminalServiceBean.class);</span>
+
+    @Inject
+    private AuditProducer auditProducer;
+
+    @EJB
+    private PollServiceBean pollModel;
+
+    @EJB
+    private TerminalDaoBean terminalDao;
+
+    @Inject
+    private AssetDao assetDao;
+
+    public MobileTerminal createMobileTerminal(MobileTerminal mobileTerminal, String username) {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (mobileTerminal.getChannels().isEmpty()) {</span>
+<span class="nc" id="L71">            throw new IllegalArgumentException(&quot;A mobile Terminal needs to have at least one channel attached to it.&quot;);</span>
+        }
+<span class="nc" id="L73">        Set&lt;Channel&gt; channels = mobileTerminal.getChannels();</span>
+<span class="nc" id="L74">        channels.forEach(channel -&gt; channel.setMobileTerminal(mobileTerminal));</span>
+        
+<span class="nc" id="L76">        mobileTerminal.setUpdateuser(username);</span>
+<span class="nc" id="L77">        MobileTerminal createdMobileTerminal = terminalDao.createMobileTerminal(mobileTerminal);</span>
+<span class="nc" id="L78">        sortChannels(createdMobileTerminal);</span>
+<span class="nc" id="L79">        String pluginServiceName = createdMobileTerminal.getPlugin().getPluginServiceName();</span>
+
+        //send stuff to audit
+        try {
+<span class="nc" id="L83">            String auditData = AuditModuleRequestMapper.mapAuditLogMobileTerminalCreated(createdMobileTerminal.getId().toString(), username);</span>
+<span class="nc" id="L84">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L85">        } catch (JMSException e) {</span>
+<span class="nc" id="L86">            LOG.error(&quot;Failed to send audit log message! Mobile Terminal with guid {} was created&quot;, createdMobileTerminal.getId().toString());</span>
+<span class="nc" id="L87">        }</span>
+<span class="nc" id="L88">        return createdMobileTerminal;</span>
+    }
+
+    public MTListResponse getMobileTerminalList(List&lt;MTSearchKeyValue&gt; searchFields, int page, int listSize, boolean isDynamic, boolean includeArchived) {
+<span class="nc" id="L92">        return getTerminalListByQuery(searchFields, page, listSize, isDynamic, includeArchived);</span>
+    }
+
+    public MobileTerminal upsertMobileTerminal(MobileTerminal data, TerminalSourceEnum source, String username) {
+<span class="nc" id="L96">        nullValidation(data, &quot;No Mobile terminal to update [ NULL ]&quot;);</span>
+<span class="nc" id="L97">        data.setSource(source);</span>
+<span class="nc" id="L98">        return upsertMobileTerminal(data, username);</span>
+    }
+
+    public MobileTerminal updateMobileTerminal(MobileTerminal mobileTerminal, String comment, String username) {
+<span class="nc" id="L102">        nullValidation(mobileTerminal, &quot;No terminal to update&quot;);</span>
+<span class="nc" id="L103">        nullValidation(mobileTerminal.getId(), &quot;Non valid id of terminal to update&quot;);</span>
+
+<span class="nc" id="L105">        MobileTerminal oldTerminal = getMobileTerminalEntityById(mobileTerminal.getId());</span>
+<span class="nc" id="L106">        MobileTerminalPlugin updatedPlugin = null;</span>
+
+<span class="nc bnc" id="L108" title="All 4 branches missed.">        if (mobileTerminal.getPlugin() == null || mobileTerminal.getPlugin().getName() == null) {</span>
+<span class="nc" id="L109">            updatedPlugin = oldTerminal.getPlugin();</span>
+        }
+
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        if (updatedPlugin == null) {</span>
+<span class="nc" id="L113">            updatedPlugin = oldTerminal.getPlugin();</span>
+        }
+        
+<span class="nc" id="L116">        Set&lt;Channel&gt; channels = mobileTerminal.getChannels();</span>
+<span class="nc" id="L117">        Set&lt;Channel&gt; oldChannels = oldTerminal.getChannels();</span>
+        
+        // if channel is removed
+<span class="nc" id="L120">        oldChannels.stream()</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">                .filter(oldChannel -&gt; !channels.contains(oldChannel))</span>
+<span class="nc" id="L122">                .forEach( filteredOldChannel -&gt; {</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">                    if (filteredOldChannel.getEndDate() == null) {</span>
+<span class="nc" id="L124">                        filteredOldChannel.setEndDate(Instant.now());</span>
+<span class="nc" id="L125">                        filteredOldChannel.setMobileTerminal(oldTerminal);</span>
+<span class="nc" id="L126">                        terminalDao.flushEm();</span>
+                    }
+<span class="nc" id="L128">                });</span>
+        // if channel is added
+<span class="nc" id="L130">        channels.stream()</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">                .filter(channel -&gt; !oldChannels.contains(channel))</span>
+<span class="nc" id="L132">                .forEach( channel -&gt; {</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">                    if (channel.getStartDate() == null) {</span>
+<span class="nc" id="L134">                        channel.setStartDate(Instant.now());</span>
+<span class="nc" id="L135">                        channel.setEndDate(null);</span>
+                    }
+<span class="nc" id="L137">                });</span>
+        // if mobilterminal is changed to &quot;Active = false&quot;
+<span class="nc bnc" id="L139" title="All 4 branches missed.">        if(mobileTerminal.getActive() == false &amp;&amp; oldTerminal.getActive() == true) {</span>
+<span class="nc" id="L140">            channels.stream()</span>
+<span class="nc" id="L141">            .forEach( channel -&gt; {</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">                if (channel.getEndDate() == null) {</span>
+<span class="nc" id="L143">                    channel.setEndDate(Instant.now());</span>
+                }
+<span class="nc" id="L145">            });</span>
+        }
+        // if mobilterminal is changed to &quot;Active = true&quot;
+<span class="nc bnc" id="L148" title="All 4 branches missed.">        if(mobileTerminal.getActive() == true &amp;&amp; oldTerminal.getActive() == false) {</span>
+<span class="nc" id="L149">            channels.stream()</span>
+<span class="nc" id="L150">            .forEach( channel -&gt; {</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">                if (channel.getStartDate() == null) {</span>
+<span class="nc" id="L152">                    channel.setStartDate(Instant.now());</span>
+<span class="nc" id="L153">                    channel.setEndDate(null);</span>
+                }
+<span class="nc" id="L155">            });</span>
+        }
+
+<span class="nc" id="L158">        mobileTerminal.setUpdateuser(username);</span>
+<span class="nc" id="L159">        mobileTerminal.setComment(comment);</span>
+<span class="nc" id="L160">        mobileTerminal.setPlugin(updatedPlugin);</span>
+
+<span class="nc" id="L162">        mobileTerminal.getChannels().forEach(channel -&gt; channel.setMobileTerminal(mobileTerminal));     //this is here to take care of the back reference since jsonb does not do that automatically</span>
+
+        //TODO check type
+        MobileTerminal updatedTerminal;
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        if (mobileTerminal.getMobileTerminalType() != null) {</span>
+<span class="nc" id="L167">            updatedTerminal = terminalDao.updateMobileTerminal(mobileTerminal);</span>
+<span class="nc" id="L168">            sortChannels(updatedTerminal);</span>
+<span class="nc" id="L169">            Asset asset = updatedTerminal.getAsset();</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">            if (asset != null) {</span>
+<span class="nc" id="L171">                asset.setUpdateTime(Instant.now());</span>
+            }
+<span class="nc" id="L173">        } else {</span>
+<span class="nc" id="L174">            throw new UnsupportedOperationException(&quot;Update - Not supported mobile terminal type&quot;);</span>
+        }
+
+        //send to audit
+        try {
+<span class="nc" id="L179">            String auditData = AuditModuleRequestMapper.mapAuditLogMobileTerminalUpdated(updatedTerminal.getId().toString(), comment, username);</span>
+<span class="nc" id="L180">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L181">        } catch (JMSException e) {</span>
+<span class="nc" id="L182">            LOG.error(&quot;Failed to send audit log message! Mobile Terminal with guid {} was updated&quot;, updatedTerminal.getId().toString());</span>
+<span class="nc" id="L183">        }</span>
+
+<span class="nc" id="L185">        return updatedTerminal;</span>
+    }
+
+    public MobileTerminal populateAssetInMT(MobileTerminal mt) {
+<span class="nc bnc" id="L189" title="All 2 branches missed.">        if (mt.getAssetUUID() != null) {</span>
+<span class="nc" id="L190">            Asset asset = assetDao.getAssetById(UUID.fromString(mt.getAssetUUID()));</span>
+<span class="nc" id="L191">            checkIfAssetAlreadyHasAnActiveMTBeforeAddingANewOne(asset, mt);</span>
+<span class="nc" id="L192">            mt.setAsset(asset);</span>
+        }
+<span class="nc" id="L194">        return mt;</span>
+    }
+
+    private void checkIfAssetAlreadyHasAnActiveMTBeforeAddingANewOne(Asset asset, MobileTerminal mt) {
+<span class="nc bnc" id="L198" title="All 10 branches missed.">        if (mt.getActive() &amp;&amp; asset != null &amp;&amp; asset.getMobileTerminals().stream().anyMatch(m -&gt; m.getActive() &amp;&amp; !m.getId().equals(mt.getId()))) {</span>
+<span class="nc" id="L199">            throw new IllegalArgumentException(&quot;An asset can not have more then one active MT. Asset &quot; + asset.getName() + &quot; already has at least one active MT&quot;);</span>
+        }
+<span class="nc" id="L201">    }</span>
+
+    public MobileTerminal assignMobileTerminal(UUID connectId, UUID mobileTerminalId, String comment, String username) {
+<span class="nc" id="L204">        MobileTerminal terminalAssign = assignMobileTerminalToCarrier(connectId, mobileTerminalId, comment, username);</span>
+        try {
+<span class="nc" id="L206">            String auditData = AuditModuleRequestMapper.mapAuditLogMobileTerminalAssigned(terminalAssign.getId().toString(), comment, username);</span>
+<span class="nc" id="L207">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L208">        } catch (JMSException e) {</span>
+<span class="nc" id="L209">            LOG.error(&quot;Failed to send audit log message! Mobile Terminal with guid {} was assigned&quot;, terminalAssign.getId().toString());</span>
+<span class="nc" id="L210">        }</span>
+<span class="nc" id="L211">        return terminalAssign;</span>
+    }
+
+    public MobileTerminal unAssignMobileTerminal(UUID connectId, UUID guid, String comment, String username) {
+<span class="nc" id="L215">        MobileTerminal terminalUnAssign = unAssignMobileTerminalFromCarrier(connectId, guid, comment, username);</span>
+        try {
+<span class="nc" id="L217">            String auditData = AuditModuleRequestMapper.mapAuditLogMobileTerminalUnassigned(terminalUnAssign.getId().toString(), comment, username);</span>
+<span class="nc" id="L218">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L219">        } catch (JMSException e) {</span>
+<span class="nc" id="L220">            LOG.error(&quot;Failed to send audit log message! Mobile Terminal with guid {} was unassigned&quot;, terminalUnAssign.getId().toString());</span>
+<span class="nc" id="L221">        }</span>
+<span class="nc" id="L222">        return terminalUnAssign;</span>
+    }
+
+    public MobileTerminal setStatusMobileTerminal(UUID guid, String comment, MobileTerminalStatus status, String username) {
+<span class="nc" id="L226">        MobileTerminal terminalStatus = getMobileTerminalEntityById(guid);</span>
+
+<span class="nc" id="L228">        terminalStatus = changeUpdateMobileTerminalStatus(terminalStatus, comment, status, username);</span>
+
+        //audit stuff
+        try {
+<span class="nc" id="L232">            String auditData = null;</span>
+<span class="nc bnc" id="L233" title="All 5 branches missed.">            switch (status) {</span>
+                case ACTIVE:
+<span class="nc" id="L235">                    auditData = AuditModuleRequestMapper.mapAuditLogMobileTerminalActivated(terminalStatus.getId().toString(), comment, username);</span>
+<span class="nc" id="L236">                    break;</span>
+                case INACTIVE:
+<span class="nc" id="L238">                    auditData = AuditModuleRequestMapper</span>
+<span class="nc" id="L239">                            .mapAuditLogMobileTerminalInactivated(terminalStatus.getId().toString(), comment, username);</span>
+<span class="nc" id="L240">                    break;</span>
+                case ARCHIVE:
+<span class="nc" id="L242">                    auditData = AuditModuleRequestMapper.mapAuditLogMobileTerminalArchived(terminalStatus.getId().toString(), comment, username);</span>
+<span class="nc" id="L243">                    break;</span>
+                case UNARCHIVE:
+<span class="nc" id="L245">                    auditData = AuditModuleRequestMapper.mapAuditLogMobileTerminalUnarchived(terminalStatus.getId().toString(), comment, username);</span>
+<span class="nc" id="L246">                    break;</span>
+                default:
+                    break;
+            }
+<span class="nc" id="L250">            auditProducer.sendModuleMessage(auditData);</span>
+<span class="nc" id="L251">        } catch (JMSException e) {</span>
+<span class="nc" id="L252">            LOG.error(&quot;Failed to send audit log message! Mobile Terminal with guid {} was set to status {}&quot;, terminalStatus.getId().toString(), status);</span>
+<span class="nc" id="L253">        }</span>
+<span class="nc" id="L254">        return terminalStatus;</span>
+    }
+
+    private MobileTerminal changeUpdateMobileTerminalStatus(MobileTerminal mobileTerminal, String comment, MobileTerminalStatus status, String username) {
+<span class="nc" id="L258">        nullValidation(mobileTerminal, &quot;No Mobile Terminal&quot;);</span>
+<span class="nc" id="L259">        nullValidation(status, &quot;No terminal status to set&quot;);</span>
+
+<span class="nc bnc" id="L261" title="All 5 branches missed.">        switch (status) {</span>
+            case ACTIVE:
+<span class="nc" id="L263">                mobileTerminal.setActive(true);</span>
+<span class="nc" id="L264">                checkIfAssetAlreadyHasAnActiveMTBeforeAddingANewOne(mobileTerminal.getAsset(), mobileTerminal);</span>
+<span class="nc" id="L265">                break;</span>
+            case INACTIVE:
+<span class="nc" id="L267">                mobileTerminal.setActive(false);</span>
+<span class="nc" id="L268">                break;</span>
+            case ARCHIVE:
+<span class="nc" id="L270">                mobileTerminal.setArchived(true);</span>
+<span class="nc" id="L271">                mobileTerminal.setActive(false);</span>
+<span class="nc" id="L272">                mobileTerminal.setAsset(null);</span>
+<span class="nc" id="L273">                break;</span>
+            case UNARCHIVE:
+<span class="nc" id="L275">                mobileTerminal.setArchived(false);</span>
+<span class="nc" id="L276">                break;</span>
+            default:
+<span class="nc" id="L278">                LOG.error(&quot;[ Non valid status to set ] {}&quot;, status);</span>
+<span class="nc" id="L279">                throw new IllegalArgumentException(&quot;Non valid status to set&quot;);</span>
+        }
+<span class="nc" id="L281">        mobileTerminal.setUpdateuser(username);</span>
+<span class="nc" id="L282">        mobileTerminal.setComment(comment);</span>
+<span class="nc" id="L283">        mobileTerminal = terminalDao.updateMobileTerminal(mobileTerminal);</span>
+<span class="nc" id="L284">        sortChannels(mobileTerminal);</span>
+<span class="nc" id="L285">        return mobileTerminal;</span>
+    }
+
+    public List&lt;MobileTerminal&gt; getMobileTerminalRevisions(UUID mobileTerminalId, int maxNbr) {
+<span class="nc" id="L289">        List&lt;MobileTerminal&gt; revisions = terminalDao.getMobileTerminalRevisionById(mobileTerminalId);</span>
+<span class="nc" id="L290">        revisions.sort(Comparator.comparing(MobileTerminal::getUpdatetime));</span>
+<span class="nc" id="L291">        revisions.forEach(this::sortChannels);</span>
+<span class="nc bnc" id="L292" title="All 2 branches missed.">        if (revisions.size() &gt; maxNbr) {</span>
+<span class="nc" id="L293">            return revisions.subList(revisions.size() - maxNbr, revisions.size());  //we should get the latest ones right?</span>
+        }
+<span class="nc" id="L295">        return revisions;</span>
+    }
+
+    public MobileTerminal getActiveMTForAsset(UUID assetId) {
+<span class="nc" id="L299">        Asset asset = assetDao.getAssetById(assetId);</span>
+<span class="nc" id="L300">        return asset.getMobileTerminals()</span>
+<span class="nc" id="L301">                .stream()</span>
+<span class="nc" id="L302">                .filter(MobileTerminal::getActive)</span>
+<span class="nc" id="L303">                .findAny()</span>
+<span class="nc" id="L304">                .orElse(null);</span>
+    }
+
+    public Channel getPollableChannel(MobileTerminal mt) {
+<span class="nc" id="L308">        return mt.getChannels()</span>
+<span class="nc" id="L309">                .stream()</span>
+<span class="nc" id="L310">                .filter(Channel::isPollChannel)</span>
+<span class="nc" id="L311">                .findAny()</span>
+<span class="nc" id="L312">                .orElse(null);</span>
+    }
+
+    public PollChannelListDto getPollableMobileTerminal(PollableQuery query) {
+<span class="nc" id="L316">        PollChannelListDto channelListDto = new PollChannelListDto();</span>
+
+<span class="nc" id="L318">        ListResponseDto listResponse = pollModel.getMobileTerminalPollableList(query);</span>
+<span class="nc" id="L319">        MobileTerminalListResponse response = new MobileTerminalListResponse();</span>
+<span class="nc" id="L320">        response.setCurrentPage(listResponse.getCurrentPage());</span>
+<span class="nc" id="L321">        response.setTotalNumberOfPages(listResponse.getTotalNumberOfPages());</span>
+<span class="nc" id="L322">        response.getMobileTerminal().addAll(listResponse.getMobileTerminalList());</span>
+
+<span class="nc" id="L324">        channelListDto.setCurrentPage(response.getCurrentPage());</span>
+<span class="nc" id="L325">        channelListDto.setTotalNumberOfPages(response.getTotalNumberOfPages());</span>
+
+<span class="nc" id="L327">        ArrayList&lt;PollChannelDto&gt; pollChannelList = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L328" title="All 2 branches missed.">        for (MobileTerminalType terminalType : response.getMobileTerminal()) {</span>
+<span class="nc" id="L329">            PollChannelDto terminal = PollDtoMapper.mapPollChannel(terminalType);</span>
+<span class="nc" id="L330">            pollChannelList.add(terminal);</span>
+<span class="nc" id="L331">        }</span>
+<span class="nc" id="L332">        channelListDto.setPollableChannels(pollChannelList);</span>
+<span class="nc" id="L333">        return channelListDto;</span>
+    }
+
+    /*****************************************************************************************************************/
+
+    public MobileTerminal getMobileTerminalEntityById(UUID id) {
+<span class="nc" id="L339">        nullValidation(id, &quot;Non valid MobileTerminal ID: NULL&quot;);</span>
+<span class="nc" id="L340">        MobileTerminal mt = terminalDao.getMobileTerminalById(id);</span>
+<span class="nc" id="L341">        sortChannels(mt);</span>
+<span class="nc" id="L342">        return mt;</span>
+    }
+
+    public List&lt;MobileTerminal&gt; getMobileTerminalListNotConnectedToAsset() {
+<span class="nc" id="L346">        List&lt;MobileTerminal&gt; mtList = terminalDao.getMobileTerminalListWithNoActiveAsset();</span>
+<span class="nc" id="L347">        mtList.forEach(this::sortChannels);</span>
+<span class="nc" id="L348">        return mtList;</span>
+    }
+
+    public MobileTerminal getMobileTerminalEntityBySerialNo(String serialNo) {
+<span class="nc bnc" id="L352" title="All 4 branches missed.">        if (serialNo == null || serialNo.isEmpty())</span>
+<span class="nc" id="L353">            throw new NullPointerException(&quot;Non valid serial no&quot;);</span>
+<span class="nc" id="L354">        return terminalDao.getMobileTerminalBySerialNo(serialNo);</span>
+    }
+
+    public void assertTerminalHasSerialNumber(MobileTerminal mobileTerminal) {
+<span class="nc" id="L358">        String serialNumber = mobileTerminal.getSerialNo();</span>
+<span class="nc" id="L359">        nullValidation(serialNumber, &quot;Cannot create mobile terminal without serial number&quot;);</span>
+<span class="nc" id="L360">        nullValidation(mobileTerminal.getPlugin(), &quot;Cannot create Mobile terminal when plugin is null&quot;);</span>
+<span class="nc" id="L361">    }</span>
+
+    public void assertTerminalNotExists(UUID mobileTerminalGUID, String serialNr) {
+<span class="nc" id="L364">        MobileTerminal terminal = getMobileTerminalEntityById(mobileTerminalGUID);</span>
+<span class="nc bnc" id="L365" title="All 2 branches missed.">        if (terminal != null) {</span>
+<span class="nc" id="L366">            throw new IllegalArgumentException(&quot;Mobile terminal already exists in database for id: &quot; + mobileTerminalGUID.toString());</span>
+        }
+
+<span class="nc" id="L369">        MobileTerminal terminalBySerialNo = getMobileTerminalEntityBySerialNo(serialNr);</span>
+<span class="nc bnc" id="L370" title="All 2 branches missed.">        if (terminalBySerialNo == null) {  //aka the serial number does not exist in the db</span>
+<span class="nc" id="L371">            return;</span>
+        }
+<span class="nc bnc" id="L373" title="All 2 branches missed.">        if (!terminalBySerialNo.getArchived()) {</span>
+<span class="nc" id="L374">            throw new IllegalArgumentException(&quot;Mobile terminal already exists in database for serial number: &quot; + serialNr);</span>
+        }
+<span class="nc" id="L376">    }</span>
+
+    public MobileTerminal assignMobileTerminalToCarrier(UUID connectId, UUID mobileTerminalId, String comment, String username) {
+<span class="nc" id="L379">        nullValidation(mobileTerminalId, &quot;No Mobile terminalId in request&quot;);</span>
+<span class="nc" id="L380">        nullValidation(connectId, &quot;No connect id in request&quot;);</span>
+
+<span class="nc" id="L382">        Asset asset = assetDao.getAssetById(connectId);</span>
+<span class="nc" id="L383">        nullValidation(asset, &quot;No Asset with ID &quot; + connectId + &quot; found. Can not link Mobile Terminal.&quot;);</span>
+
+<span class="nc" id="L385">        MobileTerminal terminal = getMobileTerminalEntityById(mobileTerminalId);</span>
+<span class="nc bnc" id="L386" title="All 2 branches missed.">        if (terminal.getAsset() != null) {</span>
+<span class="nc" id="L387">            throw new IllegalArgumentException(&quot;Terminal &quot; + mobileTerminalId + &quot; is already linked to an asset with guid &quot; + connectId);</span>
+        }
+<span class="nc" id="L389">        checkIfAssetAlreadyHasAnActiveMTBeforeAddingANewOne(asset, terminal);</span>
+
+<span class="nc" id="L391">        asset.getMobileTerminals().add(terminal);</span>
+<span class="nc" id="L392">        asset.setUpdateTime(Instant.now());</span>
+<span class="nc" id="L393">        terminal.setAsset(asset);</span>
+<span class="nc" id="L394">        terminal.setUpdateuser(username);</span>
+<span class="nc" id="L395">        terminal.setComment(comment);</span>
+<span class="nc" id="L396">        terminal = terminalDao.updateMobileTerminal(terminal);</span>
+<span class="nc" id="L397">        sortChannels(terminal);</span>
+<span class="nc" id="L398">        return terminal;</span>
+    }
+
+    public MobileTerminal unAssignMobileTerminalFromCarrier(UUID connectId, UUID guid, String comment, String username) {
+<span class="nc" id="L402">        nullValidation(connectId, &quot;No connect id in request&quot;);</span>
+
+<span class="nc" id="L404">        MobileTerminal terminal = getMobileTerminalEntityById(guid);</span>
+<span class="nc" id="L405">        terminal.setUpdateuser(username);</span>
+
+<span class="nc" id="L407">        Asset asset = terminal.getAsset();</span>
+
+<span class="nc" id="L409">        boolean remove = asset.getMobileTerminals().remove(terminal);</span>
+<span class="nc bnc" id="L410" title="All 2 branches missed.">        if (!remove) {</span>
+<span class="nc" id="L411">            throw new IllegalArgumentException(&quot;Terminal &quot; + guid + &quot; is not linked to an asset with ID &quot; + asset.getId());</span>
+        }
+<span class="nc" id="L413">        asset.setUpdateTime(Instant.now());</span>
+<span class="nc" id="L414">        terminal.setAsset(null);</span>
+<span class="nc" id="L415">        terminal.setComment(comment);</span>
+<span class="nc" id="L416">        terminal = terminalDao.updateMobileTerminal(terminal);</span>
+<span class="nc" id="L417">        sortChannels(terminal);</span>
+<span class="nc" id="L418">        return terminal;</span>
+    }
+
+    public MobileTerminal upsertMobileTerminal(MobileTerminal mobileTerminal, String username) {
+<span class="nc" id="L422">        nullValidation(mobileTerminal, &quot;RequestQuery is null&quot;);</span>
+
+        MobileTerminal upsertedMT;
+<span class="nc bnc" id="L425" title="All 2 branches missed.">        if (mobileTerminal.getId() == null) {</span>
+<span class="nc" id="L426">            upsertedMT = createMobileTerminal(mobileTerminal, username);</span>
+        } else {
+<span class="nc" id="L428">            upsertedMT = updateMobileTerminal(mobileTerminal, &quot;Upserted by external module&quot;, username);</span>
+        }
+<span class="nc" id="L430">        return upsertedMT;</span>
+    }
+
+    public MTListResponse getTerminalListByQuery(List&lt;MTSearchKeyValue&gt; searchFields, int page, int listSize, boolean isDynamic, boolean includeArchived) {
+<span class="nc" id="L434">        nullValidation(searchFields, &quot;No list query&quot;);</span>
+
+<span class="nc" id="L436">        MTListResponse response = new MTListResponse();</span>
+
+<span class="nc" id="L438">        int startIndex = (page - 1) * listSize;</span>
+<span class="nc" id="L439">        int stopIndex = startIndex + listSize;</span>
+<span class="nc" id="L440">        LOG.debug(&quot;page: &quot; + page + &quot;, listSize: &quot; + listSize + &quot;, startIndex: &quot; + startIndex);</span>
+
+<span class="nc" id="L442">        List&lt;MobileTerminal&gt; terminals = terminalDao.getMTListSearchPaginated(page, listSize, searchFields, isDynamic, includeArchived);</span>
+
+<span class="nc" id="L444">        terminals.sort(Comparator.comparing(MobileTerminal::getId));</span>
+<span class="nc" id="L445">        terminals.forEach(this::sortChannels);</span>
+
+<span class="nc" id="L447">        int totalMatches = terminals.size();</span>
+<span class="nc" id="L448">        LOG.debug(&quot;totalMatches: &quot; + totalMatches);</span>
+
+<span class="nc" id="L450">        int numberOfPages = totalMatches / listSize;</span>
+<span class="nc bnc" id="L451" title="All 2 branches missed.">        if (totalMatches % listSize != 0) {</span>
+<span class="nc" id="L452">            numberOfPages += 1;</span>
+        }
+<span class="nc" id="L454">        response.setMobileTerminalList(MobileTerminalDtoMapper.mapToMobileTerminalDtos(terminals));</span>
+
+<span class="nc bnc" id="L456" title="All 2 branches missed.">        if ((totalMatches - 1) &gt; 0) {</span>
+<span class="nc bnc" id="L457" title="All 2 branches missed.">            if (stopIndex &gt;= totalMatches) {</span>
+<span class="nc" id="L458">                stopIndex = totalMatches;</span>
+            }
+<span class="nc" id="L460">            LOG.debug(&quot;stopIndex: &quot; + stopIndex);</span>
+<span class="nc" id="L461">            response.setMobileTerminalList(new ArrayList&lt;&gt;(MobileTerminalDtoMapper.mapToMobileTerminalDtos(terminals.subList(startIndex, stopIndex))));</span>
+        }
+<span class="nc" id="L463">        response.setTotalNumberOfPages(numberOfPages);</span>
+<span class="nc" id="L464">        response.setCurrentPage(page);</span>
+
+<span class="nc" id="L466">        return response;</span>
+    }
+
+    public MobileTerminal getMobileTerminalByAssetMTEnrichmentRequest(AssetMTEnrichmentRequest request) {
+<span class="nc bnc" id="L470" title="All 4 branches missed.">        if (request.getDnidValue() == null &amp;&amp; request.getMemberNumberValue() == null</span>
+<span class="nc bnc" id="L471" title="All 2 branches missed.">                &amp;&amp; request.getSerialNumberValue() == null) {</span>
+<span class="nc" id="L472">            return null;</span>
+        }
+<span class="nc" id="L474">        return terminalDao.getMobileTerminalByRequest(request);</span>
+    }
+
+    public void inactivateAndUnlink(Asset asset, String comment, String username) {
+<span class="nc" id="L478">        asset.getMobileTerminals().forEach(mt -&gt; {</span>
+<span class="nc" id="L479">            mt.setUpdateuser(username);</span>
+<span class="nc" id="L480">            mt.setAsset(null);</span>
+<span class="nc" id="L481">            mt.setComment(comment);</span>
+<span class="nc" id="L482">            mt.setUpdatetime(Instant.now());</span>
+<span class="nc" id="L483">            setStatusMobileTerminal(mt.getId(), comment, MobileTerminalStatus.INACTIVE, username);</span>
+<span class="nc" id="L484">        });</span>
+<span class="nc" id="L485">        asset.getMobileTerminals().clear();</span>
+<span class="nc" id="L486">    }</span>
+
+    public Map&lt;UUID, ChangeHistoryRow&gt; getMobileTerminalRevisionsByAssetId(UUID assetId, int maxNbr) {
+<span class="nc" id="L489">        Map&lt;UUID, ChangeHistoryRow&gt; revisionsMap = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L490">        List&lt;UUID&gt; mtList = terminalDao.getAllMobileTerminalIdsWithARelationToAsset(assetId);</span>
+
+<span class="nc" id="L492">        mtList.forEach(terminalID -&gt; {</span>
+<span class="nc" id="L493">            List&lt;MobileTerminal&gt; revisions = terminalDao.getMobileTerminalRevisionsRelevantToAsset(terminalID, assetId);</span>
+<span class="nc" id="L494">            revisions.sort(Comparator.comparing(MobileTerminal::getCreateTime));</span>
+<span class="nc" id="L495">            revisions.forEach(this::sortChannels);</span>
+<span class="nc bnc" id="L496" title="All 2 branches missed.">            if (revisions.size() &gt; maxNbr) {</span>
+<span class="nc" id="L497">                revisions = revisions.subList(0, maxNbr);</span>
+            }
+<span class="nc" id="L499">            revisionsMap.putAll(MobileTerminalDtoMapper.mapToMobileTerminalRevisionsMap(revisions));</span>
+<span class="nc" id="L500">        });</span>
+<span class="nc" id="L501">        return revisionsMap;</span>
+    }
+
+    public List&lt;AssetDto&gt; getAssetRevisionsByMobileTerminalId(UUID mobileTerminalId) {
+<span class="nc" id="L505">        List&lt;MobileTerminal&gt; mtRevisions = terminalDao.getMobileTerminalRevisionById(mobileTerminalId);</span>
+
+<span class="nc" id="L507">        return AssetDtoMapper.mapToAssetDtos(</span>
+                mtRevisions
+<span class="nc" id="L509">                        .stream()</span>
+<span class="nc bnc" id="L510" title="All 2 branches missed.">                        .filter(mt -&gt; mt.getAsset() != null)</span>
+<span class="nc" id="L511">                        .map(MobileTerminal::getAsset)</span>
+<span class="nc" id="L512">                        .collect(Collectors.toList()));</span>
+    }
+    
+    public MobileTerminal getMobileTerminalAtDateWithMemberNumberAndDnid(Integer memberNumber,Integer dnid, Instant date){
+<span class="nc bnc" id="L516" title="All 6 branches missed.">        if(memberNumber == null || dnid == null || date == null ) {</span>
+<span class="nc" id="L517">            LOG.error(&quot;Null value in getTerminalAtDateWithMemberNumberAndDnid  \n memberNumber: &quot; + memberNumber + &quot; dnid: &quot; + dnid+ &quot; date: &quot; + date);</span>
+<span class="nc" id="L518">            return null;</span>
+        }
+<span class="nc" id="L520">        return terminalDao.getMobileTerminalAtDateWithMemberNumberAndDnid(memberNumber, dnid, date);</span>
+    }
+
+    private void sortChannels(MobileTerminal mt) {
+<span class="nc bnc" id="L524" title="All 4 branches missed.">        if (mt.getChannels() != null &amp;&amp; !mt.getChannels().isEmpty()) {</span>
+<span class="nc" id="L525">            List&lt;Channel&gt; asList = new ArrayList&lt;&gt;(mt.getChannels());</span>
+<span class="nc" id="L526">            asList.sort(Comparator.comparing(Channel::getName));</span>
+<span class="nc" id="L527">            Set&lt;Channel&gt; sorted = new LinkedHashSet&lt;&gt;(asList);</span>
+<span class="nc" id="L528">            mt.getChannels().clear();</span>
+<span class="nc" id="L529">            mt.getChannels().addAll(sorted);</span>
+        }
+<span class="nc" id="L531">    }</span>
+
+    private void nullValidation(Object obj, String message) {
+<span class="nc bnc" id="L534" title="All 2 branches missed.">        if (obj == null) throw new IllegalArgumentException(message);</span>
+<span class="nc" id="L535">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

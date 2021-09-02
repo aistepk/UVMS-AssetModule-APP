@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileTerminalDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">asset-model</a> &gt; <a href="index.source.html" class="el_package">eu.europa.ec.fisheries.uvms.mobileterminal.model.dto</a> &gt; <span class="el_source">MobileTerminalDto.java</span></div><h1>MobileTerminalDto.java</h1><pre class="source lang-java linenums">package eu.europa.ec.fisheries.uvms.mobileterminal.model.dto;
+
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.constants.MobileTerminalTypeEnum;
+import eu.europa.ec.fisheries.uvms.mobileterminal.model.constants.TerminalSourceEnum;
+
+import java.time.Instant;
+import java.util.Set;
+import java.util.UUID;
+
+<span class="nc" id="L10">public class MobileTerminalDto {</span>
+    private UUID id;
+
+    private UUID historyId;
+
+    private MobileTerminalPluginDto plugin;
+
+<span class="nc" id="L17">    private Boolean archived = false;</span>
+
+<span class="nc" id="L19">    private Boolean active = true;</span>
+
+    private TerminalSourceEnum source;
+
+    private MobileTerminalTypeEnum mobileTerminalType;
+
+    private Instant updatetime;
+
+    private Instant createTime;
+
+    private String updateuser;
+
+    private String serialNo;
+
+    private String satelliteNumber;
+
+    private String antenna;
+
+    private String transceiverType;
+
+    private String softwareVersion;
+
+    private Set&lt;ChannelDto&gt; channels;
+
+    private String assetId;
+
+    private String comment;
+
+<span class="nc" id="L47">    private Boolean eastAtlanticOceanRegion = false;</span>
+
+<span class="nc" id="L49">    private Boolean westAtlanticOceanRegion = false;</span>
+
+<span class="nc" id="L51">    private Boolean pacificOceanRegion = false;</span>
+
+<span class="nc" id="L53">    private Boolean indianOceanRegion = false;</span>
+
+    private Instant installDate;
+
+    private Instant uninstallDate;
+
+    private String installedBy;
+
+    public UUID getId() {
+<span class="nc" id="L62">        return id;</span>
+    }
+
+    public void setId(UUID id) {
+<span class="nc" id="L66">        this.id = id;</span>
+<span class="nc" id="L67">    }</span>
+
+    public UUID getHistoryId() {
+<span class="nc" id="L70">        return historyId;</span>
+    }
+
+    public void setHistoryId(UUID historyId) {
+<span class="nc" id="L74">        this.historyId = historyId;</span>
+<span class="nc" id="L75">    }</span>
+
+    public MobileTerminalPluginDto getPlugin() {
+<span class="nc" id="L78">        return plugin;</span>
+    }
+
+    public void setPlugin(MobileTerminalPluginDto plugin) {
+<span class="nc" id="L82">        this.plugin = plugin;</span>
+<span class="nc" id="L83">    }</span>
+
+    public Boolean getArchived() {
+<span class="nc" id="L86">        return archived;</span>
+    }
+
+    public void setArchived(Boolean archived) {
+<span class="nc" id="L90">        this.archived = archived;</span>
+<span class="nc" id="L91">    }</span>
+
+    public Boolean getActive() {
+<span class="nc" id="L94">        return active;</span>
+    }
+
+    public void setActive(Boolean active) {
+<span class="nc" id="L98">        this.active = active;</span>
+<span class="nc" id="L99">    }</span>
+
+    public TerminalSourceEnum getSource() {
+<span class="nc" id="L102">        return source;</span>
+    }
+
+    public void setSource(TerminalSourceEnum source) {
+<span class="nc" id="L106">        this.source = source;</span>
+<span class="nc" id="L107">    }</span>
+
+    public MobileTerminalTypeEnum getMobileTerminalType() {
+<span class="nc" id="L110">        return mobileTerminalType;</span>
+    }
+
+    public void setMobileTerminalType(MobileTerminalTypeEnum mobileTerminalType) {
+<span class="nc" id="L114">        this.mobileTerminalType = mobileTerminalType;</span>
+<span class="nc" id="L115">    }</span>
+
+    public Instant getUpdatetime() {
+<span class="nc" id="L118">        return updatetime;</span>
+    }
+
+    public void setUpdatetime(Instant updatetime) {
+<span class="nc" id="L122">        this.updatetime = updatetime;</span>
+<span class="nc" id="L123">    }</span>
+
+    public Instant getCreateTime() {
+<span class="nc" id="L126">        return createTime;</span>
+    }
+
+    public void setCreateTime(Instant createTime) {
+<span class="nc" id="L130">        this.createTime = createTime;</span>
+<span class="nc" id="L131">    }</span>
+
+    public String getUpdateuser() {
+<span class="nc" id="L134">        return updateuser;</span>
+    }
+
+    public void setUpdateuser(String updateuser) {
+<span class="nc" id="L138">        this.updateuser = updateuser;</span>
+<span class="nc" id="L139">    }</span>
+
+    public String getSerialNo() {
+<span class="nc" id="L142">        return serialNo;</span>
+    }
+
+    public void setSerialNo(String serialNo) {
+<span class="nc" id="L146">        this.serialNo = serialNo;</span>
+<span class="nc" id="L147">    }</span>
+
+    public String getSatelliteNumber() {
+<span class="nc" id="L150">        return satelliteNumber;</span>
+    }
+
+    public void setSatelliteNumber(String satelliteNumber) {
+<span class="nc" id="L154">        this.satelliteNumber = satelliteNumber;</span>
+<span class="nc" id="L155">    }</span>
+
+    public String getAntenna() {
+<span class="nc" id="L158">        return antenna;</span>
+    }
+
+    public void setAntenna(String antenna) {
+<span class="nc" id="L162">        this.antenna = antenna;</span>
+<span class="nc" id="L163">    }</span>
+
+    public String getTransceiverType() {
+<span class="nc" id="L166">        return transceiverType;</span>
+    }
+
+    public void setTransceiverType(String transceiverType) {
+<span class="nc" id="L170">        this.transceiverType = transceiverType;</span>
+<span class="nc" id="L171">    }</span>
+
+    public String getSoftwareVersion() {
+<span class="nc" id="L174">        return softwareVersion;</span>
+    }
+
+    public void setSoftwareVersion(String softwareVersion) {
+<span class="nc" id="L178">        this.softwareVersion = softwareVersion;</span>
+<span class="nc" id="L179">    }</span>
+
+    public Set&lt;ChannelDto&gt; getChannels() {
+<span class="nc" id="L182">        return channels;</span>
+    }
+
+    public void setChannels(Set&lt;ChannelDto&gt; channels) {
+<span class="nc" id="L186">        this.channels = channels;</span>
+<span class="nc" id="L187">    }</span>
+
+    public String getAssetId() {
+<span class="nc" id="L190">        return assetId;</span>
+    }
+
+    public void setAssetId(String assetId) {
+<span class="nc" id="L194">        this.assetId = assetId;</span>
+<span class="nc" id="L195">    }</span>
+
+    public String getComment() {
+<span class="nc" id="L198">        return comment;</span>
+    }
+
+    public void setComment(String comment) {
+<span class="nc" id="L202">        this.comment = comment;</span>
+<span class="nc" id="L203">    }</span>
+
+    public Boolean getEastAtlanticOceanRegion() {
+<span class="nc" id="L206">        return eastAtlanticOceanRegion;</span>
+    }
+
+    public void setEastAtlanticOceanRegion(Boolean eastAtlanticOceanRegion) {
+<span class="nc" id="L210">        this.eastAtlanticOceanRegion = eastAtlanticOceanRegion;</span>
+<span class="nc" id="L211">    }</span>
+
+    public Boolean getWestAtlanticOceanRegion() {
+<span class="nc" id="L214">        return westAtlanticOceanRegion;</span>
+    }
+
+    public void setWestAtlanticOceanRegion(Boolean westAtlanticOceanRegion) {
+<span class="nc" id="L218">        this.westAtlanticOceanRegion = westAtlanticOceanRegion;</span>
+<span class="nc" id="L219">    }</span>
+
+    public Boolean getPacificOceanRegion() {
+<span class="nc" id="L222">        return pacificOceanRegion;</span>
+    }
+
+    public void setPacificOceanRegion(Boolean pacificOceanRegion) {
+<span class="nc" id="L226">        this.pacificOceanRegion = pacificOceanRegion;</span>
+<span class="nc" id="L227">    }</span>
+
+    public Boolean getIndianOceanRegion() {
+<span class="nc" id="L230">        return indianOceanRegion;</span>
+    }
+
+    public void setIndianOceanRegion(Boolean indianOceanRegion) {
+<span class="nc" id="L234">        this.indianOceanRegion = indianOceanRegion;</span>
+<span class="nc" id="L235">    }</span>
+
+    public Instant getInstallDate() {
+<span class="nc" id="L238">        return installDate;</span>
+    }
+
+    public void setInstallDate(Instant installDate) {
+<span class="nc" id="L242">        this.installDate = installDate;</span>
+<span class="nc" id="L243">    }</span>
+
+    public Instant getUninstallDate() {
+<span class="nc" id="L246">        return uninstallDate;</span>
+    }
+
+    public void setUninstallDate(Instant uninstallDate) {
+<span class="nc" id="L250">        this.uninstallDate = uninstallDate;</span>
+<span class="nc" id="L251">    }</span>
+
+    public String getInstalledBy() {
+<span class="nc" id="L254">        return installedBy;</span>
+    }
+
+    public void setInstalledBy(String installedBy) {
+<span class="nc" id="L258">        this.installedBy = installedBy;</span>
+<span class="nc" id="L259">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
