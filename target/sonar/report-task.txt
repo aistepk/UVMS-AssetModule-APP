@@ -1,6 +1,6 @@
-projectKey=Asset5
-serverUrl=http://localhost
+projectKey=lia
+serverUrl=http://localhost:8000
 serverVersion=9.0.1.46107
-dashboardUrl=http://localhost/dashboard?id=Asset5
-ceTaskId=AXumW_YCYgvLbic8cMxG
-ceTaskUrl=http://localhost/api/ce/task?id=AXumW_YCYgvLbic8cMxG
+dashboardUrl=http://localhost:8000/dashboard?id=lia
+ceTaskId=AXurPChcqN7QkXugKcD0
+ceTaskUrl=http://localhost:8000/api/ce/task?id=AXurPChcqN7QkXugKcD0

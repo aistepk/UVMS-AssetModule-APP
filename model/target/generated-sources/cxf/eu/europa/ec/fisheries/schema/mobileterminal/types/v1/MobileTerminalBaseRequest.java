@@ -62,6 +62,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
     "username"
 })
 @XmlSeeAlso({
+    UpdatedDNIDListRequest.class,
+    UpsertPluginListRequest.class,
+    ConfigRequest.class,
+    ComchannelNameRequest.class,
+    TerminalSystemListRequest.class,
     PingRequest.class,
     HistoryMobileTerminalListRequest.class,
     SetStatusMobileTerminalRequest.class,
@@ -72,11 +77,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
     UpdateMobileTerminalRequest.class,
     GetMobileTerminalRequest.class,
     CreateMobileTerminalRequest.class,
-    UpdatedDNIDListRequest.class,
-    UpsertPluginListRequest.class,
-    ConfigRequest.class,
-    ComchannelNameRequest.class,
-    TerminalSystemListRequest.class,
     GetPollableRequest.class,
     GetPollListRequest.class,
     SetStatusPollProgramRequest.class,

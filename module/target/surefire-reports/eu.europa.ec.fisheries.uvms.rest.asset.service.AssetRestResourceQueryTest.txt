@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceQueryTest
 -------------------------------------------------------------------------------
-Tests run: 35, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.094 s - in eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceQueryTest
+Tests run: 35, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.685 s - in eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceQueryTest

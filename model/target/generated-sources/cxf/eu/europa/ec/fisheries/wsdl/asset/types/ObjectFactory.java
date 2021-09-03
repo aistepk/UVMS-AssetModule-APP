@@ -54,14 +54,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FishingGear }
-     * 
-     */
-    public FishingGear createFishingGear() {
-        return new FishingGear();
-    }
-
-    /**
      * Create an instance of {@link AssetHistoryId }
      * 
      */
@@ -163,6 +155,14 @@ public class ObjectFactory {
      */
     public AssetListCriteriaPair createAssetListCriteriaPair() {
         return new AssetListCriteriaPair();
+    }
+
+    /**
+     * Create an instance of {@link FishingGear }
+     * 
+     */
+    public FishingGear createFishingGear() {
+        return new FishingGear();
     }
 
     /**

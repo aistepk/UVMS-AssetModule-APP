@@ -28,7 +28,7 @@ asset-client,eu.europa.ec.fisheries.uvms.asset.client,AssetClient.new GenericTyp
 asset-client,eu.europa.ec.fisheries.uvms.asset.client,AssetClient.new GenericType() {...},6,0,0,0,1,0,1,0,1,0
 asset-client,eu.europa.ec.fisheries.uvms.asset.client,AssetClient.new GenericType() {...},6,0,0,0,1,0,1,0,1,0
 asset-client,eu.europa.ec.fisheries.uvms.asset.client,AssetClient,1176,0,4,0,254,0,32,0,30,0
-asset-client,eu.europa.ec.fisheries.uvms.asset.client.model.search,SearchBranch,47,0,0,0,16,0,8,0,8,0
 asset-client,eu.europa.ec.fisheries.uvms.asset.client.model.search,SearchFields,339,0,4,0,46,0,10,0,8,0
+asset-client,eu.europa.ec.fisheries.uvms.asset.client.model.search,SearchBranch,47,0,0,0,16,0,8,0,8,0
 asset-client,eu.europa.ec.fisheries.uvms.asset.client.model.search,SearchLeaf,56,0,2,0,24,0,11,0,10,0
 asset-client,eu.europa.ec.fisheries.uvms.asset.client.model.search,SearchFieldType,104,0,0,0,2,0,1,0,1,0

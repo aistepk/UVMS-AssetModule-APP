@@ -55,12 +55,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
     "username"
 })
 @XmlSeeAlso({
-    AssetHistoryListByAssetIdRequest.class,
-    GetAssetHistoryRequest.class,
     UpsertFishingGearRequest.class,
     FishingGearByExternalIdRequest.class,
     FishingGearByIdRequest.class,
     FishingGearListRequest.class,
+    AssetHistoryListByAssetIdRequest.class,
+    GetAssetHistoryRequest.class,
     AssetListGroupByFlagStateRequest.class,
     PingRequest.class,
     AssetListRequest.class,

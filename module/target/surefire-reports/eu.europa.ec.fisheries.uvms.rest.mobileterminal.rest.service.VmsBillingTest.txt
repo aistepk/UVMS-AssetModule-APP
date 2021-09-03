@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.711 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.886 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest
