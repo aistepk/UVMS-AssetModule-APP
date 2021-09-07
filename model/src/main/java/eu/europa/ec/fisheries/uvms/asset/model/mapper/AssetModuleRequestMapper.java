@@ -23,7 +23,7 @@ import java.util.Date;
 
 public class AssetModuleRequestMapper {
 
-    public static Logger LOG = LoggerFactory.getLogger(AssetModuleRequestMapper.class);
+    public static final Logger LOG = LoggerFactory.getLogger(AssetModuleRequestMapper.class);
 
     public static String createGetAssetModuleRequest(String value, AssetIdType type) throws AssetException {
         GetAssetModuleRequest request = new GetAssetModuleRequest();
