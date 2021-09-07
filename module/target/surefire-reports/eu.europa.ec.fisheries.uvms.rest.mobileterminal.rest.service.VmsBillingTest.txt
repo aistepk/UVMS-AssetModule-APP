@@ -1,4 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.886 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.054 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest
+getVmsResponseListDontIncludePollChannelTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getVmsResponseListIncludeNonDefultChannelIfNotPollOrConfigTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest)  Time elapsed: 0.046 s  <<< ERROR!
+java.lang.NullPointerException
+
+getVmsResponseListRemovedChannelTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+getVmsResponseListTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.VmsBillingTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+

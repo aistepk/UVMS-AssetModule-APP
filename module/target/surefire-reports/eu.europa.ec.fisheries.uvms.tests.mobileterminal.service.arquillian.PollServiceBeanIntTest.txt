@@ -1,4 +1,43 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.097 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest
+Tests run: 13, Failures: 0, Errors: 13, Skipped: 0, Time elapsed: 0.143 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest
+startProgramPoll_FromMPSBIT(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getRunningProgramPolls(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.032 s  <<< ERROR!
+java.lang.NullPointerException
+
+getPollProgramRunningAndStarted(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.017 s  <<< ERROR!
+java.lang.NullPointerException
+
+startProgramPoll(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
+startProgramPoll_ShouldFailWithNullAsPollId(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+createPollWithBrokenJMS_WillFail(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+stopProgramPoll(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.026 s  <<< ERROR!
+java.lang.NullPointerException
+
+inactivateProgramPoll_FromMPSBIT(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
+stopProgramPoll_ShouldFailWithNullAsPollId(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+createPoll_FromMPSBIT(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+createPoll(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+inactivateProgramPoll(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+stopProgramPoll_FromMPSBIT(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+

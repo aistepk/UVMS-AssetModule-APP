@@ -1,4 +1,19 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.083 s - in eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.029 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest
+testUnmarshallTextMessage(eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest)  Time elapsed: 0.011 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	JAXBMarshaller cannot be resolved
+	JAXBMarshaller cannot be resolved
+
+	at eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest.testUnmarshallTextMessage(JAXBMarshallerTest.java:38)
+
+testMarshallJaxBObjectToString(eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problem: 
+	JAXBMarshaller cannot be resolved
+
+	at eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest.testMarshallJaxBObjectToString(JAXBMarshallerTest.java:26)
+

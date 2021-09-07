@@ -1,4 +1,22 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.491 s - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.024 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest
+storeLatest(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+create(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
+exists(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+tryToCreateDups(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAllFor(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+updateDescription(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.CustomCodesServiceIntTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+

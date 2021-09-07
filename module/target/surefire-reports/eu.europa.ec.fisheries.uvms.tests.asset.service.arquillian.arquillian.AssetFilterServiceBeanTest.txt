@@ -1,4 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.945 s - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest
+Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.03 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest
+getAssetFilterByAssetId(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetFilterValue(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetFilterByAssetId_TwoAssetFilters(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+updateAssetFilter(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetFilterById(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+updateAssetFilterValue(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+deleteAssetFilterById(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetFieldList(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+

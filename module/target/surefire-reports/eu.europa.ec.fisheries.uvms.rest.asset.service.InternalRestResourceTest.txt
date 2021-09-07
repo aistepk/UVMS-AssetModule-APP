@@ -1,4 +1,73 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest
 -------------------------------------------------------------------------------
-Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.722 s - in eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest
+Tests run: 23, Failures: 0, Errors: 23, Skipped: 0, Time elapsed: 0.042 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest
+getAssetByIdIccatTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdIrcsTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdGUIDTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getPollInfo(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdUviTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdCfrTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+upsertAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+createPollNonexistantAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.007 s  <<< ERROR!
+java.lang.NullPointerException
+
+updateAssetOverwriteMMSIAndCommentTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdNonValidIdentifierTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getMobileTerminalWithMemberNumberAndDnidAtDateTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAllPollsForAnAsset(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdImoTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+
+getMtAtDate(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+getProgramPollForAnAsset(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+getMobileterminalListWithHistoryTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+updateAssetRetainMMSIAndCommentTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdMmsiTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIdGfcmTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+getMobileterminalListTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+createPollTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+
+createPollUsingOnlyAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+getMobileTerminalAtDateWithMemberNumberAndDnidTest(eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.asset.message.EventStreamSenderTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 109.056 s - in eu.europa.ec.fisheries.uvms.asset.message.EventStreamSenderTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 44.342 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.asset.message.EventStreamSenderTest
+eu.europa.ec.fisheries.uvms.asset.message.EventStreamSenderTest  Time elapsed: 44.342 s  <<< ERROR!
+org.jboss.arquillian.container.spi.client.container.DeploymentException: 
+Cannot deploy test.war: {"WFLYCTL0062: Composite operation failed and was rolled back. Steps that failed:" => {"Operation step-1" => {"WFLYCTL0080: Failed services" => {"jboss.deployment.unit.\"test.war\".WeldStartService" => "Failed to start service
+    Caused by: org.jboss.weld.resources.spi.ResourceLoadingException: Exception while loading class eu.europa.ec.fisheries.uvms.mobileterminal.bean.MobileTerminalServiceBean
+    Caused by: java.lang.TypeNotPresentException: Type ChangeHistoryRow not present
+    Caused by: java.lang.ClassNotFoundException: ChangeHistoryRow"}}}}
+

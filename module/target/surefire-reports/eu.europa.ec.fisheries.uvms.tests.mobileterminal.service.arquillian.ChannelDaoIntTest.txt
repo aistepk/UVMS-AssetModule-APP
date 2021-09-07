@@ -1,4 +1,22 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.745 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.018 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest
+testGetPollableListSearch_NULL(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+testGetPollableListSearch(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException
+
+testGetPollableListSearch_emptyList(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+testGetLowestFreeMemberNumberForDnidWithDnidFull(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+testGetLowestFreeMemberNumberForDnidEmptyDb(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+testGetLowestFreeMemberNumberForDnid(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ChannelDaoIntTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+

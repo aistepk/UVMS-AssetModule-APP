@@ -1,4 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.asset.message.AssetReMappingTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.904 s - in eu.europa.ec.fisheries.uvms.asset.message.AssetReMappingTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.049 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.asset.message.AssetReMappingTest
+assetInformationTest2CheckIfAssetMappingsContainsInfo(eu.europa.ec.fisheries.uvms.asset.message.AssetReMappingTest)  Time elapsed: 0.032 s  <<< ERROR!
+java.lang.NullPointerException
+

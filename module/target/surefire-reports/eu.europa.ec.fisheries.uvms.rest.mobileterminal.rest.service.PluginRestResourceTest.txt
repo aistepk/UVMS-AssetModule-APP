@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PluginRestResourceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PluginRestResourceTest
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.116 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PluginRestResourceTest
+upsertPluginTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PluginRestResourceTest)  Time elapsed: 0.115 s  <<< FAILURE!
+java.lang.AssertionError: expected:<200> but was:<404>
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PluginRestResourceTest.upsertPluginTest(PluginRestResourceTest.java:39)
+

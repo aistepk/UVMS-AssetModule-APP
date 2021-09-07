@@ -1,4 +1,44 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.758 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest
+Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.384 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest
+getPollBySearchCriteria(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.083 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.getPollBySearchCriteria(PollRestResourceQueryTest.java:301)
+
+getPollByTwoSearchCriteria(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.051 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.getPollByTwoSearchCriteria(PollRestResourceQueryTest.java:138)
+
+getProgramPollByIdAndCreatorCriteria(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.04 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.getProgramPollByIdAndCreatorCriteria(PollRestResourceQueryTest.java:178)
+
+getTwoPollsBySearchCriteria(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.036 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.getTwoPollsBySearchCriteria(PollRestResourceQueryTest.java:79)
+
+createConfigurationPoll_ThenGetPollListByMultipleSearchCriteriaTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.037 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createConfigurationPoll_ThenGetPollListByMultipleSearchCriteriaTest(PollRestResourceQueryTest.java:36)
+
+getPollByIdOrUser(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.036 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.getPollByIdOrUser(PollRestResourceQueryTest.java:338)
+
+getProgramPollByTerminalTypeAndAssetIdCriteria(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.058 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.getProgramPollByTerminalTypeAndAssetIdCriteria(PollRestResourceQueryTest.java:258)
+
+getProgramPollByTypeAndAssetIdCriteria(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest)  Time elapsed: 0.04 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.createAndRestBasicAsset(PollRestResourceQueryTest.java:387)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.PollRestResourceQueryTest.getProgramPollByTypeAndAssetIdCriteria(PollRestResourceQueryTest.java:218)
+

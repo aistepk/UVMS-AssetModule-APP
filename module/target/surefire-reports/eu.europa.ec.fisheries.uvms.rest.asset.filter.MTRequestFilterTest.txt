@@ -1,4 +1,18 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.asset.filter.MTRequestFilterTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.017 s - in eu.europa.ec.fisheries.uvms.rest.asset.filter.MTRequestFilterTest
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.821 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.asset.filter.MTRequestFilterTest
+checkMDCHeaderSetTest(eu.europa.ec.fisheries.uvms.rest.asset.filter.MTRequestFilterTest)  Time elapsed: 0.75 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "927535f0-445f-4c5e-9815-658596ffe358"
+     but: was null
+	at eu.europa.ec.fisheries.uvms.rest.asset.filter.MTRequestFilterTest.checkMDCHeaderSetTest(MTRequestFilterTest.java:48)
+
+checkMDCNoHeaderTest(eu.europa.ec.fisheries.uvms.rest.asset.filter.MTRequestFilterTest)  Time elapsed: 0.07 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is not null
+     but: was null
+	at eu.europa.ec.fisheries.uvms.rest.asset.filter.MTRequestFilterTest.checkMDCNoHeaderTest(MTRequestFilterTest.java:32)
+

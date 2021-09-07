@@ -1,4 +1,67 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest
 -------------------------------------------------------------------------------
-Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 88.879 s - in eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest
+Tests run: 21, Failures: 0, Errors: 21, Skipped: 0, Time elapsed: 0.092 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest
+assetInformationTest7ThirdCountrySource(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.007 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest1(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest2(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest3(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest4(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest5(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest6(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest7(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationIrcsWithSpaceTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+NationalAssetWithCorrectIrcsAndMmsiAndInternalAssetWithCorrectButFaultyFormatedIrcs(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationMergeIrcsWithSpaceTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetInformationTest6XEUSource(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+
+upsertAssetTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByMMSITest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+createAssetWithNationalId(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.006 s  <<< ERROR!
+java.lang.NullPointerException
+
+createSeveralAssetsWithEmptyStringIRCSAndUpdateOneOfThemTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+pingTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByIRCSTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+getAssetByCFRTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.NullPointerException
+
+updateAssetWithEmptyStringIRCS(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetSourceTest(eu.europa.ec.fisheries.uvms.asset.message.AssetEventQueueTest)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.NullPointerException
+

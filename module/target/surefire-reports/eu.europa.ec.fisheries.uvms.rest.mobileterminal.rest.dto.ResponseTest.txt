@@ -1,4 +1,30 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.419 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.325 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest
+checkDtoReturnsValid(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest)  Time elapsed: 0.324 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class eu.europa.ec.fisheries.uvms.mobileterminal.bean.MobileTerminalServiceBean.
+
+Mockito can only mock non-private & non-final classes.
+If you're not sure why you're getting this error, please report to the mailing list.
+
+
+Java               : 11
+JVM vendor name    : AdoptOpenJDK
+JVM vendor version : 11.0.8+10
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 11.0.8+10
+JVM info           : mixed mode
+OS name            : Mac OS X
+OS version         : 10.16
+
+
+Underlying exception : java.lang.TypeNotPresentException: Type ChangeHistoryRow not present
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest.setUp(ResponseTest.java:57)
+Caused by: java.lang.TypeNotPresentException: Type ChangeHistoryRow not present
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest.setUp(ResponseTest.java:57)
+Caused by: java.lang.ClassNotFoundException: ChangeHistoryRow
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest.setUp(ResponseTest.java:57)
+

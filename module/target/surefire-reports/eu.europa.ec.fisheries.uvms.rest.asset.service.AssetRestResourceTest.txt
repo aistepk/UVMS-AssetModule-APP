@@ -1,4 +1,182 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest
 -------------------------------------------------------------------------------
-Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.373 s - in eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest
+Tests run: 36, Failures: 3, Errors: 33, Skipped: 0, Time elapsed: 1.625 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest
+getAssetFromAssetIdPastDateTestWithDateToEarly(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.107 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetFromAssetIdPastDateTestWithDateToEarly(AssetRestResourceTest.java:689)
+
+createNoteTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.048 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.createNoteTest(AssetRestResourceTest.java:757)
+
+getPastAssetFromAssetIdPastDateTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.047 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getPastAssetFromAssetIdPastDateTest(AssetRestResourceTest.java:589)
+
+getAssetWithAttachedMTUpdateTheMTAndAssetACoupleOfTimesTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.047 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetWithAttachedMTUpdateTheMTAndAssetACoupleOfTimesTest(AssetRestResourceTest.java:236)
+
+archiveAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.043 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.archiveAssetTest(AssetRestResourceTest.java:402)
+
+getNoteByIdTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.042 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getNoteByIdTest(AssetRestResourceTest.java:885)
+
+getAssetHistoryByAssetHistGuidTwoRevisionsTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.041 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetHistoryByAssetHistGuidTwoRevisionsTest(AssetRestResourceTest.java:725)
+
+getNonExistantAssetByIdTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.036 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getNonExistantAssetByIdTest(AssetRestResourceTest.java:119)
+
+createAssetWithLongCommentTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.041 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.createAssetWithLongCommentTest(AssetRestResourceTest.java:76)
+
+updateAssetsSeveralTimesAndAddAnMTAndCheckAssetChangeHistoryTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.04 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.updateAssetsSeveralTimesAndAddAnMTAndCheckAssetChangeHistoryTest(AssetRestResourceTest.java:1144)
+
+getAssetFromAssetIdAndDateCfrTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.04 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetFromAssetIdAndDateCfrTest(AssetRestResourceTest.java:528)
+
+getContactInfo(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.042 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getContactInfo(AssetRestResourceTest.java:987)
+
+getAssetHistory_ThenVerifyItHoldsMobileTerminalHistory(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.041 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetHistory_ThenVerifyItHoldsMobileTerminalHistory(AssetRestResourceTest.java:780)
+
+deleteNoteTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.039 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.deleteNoteTest(AssetRestResourceTest.java:929)
+
+getAssetFromAssetIdPastDateTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.044 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetFromAssetIdPastDateTest(AssetRestResourceTest.java:567)
+
+createAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.042 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.createAssetTest(AssetRestResourceTest.java:86)
+
+getNotesForAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.046 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getNotesForAssetTest(AssetRestResourceTest.java:852)
+
+archiveAssetNonExistingAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.066 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is <200>
+     but: was <405>
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.archiveAssetNonExistingAssetTest(AssetRestResourceTest.java:521)
+
+checkPastNumberOfMTTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.048 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.checkPastNumberOfMTTest(AssetRestResourceTest.java:614)
+
+createAssetCheckResponseCodeTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.044 s  <<< FAILURE!
+java.lang.AssertionError: expected:<200> but was:<404>
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.createAssetCheckResponseCodeTest(AssetRestResourceTest.java:60)
+
+updateAssetsSeveralTimesAndCheckAssetChangeHistoryTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.047 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.updateAssetsSeveralTimesAndCheckAssetChangeHistoryTest(AssetRestResourceTest.java:1093)
+
+updateAssetNonExistingAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.042 s  <<< ERROR!
+org.glassfish.jersey.message.internal.MessageBodyProviderNotFoundException: MessageBodyReader not found for media type=text/html, type=class eu.europa.ec.fisheries.uvms.rest.asset.filter.AppError, genericType=class eu.europa.ec.fisheries.uvms.rest.asset.filter.AppError.
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.updateAssetNonExistingAssetTest(AssetRestResourceTest.java:391)
+
+getAssetByIdRandomValueTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.034 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetByIdRandomValueTest(AssetRestResourceTest.java:311)
+
+unarchiveAssetTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.043 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.unarchiveAssetTest(AssetRestResourceTest.java:480)
+
+createAssetAndContactInfoAndCompareHistoryItemsTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.047 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.createAssetAndContactInfoAndCompareHistoryItemsTest(AssetRestResourceTest.java:1021)
+
+getAssetWithAttachedMTUpdateTheMTACoupleOfTimesTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.042 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetWithAttachedMTUpdateTheMTACoupleOfTimesTest(AssetRestResourceTest.java:180)
+
+getAssetHistoryByAssetHistGuidTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.044 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetHistoryByAssetHistGuidTest(AssetRestResourceTest.java:708)
+
+updateAssetRetainConnectedMTTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.039 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.updateAssetRetainConnectedMTTest(AssetRestResourceTest.java:362)
+
+getVesselTypeTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.041 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getVesselTypeTest(AssetRestResourceTest.java:130)
+
+archiveAsset_ThenVerifyMobileTerminalUnlinkedAndInactivatedTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.041 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.archiveAsset_ThenVerifyMobileTerminalUnlinkedAndInactivatedTest(AssetRestResourceTest.java:421)
+
+updateAssetChangedNameTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.041 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.updateAssetChangedNameTest(AssetRestResourceTest.java:335)
+
+getAssetByIdTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.04 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetByIdTest(AssetRestResourceTest.java:98)
+
+getAssetAndConnectedMobileTerminalTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.043 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetAndConnectedMobileTerminalTest(AssetRestResourceTest.java:661)
+
+getAssetWithAttachedMTTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.056 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.restCreateAsset(AssetRestResourceTest.java:1206)
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetWithAttachedMTTest(AssetRestResourceTest.java:148)
+
+getAssetByIdInvalidIdTest(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.037 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is <200>
+     but: was <404>
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getAssetByIdInvalidIdTest(AssetRestResourceTest.java:328)
+
+getNonexistantNote(eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest)  Time elapsed: 0.035 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.getNonexistantNote(AssetRestResourceTest.java:920)
+

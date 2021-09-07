@@ -1,4 +1,73 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.675 s - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest
+Tests run: 14, Failures: 0, Errors: 14, Skipped: 0, Time elapsed: 0.627 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest
+searchForSerialNumberAfterCreatingNewEvents(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.05 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createAndRestBasicAsset(MobileTerminalListQueryTest.java:606)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.searchForSerialNumberAfterCreatingNewEvents(MobileTerminalListQueryTest.java:527)
+
+getMobileTerminalListWithConnectIDTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.04 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createAndRestBasicAsset(MobileTerminalListQueryTest.java:606)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithConnectIDTest(MobileTerminalListQueryTest.java:282)
+
+getMobileTerminalListWithDNIDTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.101 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithDNIDTest(MobileTerminalListQueryTest.java:192)
+
+getHistoricalMobileTerminalListTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.041 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getHistoricalMobileTerminalListTest(MobileTerminalListQueryTest.java:431)
+
+getMobileTerminalListTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.042 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListTest(MobileTerminalListQueryTest.java:62)
+
+getMobileTerminalListWithTwoChannelsAndAnUpdateTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.039 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithTwoChannelsAndAnUpdateTest(MobileTerminalListQueryTest.java:393)
+
+getMobileTerminalList_ArchivedMobileTerminalsIncluded(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.038 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalList_ArchivedMobileTerminalsIncluded(MobileTerminalListQueryTest.java:481)
+
+getMobileTerminalListWithWildCardsInSerialNumberTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.039 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithWildCardsInSerialNumberTest(MobileTerminalListQueryTest.java:88)
+
+getMobileTerminalListWithTwoChannelsTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.038 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithTwoChannelsTest(MobileTerminalListQueryTest.java:359)
+
+getMobileTerminalListWithSatelliteNrTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.038 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithSatelliteNrTest(MobileTerminalListQueryTest.java:164)
+
+getMobileTerminalListWithSatelliteAndDNIDTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.035 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithSatelliteAndDNIDTest(MobileTerminalListQueryTest.java:252)
+
+getMobileTerminalListWithMtIdTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.035 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithMtIdTest(MobileTerminalListQueryTest.java:319)
+
+getMobileTerminalListWithExistingButEmptyInput(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.05 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithExistingButEmptyInput(MobileTerminalListQueryTest.java:45)
+
+getMobileTerminalListWithMemberNumberTest(eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest)  Time elapsed: 0.038 s  <<< ERROR!
+javax.ws.rs.NotFoundException: HTTP 404 Not Found
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.createMobileTerminal(MobileTerminalListQueryTest.java:593)
+	at eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.getMobileTerminalListWithMemberNumberTest(MobileTerminalListQueryTest.java:221)
+

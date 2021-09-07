@@ -1,4 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetRemapTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.228 s - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetRemapTest
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.018 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetRemapTest
+assetRemapWithOldAssetThatStillHasMovementsMappingTest(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetRemapTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetRemapWithOldAssetMappingTest(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetRemapTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetRemapOldAssetIsRandomTest(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetRemapTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
+assetRemapTest(eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetRemapTest)  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.NullPointerException
+
