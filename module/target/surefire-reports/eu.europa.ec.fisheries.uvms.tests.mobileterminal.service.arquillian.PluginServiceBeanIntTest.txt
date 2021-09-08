@@ -1,7 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PluginServiceBeanIntTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PluginServiceBeanIntTest
-sendPoll(eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PluginServiceBeanIntTest)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PluginServiceBeanIntTest

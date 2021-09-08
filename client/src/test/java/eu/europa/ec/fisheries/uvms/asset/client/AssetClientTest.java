@@ -440,7 +440,7 @@ public class AssetClientTest extends AbstractClientTest {
         assertNotNull(response.getAssetHistoryId());
         assertNotNull(response.getAssetUUID());
         assertTrue(response.getAssetName().contains("Unknown"));
-        assertTrue(response.getFlagstate().equals("UNK"));
+        assertEquals("123456789",response.getFlagstate());
         assertEquals("123456789", response.getMmsi());
     }
 
@@ -490,7 +490,7 @@ public class AssetClientTest extends AbstractClientTest {
         assertNotNull(response.getAssetHistoryId());
         assertNotNull(response.getAssetUUID());
         assertTrue(response.getAssetName().contains("Unknown"));
-        assertTrue(response.getFlagstate().equals("UNK"));
+        assertEquals("123456789",response.getFlagstate());
         assertEquals("123456789", response.getMmsi());
         assertNull(response.getIrcs());
     }
@@ -507,8 +507,8 @@ public class AssetClientTest extends AbstractClientTest {
         assertNotNull(response);
         assertNotNull(response.getAssetHistoryId());
         assertNotNull(response.getAssetUUID());
-        assertTrue(response.getAssetName(), response.getAssetName().equals("Named Ship"));
-        assertTrue(response.getFlagstate().equals("SWE"));
+        assertEquals(response.getAssetName(), response.getAssetName().equals("Named Ship"));
+        assertEquals("SWE",response.getFlagstate().equals("SWE"));
         assertEquals("987654321", response.getMmsi());
     }
 
@@ -530,7 +530,7 @@ public class AssetClientTest extends AbstractClientTest {
         assertNotNull(response);
         assertNotNull(response.getAssetHistoryId());
         assertNotNull(response.getAssetUUID());
-        assertTrue(response.getAssetName(), response.getAssetName().equals(upsertAssetBo.getAsset().getName()));
+        assertEquals(response.getAssetName(), response.getAssetName().equals(upsertAssetBo.getAsset().getName()));
         assertTrue(response.getFlagstate().equals(upsertAssetBo.getAsset().getFlagStateCode()));
         assertEquals(upsertAssetBo.getAsset().getMmsi(), response.getMmsi());
 
