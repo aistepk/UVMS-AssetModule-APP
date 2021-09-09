@@ -26,7 +26,7 @@ import javax.jms.TextMessage;
 import java.util.List;
 
 <span class="nc" id="L28">public class MobileTerminalModuleResponseMapper {</span>
-<span class="nc" id="L29">    final static Logger LOG = LoggerFactory.getLogger(MobileTerminalModuleResponseMapper.class);</span>
+<span class="nc" id="L29">   static final Logger LOG = LoggerFactory.getLogger(MobileTerminalModuleResponseMapper.class);</span>
 
     private static void validateResponse(TextMessage response, String correlationId) throws JMSException {
 

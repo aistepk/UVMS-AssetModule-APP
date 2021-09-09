@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollDaoBeanIntTest
 -------------------------------------------------------------------------------
-Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.667 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollDaoBeanIntTest
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.642 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollDaoBeanIntTest

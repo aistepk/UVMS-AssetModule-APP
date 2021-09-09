@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.292 s - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.217 s - in eu.europa.ec.fisheries.uvms.tests.asset.service.arquillian.arquillian.AssetFilterServiceBeanTest
