@@ -28,7 +28,7 @@ import java.util.UUID;
         @Index(columnList = "mobileterminal_id", name = "pollbase_mobterm_FK_INX10", unique = false),})
 @Inheritance(strategy = InheritanceType.JOINED)
 @XmlRootElement
-({
+@NamedQueries({
         @NamedQuery(name = PollBase.FIND_ALL, query = "SELECT p FROM PollBase p"),
         @NamedQuery(name = PollBase.FIND_BY_TYPE, query = "SELECT p FROM PollBase p WHERE p.pollTypeEnum = :pollTypeEnum"),
         @NamedQuery(name = PollBase.FIND_BY_USER, query = "SELECT p FROM PollBase p WHERE p.creator = :pollUserCreator"),
