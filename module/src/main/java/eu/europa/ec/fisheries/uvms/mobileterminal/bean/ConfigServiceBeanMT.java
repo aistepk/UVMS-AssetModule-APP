@@ -37,7 +37,8 @@ import javax.ejb.Stateless;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;gi
+import javax.ws.rs.core.MediaType;
+import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
