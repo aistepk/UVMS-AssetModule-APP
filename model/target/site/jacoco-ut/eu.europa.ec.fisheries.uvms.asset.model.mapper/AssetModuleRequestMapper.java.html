@@ -23,7 +23,7 @@ import java.util.Date;
 
 <span class="nc" id="L24">public class AssetModuleRequestMapper {</span>
 
-<span class="nc" id="L26">    private final static Logger LOG = LoggerFactory.getLogger(AssetModuleRequestMapper.class);</span>
+<span class="nc" id="L26">    private static final Logger LOG = LoggerFactory.getLogger(AssetModuleRequestMapper.class);</span>
 
     public static String createGetAssetModuleRequest(String value, AssetIdType type) throws AssetException {
 <span class="nc" id="L29">        GetAssetModuleRequest request = new GetAssetModuleRequest();</span>

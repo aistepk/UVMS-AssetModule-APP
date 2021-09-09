@@ -27,7 +27,7 @@ import java.util.List;
 
 <span class="nc" id="L28">public class AssetModuleResponseMapper {</span>
 
-<span class="nc" id="L30">    private final static Logger LOG = LoggerFactory.getLogger(AssetModuleResponseMapper.class);</span>
+<span class="nc" id="L30">    private static final Logger LOG = LoggerFactory.getLogger(AssetModuleResponseMapper.class);</span>
 
     private static void validateResponse(TextMessage response, String correlationId) throws JMSException {
 

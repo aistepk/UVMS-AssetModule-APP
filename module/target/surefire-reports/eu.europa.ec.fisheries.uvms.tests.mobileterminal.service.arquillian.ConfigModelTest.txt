@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ConfigModelTest
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.613 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ConfigModelTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.677 s - in eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ConfigModelTest
