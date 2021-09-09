@@ -190,7 +190,7 @@ public class AssetFilterServiceBean{
     			 assetFilterValue.setAssetFilterQuery(assetFilterQuery);
     			 assetFilterValue = assetFilterDao.create(assetFilterValue);
     		 }
-    	 };
+    	 }
     	 assetFilter.setOwner(username);
     	 assetFilter.setUpdatedBy(username);
     	 assetFilter.setUpdateTime(Instant.now());
