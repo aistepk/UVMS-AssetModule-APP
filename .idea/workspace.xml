@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/asset/model/mapper/AssetModuleResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/asset/model/mapper/AssetModuleResponseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/bean/AssetFilterServiceBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/bean/AssetFilterServiceBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/sonar/report-task.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/sonar/report-task.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +91,7 @@
       <workItem from="1630581052058" duration="100000" />
       <workItem from="1630581166195" duration="1797000" />
       <workItem from="1631171185105" duration="1099000" />
-      <workItem from="1631172303196" duration="1559000" />
+      <workItem from="1631172303196" duration="3338000" />
     </task>
     <servers />
   </component>
