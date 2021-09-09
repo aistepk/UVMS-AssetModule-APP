@@ -1,6 +1,0 @@
-projectKey=lia22
-serverUrl=http://localhost
-serverVersion=9.0.1.46107
-dashboardUrl=http://localhost/dashboard?id=lia22
-ceTaskId=AXvJzoH9XRxVD_zL9FCx
-ceTaskUrl=http://localhost/api/ce/task?id=AXvJzoH9XRxVD_zL9FCx
