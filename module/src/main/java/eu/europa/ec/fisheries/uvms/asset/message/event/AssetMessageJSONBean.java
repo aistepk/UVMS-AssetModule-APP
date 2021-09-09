@@ -23,7 +23,6 @@ import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
 import javax.json.bind.Jsonb;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
