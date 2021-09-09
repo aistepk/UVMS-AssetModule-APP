@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: eu.europa.ec.fisheries.uvms.asset.client.AssetClientTest
--------------------------------------------------------------------------------
-Tests run: 40, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 34.946 s - in eu.europa.ec.fisheries.uvms.asset.client.AssetClientTest

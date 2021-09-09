@@ -5,9 +5,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LIQUIBASE/target/liquibase.zip" beforeDir="false" afterPath="$PROJECT_DIR$/LIQUIBASE/target/liquibase.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/asset-client-6.8.13-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/Channel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/Channel.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/MobileTerminal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/MobileTerminal.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/VmsBillingDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/VmsBillingDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.mt/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchBranch.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchBranch.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchFieldType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchFieldType.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchFields.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchFields.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchLeaf.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/SearchLeaf.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model.search/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetBO.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetBO.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetDTO.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetDTO.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetIdentifier.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetIdentifier.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetListResponse.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetListResponse.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetMTEnrichmentRequest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetMTEnrichmentRequest.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetMTEnrichmentResponse.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/AssetMTEnrichmentResponse.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/ContactInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/ContactInfo.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/CreatePollResultDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/CreatePollResultDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/CustomCode.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/CustomCode.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/CustomCodesPK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/CustomCodesPK.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/FishingLicence.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/FishingLicence.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/Note.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/Note.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/PollType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/PollType.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/PollTypeEnum.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/PollTypeEnum.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/SanePollDto.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/SanePollDto.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/SimpleCreatePoll.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/SimpleCreatePoll.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client.model/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient$9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/AssetClient.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/eu.europa.ec.fisheries.uvms.asset.client/index.source.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/branchfc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/branchnc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/branchpc.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/bundle.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/class.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/down.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/greenbar.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/group.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/method.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/package.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/redbar.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/report.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/report.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/session.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/sort.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/sort.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/source.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-resources/up.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco-sessions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/site/jacoco-ut/jacoco.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.asset.client.AssetClientTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.asset.client.AssetClientTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/surefire-reports/eu.europa.ec.fisheries.uvms.asset.client.AssetClientTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/surefire-reports/eu.europa.ec.fisheries.uvms.asset.client.AssetClientTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/schema/mobileterminal/module/v1/MobileTerminalFaultException.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/schema/mobileterminal/module/v1/MobileTerminalFaultException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/schema/mobileterminal/module/v1/MobileTerminalPortType.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/schema/mobileterminal/module/v1/MobileTerminalPortType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/schema/mobileterminal/module/v1/MobileTerminalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/schema/mobileterminal/module/v1/MobileTerminalService.java" afterDir="false" />
@@ -21,15 +114,8 @@
       <change beforePath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/wsdl/asset/module/AssetModuleFaultException.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/wsdl/asset/module/AssetModuleFaultException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/wsdl/asset/module/AssetModulePortType.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/wsdl/asset/module/AssetModulePortType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/wsdl/asset/module/AssetModuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/generated-sources/cxf/eu/europa/ec/fisheries/wsdl/asset/module/AssetModuleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/jacoco.exec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.MobileTerminalDataSourceRequestValidatorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.MobileTerminalDataSourceRequestValidatorTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.PollDataSourceRequestValidatorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/surefire-reports/TEST-eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.PollDataSourceRequestValidatorTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/surefire-reports/eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/surefire-reports/eu.europa.ec.fisheries.uvms.mobileterminal.model.mapper.JAXBMarshallerTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/surefire-reports/eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.MobileTerminalDataSourceRequestValidatorTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/surefire-reports/eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.MobileTerminalDataSourceRequestValidatorTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/target/surefire-reports/eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.PollDataSourceRequestValidatorTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/model/target/surefire-reports/eu.europa.ec.fisheries.uvms.mobileterminal.model.validator.PollDataSourceRequestValidatorTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/jacoco.exec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/sonar/css-bundle/bin/server" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/sonar/css-bundle/lib/src/server.d.ts" beforeDir="false" />
@@ -6346,6 +6432,7 @@
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.CustomCodeRestResourceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.CustomCodeRestResourceTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.InternalRestResourceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.SSEResourceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.asset.service.SSEResourceTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.dto.ResponseTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalListQueryTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalRestResourceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.rest.mobileterminal.rest.service.MobileTerminalRestResourceTest.txt" afterDir="false" />
@@ -6364,10 +6451,10 @@
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ConfigServiceBeanIntTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.ConfigServiceBeanIntTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.MobileTerminalPluginDaoBeanIntTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.MobileTerminalPluginDaoBeanIntTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.MobileTerminalServiceIntTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.MobileTerminalServiceIntTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PluginServiceBeanIntTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PluginServiceBeanIntTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollDaoBeanIntTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollDaoBeanIntTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollServiceBeanIntTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollTimerTaskTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/module/target/surefire-reports/eu.europa.ec.fisheries.uvms.tests.mobileterminal.service.arquillian.PollTimerTaskTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/sonar/.sonar_lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/sonar/report-task.txt" beforeDir="false" />
     </list>
@@ -6410,11 +6497,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -6430,6 +6521,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="assetmodule.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/assetmodule.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.assetmodule.sh" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -6442,6 +6553,11 @@
       <workItem from="1630573172615" duration="1765000" />
       <workItem from="1630581052058" duration="100000" />
       <workItem from="1630581166195" duration="1797000" />
+      <workItem from="1631172895659" duration="274000" />
+      <workItem from="1631173412435" duration="881000" />
+      <workItem from="1631174318432" duration="58000" />
+      <workItem from="1631174413672" duration="1985000" />
+      <workItem from="1631176699387" duration="1553000" />
     </task>
     <servers />
   </component>
@@ -6489,5 +6605,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

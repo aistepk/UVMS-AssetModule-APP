@@ -1,6 +1,0 @@
-projectKey=lia
-serverUrl=http://localhost:8000
-serverVersion=9.0.1.46107
-dashboardUrl=http://localhost:8000/dashboard?id=lia
-ceTaskId=AXvGBdBXfMbELemmd2kP
-ceTaskUrl=http://localhost:8000/api/ce/task?id=AXvGBdBXfMbELemmd2kP
