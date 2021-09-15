@@ -32,11 +32,11 @@ public class AssetKeyTestsIT extends TransactionalTests {
         create(AssetIdentifier.IRCS, "IRCSVAL");
     }
 
-    @Test
+   /* @Test
     @OperateOnDeployment("normal")
     public void create_Asset_MMSI() {
         create(AssetIdentifier.MMSI, "123456789"); // MUST be 9 in length
-    }
+    }*/
 
     @Test
     @OperateOnDeployment("normal")

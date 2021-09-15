@@ -110,7 +110,7 @@ public class PollProgramDaoBeanIT extends TransactionalTests {
         try {
             pollProgramDao.createProgramPoll(null);
             Assert.fail();
-        }catch(RuntimeException e){
+        } catch (RuntimeException e) {
             Assert.assertTrue(true);
         }
     }
@@ -141,7 +141,7 @@ public class PollProgramDaoBeanIT extends TransactionalTests {
 
     @Test
     @OperateOnDeployment("normal")
-    public void updatePollProgram_WithNonePersistedEntityWillFail()  {
+    public void updatePollProgram_WithNonePersistedEntityWillFail() {
 
         Instant startDate = getStartDate();
         Instant latestRun = getLatestRunDate();

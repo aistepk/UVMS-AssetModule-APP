@@ -462,6 +462,25 @@ public class AssetServiceBeanIntTest extends TransactionalTests {
         assetService.deleteAsset(AssetIdentifier.GUID, asset.getId().toString());
         commit();
     }
+    @Test
+    @OperateOnDeployment("normal")
+    public void getAssetListTestIdQueries() throws Exception {
+        Asset asset = AssetTestsHelper.createBiggerAsset();
+        asset.setName("getAssetListTestIdeQueryTest");
+        asset = assetService.createAsset(asset, "test");
+        commit();
+
+        SearchBranch trunk = new SearchBranch(true);
+        trunk.getFields().add(new SearchLeaf(SearchFields.NAME, asset.getName()));
+
+        List<Asset> assets = assetService.getAssetList(trunk, 1, 100,  false).getAssetList();
+
+        assertFalse(assets.isEmpty());
+        assertEquals(asset.getCfr(), assets.get(0).getCfr());
+        assetService.deleteAsset(AssetIdentifier.GUID, asset.getId().toString());
+        commit();
+    }
+
 
     @Test
     @OperateOnDeployment("normal")
