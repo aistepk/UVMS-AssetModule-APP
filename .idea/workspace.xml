@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalDataSourceResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalDataSourceResponseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/PollDataSourceResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/PollDataSourceResponseMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +179,7 @@
       <workItem from="1631707413749" duration="1091000" />
       <workItem from="1631708532739" duration="3456000" />
       <workItem from="1631713737458" duration="1595000" />
-      <workItem from="1631784246131" duration="776000" />
+      <workItem from="1631784246131" duration="1597000" />
     </task>
     <servers />
   </component>

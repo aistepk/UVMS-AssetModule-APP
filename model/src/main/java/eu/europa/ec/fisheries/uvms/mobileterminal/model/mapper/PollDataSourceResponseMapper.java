@@ -29,7 +29,7 @@ import static eu.europa.ec.fisheries.uvms.mobileterminal.exception.ErrorCode.*;
 
 public class PollDataSourceResponseMapper {
 
-    private static Logger LOG = LoggerFactory.getLogger(PollDataSourceResponseMapper.class);
+    private static Logger log = LoggerFactory.getLogger(PollDataSourceResponseMapper.class);
 
     private static void validateResponse(TextMessage response, String correlationId) throws JMSException {
 
@@ -59,7 +59,7 @@ public class PollDataSourceResponseMapper {
             CreatePollResponse unmarshalledResponse = JAXBMarshaller.unmarshallTextMessage(response, CreatePollResponse.class);
             return unmarshalledResponse.getPollList();
         } catch (AssetException | JMSException e) {
-            LOG.error("[ Error when unmarshalling poll create responses. ] {}", e);
+            log.error("[ Error when unmarshalling poll create responses. ] {}", e);
             throw new AssetException(UNMARSHALLING_ERROR.getMessage() + CreatePollResponse.class.getName() , e, UNMARSHALLING_ERROR.getCode());
         }
     }
@@ -70,7 +70,7 @@ public class PollDataSourceResponseMapper {
             PollListResponse unmarshalledResponse = JAXBMarshaller.unmarshallTextMessage(response, PollListResponse.class);
             return unmarshalledResponse.getPollList();
         } catch (AssetException | JMSException e) {
-            LOG.error("[ Error when unmarshalling poll list responses. ] {}", e);
+            log.error("[ Error when unmarshalling poll list responses. ] {}", e);
             throw new AssetException(UNMARSHALLING_ERROR.getMessage() + PollListResponse.class.getName() , e, UNMARSHALLING_ERROR.getCode());
         }
     }
@@ -80,7 +80,7 @@ public class PollDataSourceResponseMapper {
             validateResponse(response, messageId);
             return JAXBMarshaller.unmarshallTextMessage(response, PollListResponse.class);
         } catch (AssetException | JMSException e) {
-            LOG.error("[ Error when unmarshalling poll list responses. ] {}", e);
+            log.error("[ Error when unmarshalling poll list responses. ] {}", e);
             throw new AssetException(UNMARSHALLING_ERROR.getMessage() + PollListResponse.class.getName() , e, UNMARSHALLING_ERROR.getCode());
         }
 	}
@@ -91,7 +91,7 @@ public class PollDataSourceResponseMapper {
             SinglePollResponse unmarshalledResponse = JAXBMarshaller.unmarshallTextMessage(response, SinglePollResponse.class);
             return unmarshalledResponse.getPoll();
         } catch (AssetException | JMSException e) {
-            LOG.error("[ Error when unmarshalling single poll responses. ] {}", e);
+            log.error("[ Error when unmarshalling single poll responses. ] {}", e);
             throw new AssetException(UNMARSHALLING_ERROR.getMessage() + SinglePollResponse.class.getName() , e, UNMARSHALLING_ERROR.getCode());
         }
     }
