@@ -6,14 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="asset-module" />
+        <module name="asset-client" />
+        <module name="asset-model" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="asset" target="11" />
-      <module name="asset-client" target="11" />
-      <module name="asset-model" target="11" />
-      <module name="asset-module" target="11" />
-      <module name="liquibase" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
