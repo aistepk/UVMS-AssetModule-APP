@@ -21,15 +21,15 @@ import java.util.Set;
 
 public class MobileTerminalDataSourceRequestValidator {
 
-    private static Logger LOG = LoggerFactory.getLogger(MobileTerminalDataSourceRequestValidator.class);
-    private static String IRIDIUM = "IRIDIUM";
+    private static Logger log = LoggerFactory.getLogger(MobileTerminalDataSourceRequestValidator.class);
+    private static String iridium = "IRIDIUM";
 
     public static void validateCreateMobileTerminalType(MobileTerminalType mobTermType) {
         if(mobTermType.isInactive()){
             throw new RuntimeException("Cannot create a Mobile Terminal with status set to inactive");
         }
         validateMobileTerminalAttributes(mobTermType.getAttributes());
-        if(!IRIDIUM.equalsIgnoreCase(mobTermType.getType())) {
+        if(!iridium.equalsIgnoreCase(mobTermType.getType())) {
             validateComChannels(mobTermType);
         }
     }
@@ -37,7 +37,7 @@ public class MobileTerminalDataSourceRequestValidator {
     public static void validateMobileTerminalType(MobileTerminalType mobTermType) {
         validateMobileTerminalId(mobTermType.getMobileTerminalId());
         validateMobileTerminalAttributes(mobTermType.getAttributes());
-        if(!IRIDIUM.equalsIgnoreCase(mobTermType.getType())) {
+        if(!iridium.equalsIgnoreCase(mobTermType.getType())) {
             validateComChannels(mobTermType);
         }
     }
@@ -66,7 +66,7 @@ public class MobileTerminalDataSourceRequestValidator {
         		validateVMS(channel);
         	}
         	else {
-        	    LOG.debug("Channel name is not VMS. Will not validate further, and will probably fail validation in the future.");
+        	    log.debug("Channel name is not VMS. Will not validate further, and will probably fail validation in the future.");
         	}
         	//	throw new MobileTerminalModelValidationException("ComChannel with SystemType " + type.getType() + " validation not implemented");
         }
