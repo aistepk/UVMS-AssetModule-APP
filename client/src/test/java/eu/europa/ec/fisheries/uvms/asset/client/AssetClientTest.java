@@ -440,7 +440,7 @@ public class AssetClientTest extends AbstractClientTest {
         assertNotNull(response.getAssetHistoryId());
         assertNotNull(response.getAssetUUID());
         assertTrue(response.getAssetName().contains("Unknown"));
-        assertTrue(response.getFlagstate().equals("UNK"));
+        assertEquals("UNK", response.getFlagstate());
         assertEquals("123456789", response.getMmsi());
     }
 
@@ -490,7 +490,7 @@ public class AssetClientTest extends AbstractClientTest {
         assertNotNull(response.getAssetHistoryId());
         assertNotNull(response.getAssetUUID());
         assertTrue(response.getAssetName().contains("Unknown"));
-        assertTrue(response.getFlagstate().equals("UNK"));
+        assertEquals("UNK"), response.getFlagstate());
         assertEquals("123456789", response.getMmsi());
         assertNull(response.getIrcs());
     }
@@ -507,8 +507,8 @@ public class AssetClientTest extends AbstractClientTest {
         assertNotNull(response);
         assertNotNull(response.getAssetHistoryId());
         assertNotNull(response.getAssetUUID());
-        assertTrue(response.getAssetName().equals("Named Ship"));
-        assertTrue("SWE",response.getFlagstate().equals("SWE"));
+        assertEquals("Named Ship", response.getAssetName());
+        assertEquals("SWE", response.getFlagstate());
         assertEquals("987654321", response.getMmsi());
     }
 
