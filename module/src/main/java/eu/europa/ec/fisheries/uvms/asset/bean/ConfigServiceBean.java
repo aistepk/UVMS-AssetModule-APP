@@ -45,11 +45,10 @@ public class ConfigServiceBean {
 			LOG.error("[ Error when getting asset parameters from local database. ] {}", e);
 			throw new AssetServiceException("Couldn't get parameters");
 		}
-	}
+	}git
 
 	private  List<String> getGearTypes() {
-		List<String> values = new ArrayList<>();
-		return values;
+		return getGearTypes();
 	}
 
 	private  List<String> getLengthUnit() {
