@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/asset/model/mapper/AssetModuleRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/asset/model/mapper/AssetModuleRequestMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/bean/ConfigServiceBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/bean/ConfigServiceBean.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,6 +169,7 @@
       <workItem from="1632384173011" duration="2237000" />
       <workItem from="1632386453726" duration="9863000" />
       <workItem from="1632491516363" duration="2019000" />
+      <workItem from="1632690770776" duration="89000" />
     </task>
     <servers />
   </component>
