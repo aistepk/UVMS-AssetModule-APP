@@ -38,7 +38,6 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
-import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -105,8 +104,8 @@ public class ConfigServiceBeanMT {
         return terminalSystemList;
     }
 
-    private Map<MobileTerminalTypeEnum, List<MobileTerminalPlugin>> getPlugins() {
-        Map<MobileTerminalTypeEnum, List<MobileTerminalPlugin>> plugins = new HashMap<>();
+    private EnumMap<MobileTerminalTypeEnum, List<MobileTerminalPlugin>> getPlugins() {
+        EnumMap<MobileTerminalTypeEnum, List<MobileTerminalPlugin>> plugins = new EnumMap<>(MobileTerminalTypeEnum.class);
         for (MobileTerminalPlugin plugin : mobileTerminalPluginDao.getPluginList()) {
             MobileTerminalTypeEnum mobileTerminalType = MobileTerminalTypeEnum.getType(plugin.getPluginSatelliteType());
             if (mobileTerminalType == null) {
