@@ -23,7 +23,7 @@ import java.util.List;
  **/
 public class MockData {
 
-    private static Logger LOG = LoggerFactory.getLogger(MockData.class);
+    private static Logger log = LoggerFactory.getLogger(MockData.class);
 
     public static MobileTerminalType createMobileTerminalDto(Integer id) {
         MobileTerminalType dto = new MobileTerminalType();
