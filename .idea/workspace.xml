@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/bean/ConfigServiceBeanMT.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/bean/ConfigServiceBeanMT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalDataSourceResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalDataSourceResponseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalGenericMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalGenericMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalModuleResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/MobileTerminalModuleResponseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/PollDataSourceResponseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/mapper/PollDataSourceResponseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/mapper/AssetDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/mapper/AssetDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/mapper/HistoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/mapper/HistoryMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +175,7 @@
       <workItem from="1632386453726" duration="9863000" />
       <workItem from="1632491516363" duration="2019000" />
       <workItem from="1632690770776" duration="1131000" />
-      <workItem from="1632734667330" duration="1698000" />
+      <workItem from="1632734667330" duration="5060000" />
     </task>
     <servers />
   </component>

@@ -26,6 +26,11 @@ import javax.jms.TextMessage;
 import java.util.List;
 
 public class MobileTerminalModuleResponseMapper {
+
+    private MobileTerminalModuleResponseMapper() {
+
+    }
+
    static final Logger LOG = LoggerFactory.getLogger(MobileTerminalModuleResponseMapper.class);
 
     private static void validateResponse(TextMessage response, String correlationId) throws JMSException {
