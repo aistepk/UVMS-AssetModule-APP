@@ -24,6 +24,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class PollModelToEntityMapper {
+
+    private static final String POLL_ATTRIBUTE = "Poll attribute [ ";
+    private static final String NOT_PARSED = " ] could not be parsed";
+
     private static Logger LOG = LoggerFactory.getLogger(PollModelToEntityMapper.class);
 
     public static ProgramPoll mapToProgramPoll(MobileTerminal terminal, String channelGuid, PollRequestType requestType) {
@@ -53,7 +57,7 @@ public class PollModelToEntityMapper {
                         LOG.debug("ProgramPoll with attr [ " + attr.getKey() + " ] is non valid to map");
                 }
             } catch (UnsupportedOperationException | IllegalArgumentException e) {
-                throw new RuntimeException("Poll attribute [ " + attr.getKey() + " ] could not be parsed");
+                throw new RuntimeException(POLL_ATTRIBUTE + attr.getKey() + NOT_PARSED);
             }
         }
         return programPoll;
@@ -81,7 +85,7 @@ public class PollModelToEntityMapper {
                         break;
                 }
             } catch (UnsupportedOperationException | IllegalArgumentException e) {
-                throw new RuntimeException("Poll attribute [ " + attr.getKey() + " ] could not be parsed");
+                throw new RuntimeException(POLL_ATTRIBUTE + attr.getKey() + NOT_PARSED);
             }
         }
         return configurationPoll;
@@ -106,7 +110,7 @@ public class PollModelToEntityMapper {
                         break;
                 }
             } catch (UnsupportedOperationException | IllegalArgumentException e) {
-                throw new RuntimeException("Poll attribute [ " + attr.getKey() + " ] could not be parsed");
+                throw new RuntimeException(POLL_ATTRIBUTE + attr.getKey() + NOT_PARSED);
             }
         }
         return samplingPoll;
