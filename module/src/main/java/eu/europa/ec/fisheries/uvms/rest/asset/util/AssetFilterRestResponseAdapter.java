@@ -15,6 +15,8 @@ import eu.europa.ec.fisheries.uvms.asset.domain.entity.AssetFilterValue;
 
 public class AssetFilterRestResponseAdapter implements JsonbAdapter<AssetFilter, JsonObject> {
 
+	public static final String VALUE = "value";
+
     @Override
     public JsonObject adaptToJson(AssetFilter assetFilter) throws Exception {
 
@@ -37,7 +39,7 @@ public class AssetFilterRestResponseAdapter implements JsonbAdapter<AssetFilter,
 				} else {
 					JsonObject jsonValueObject = Json.createObjectBuilder()
 							.add("operator", assetFilterValue.getOperator())
-							.add("value", assetFilterValue.getValueNumber())
+							.add(VALUE, assetFilterValue.getValueNumber())
 							.build();
 
 					jsonValueArray.add(jsonValueObject);
@@ -97,10 +99,10 @@ public class AssetFilterRestResponseAdapter implements JsonbAdapter<AssetFilter,
 				} else {
 					JsonObject jsonValueObject = jsonValue.asJsonObject();
 					assetFilterValue.setOperator(jsonValueObject.getString("operator"));
-				    if(jsonValueObject.get("value").getClass().getTypeName().contains("Number")) {
-				    	assetFilterValue.setValueNumber(jsonValueObject.getJsonNumber("value").doubleValue());
+				    if(jsonValueObject.get(VALUE).getClass().getTypeName().contains("Number")) {
+				    	assetFilterValue.setValueNumber(jsonValueObject.getJsonNumber(VALUE).doubleValue());
 				    }else{
-				    	assetFilterValue.setValueString(jsonValueObject.getString("value"));
+				    	assetFilterValue.setValueString(jsonValueObject.getString(VALUE));
 				    }
 				}
 				assetFilterValue.setAssetFilterQuery(assetFilterQuery);
