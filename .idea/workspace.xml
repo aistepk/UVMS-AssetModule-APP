@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/domain/entity/GenericGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/domain/entity/Asset.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/domain/entity/Asset.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +53,6 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
   <component name="ProjectId" id="1xZqsagEvClcF0VOssWyFfXz3l8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -84,7 +80,7 @@
       <recent name="eu.europa.ec.fisheries.uvms.asset.domain.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="Arquillian JUnit.WildFly Remote: AssetRestResourceQueryTest">
+  <component name="RunManager" selected="JUnit.All in asset">
     <configuration name="WildFly Remote: AssetRestResourceQueryTest" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <module name="asset" />
       <shortenClasspath name="NONE" />
@@ -109,6 +105,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in asset" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="asset" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="assetmodule.sh" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
@@ -124,6 +139,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in asset" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -152,7 +172,7 @@
       <workItem from="1631191062830" duration="34000" />
       <workItem from="1631191123870" duration="334000" />
       <workItem from="1631191504999" duration="2099000" />
-      <workItem from="1633000997902" duration="977000" />
+      <workItem from="1633000997902" duration="4784000" />
     </task>
     <servers />
   </component>

@@ -3,8 +3,6 @@ package eu.europa.ec.fisheries.uvms.asset.domain.entity;
 import eu.europa.ec.fisheries.uvms.asset.model.constants.UnitTonnage;
 import eu.europa.ec.fisheries.uvms.asset.util.JsonBMobileTerminalIdOnlySerializer;
 import eu.europa.ec.fisheries.uvms.mobileterminal.entity.MobileTerminal;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.envers.Audited;
 
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
