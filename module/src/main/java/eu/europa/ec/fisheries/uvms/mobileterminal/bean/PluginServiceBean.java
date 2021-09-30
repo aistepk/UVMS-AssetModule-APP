@@ -44,11 +44,6 @@ public class PluginServiceBean {
 
     private static final Logger LOG = LoggerFactory.getLogger(PluginServiceBean.class);
 
-    private static final String EXCHANGE_MODULE_NAME = "exchange";
-    private static final String DELIMETER = ".";
-    private static final String INTERNAL_DELIMETER = ",";
-    private static final String SETTING_KEY_DNID_LIST = "DNIDS";
-
     @Inject
     private PollToCommandRequestMapper pollToCommandRequestMapper;
 
