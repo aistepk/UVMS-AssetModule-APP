@@ -4,20 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="">
+    <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/asset/domain/entity/GenericGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/client/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/client/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/eu/europa/ec/fisheries/uvms/asset/client/AssetClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/eu/europa/ec/fisheries/uvms/asset/client/AssetClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/model/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/model/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/module/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/module/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,6 +54,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1xZqsagEvClcF0VOssWyFfXz3l8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -59,6 +67,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -68,10 +77,39 @@
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="shared-indexes" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
-  <component name="RunManager">
-    <configuration name="assetmodule.sh" type="ShConfigurationType" temporary="true">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="eu.europa.ec.fisheries.uvms.asset.domain.entity" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Arquillian JUnit.WildFly Remote: AssetRestResourceQueryTest">
+    <configuration name="WildFly Remote: AssetRestResourceQueryTest" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <module name="asset" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="eu.europa.ec.fisheries.uvms.rest.asset.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="WildFly Remote" />
+        </value>
+      </option>
+      <option name="PACKAGE_NAME" value="eu.europa.ec.fisheries.uvms.rest.asset.service" />
+      <option name="MAIN_CLASS_NAME" value="eu.europa.ec.fisheries.uvms.rest.asset.service.AssetRestResourceQueryTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="assetmodule.sh" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/assetmodule.sh" />
@@ -86,11 +124,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Shell Script.assetmodule.sh" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -119,6 +152,7 @@
       <workItem from="1631191062830" duration="34000" />
       <workItem from="1631191123870" duration="334000" />
       <workItem from="1631191504999" duration="2099000" />
+      <workItem from="1633000997902" duration="977000" />
     </task>
     <servers />
   </component>
