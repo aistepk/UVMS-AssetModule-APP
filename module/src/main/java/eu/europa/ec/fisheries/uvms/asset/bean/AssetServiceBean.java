@@ -129,6 +129,14 @@ public class AssetServiceBean {
         }
         return assetDao.getAssetCount(queryTree, includeInactivated);
     }
+    
+    public List<Asset> getAssetList(List<String> assetIdList) {
+        List<UUID> assetUuidList = new ArrayList<>(assetIdList.size());
+        for (String s : assetIdList) {
+            assetUuidList.add(UUID.fromString(s));
+        }
+        return assetDao.getAssetListByAssetGuids(assetUuidList);
+    }
 
     public Asset updateAsset(Asset asset, String username, String comment) {
         Asset updatedAsset = updateAssetInternal(asset, username, comment);
@@ -715,7 +723,7 @@ public class AssetServiceBean {
             shouldUpdate = true;
             assetFromDB.setMmsi(assetFromAIS.getMmsi());
         }
-        if ((assetFromDB.getIrcs() == null || !assetFromDB.getIrcs().equals(assetFromAIS.getIrcs())) && (assetFromAIS.getIrcs() != null)) {
+        if (assetFromAIS.getIrcs() != null && (assetFromDB.getIrcs() == null || !assetFromDB.getIrcs().equals(assetFromAIS.getIrcs().replace(" ", "")))) {
             shouldUpdate = true;
             assetFromDB.setIrcs(assetFromAIS.getIrcs().replace(" ", ""));
         }
@@ -747,12 +755,12 @@ public class AssetServiceBean {
         }
     }
 
-    public List<MicroAsset> getInitialDataForRealtime(List<String> assetIdList) {
+    public List<Asset> getInitialDataForRealtime(List<String> assetIdList) {
         List<UUID> assetUuidList = new ArrayList<>(assetIdList.size());
         for (String s : assetIdList) {
             assetUuidList.add(UUID.fromString(s));
         }
-        return assetDao.getMicroAssetListByAssetGuids(assetUuidList);
+        return assetDao.getAssetListByAssetGuids(assetUuidList);
     }
 
     public Note getNoteById(UUID id) {
