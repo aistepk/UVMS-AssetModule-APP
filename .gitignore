@@ -2,6 +2,7 @@ target
 logging.properties
 *.iml
 .idea
+.idea/workspace.xml
 /bin/
 .settings
 .classpath
