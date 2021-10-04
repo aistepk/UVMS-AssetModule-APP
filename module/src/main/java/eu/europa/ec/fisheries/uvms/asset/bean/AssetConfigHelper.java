@@ -23,7 +23,7 @@ import eu.europa.ec.fisheries.uvms.config.constants.ConfigHelper;
 @Stateless
 public class AssetConfigHelper implements ConfigHelper {
 
-    private static final String ASSET_PU = "asset";
+    private static final String ASSET_PU = "assEt";
 
 
     @PersistenceContext
