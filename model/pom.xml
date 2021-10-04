@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>eu.europa.ec.fisheries.uvms.asset</groupId>
 		<artifactId>asset</artifactId>
-		<version>6.8.14-SNAPSHOT</version>
+		<version>6.8.13-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -28,12 +28,12 @@
 			<groupId>fish.focus.uvms.maven</groupId>
 			<artifactId>uvms-pom-java11-deps</artifactId>
 			<type>pom</type>
-            <scope>provided</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.12.0</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
 		</dependency>
 		<dependency>
 			<groupId>fish.focus.uvms.maven</groupId>
@@ -47,12 +47,12 @@
 			<version>5.16.3</version>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>2.3.3</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>2.3.3</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -81,7 +81,7 @@
 									</bindingFiles>
 									<extraargs>
 										<extraarg>-xjc-Xcommons-lang</extraarg>
-										<extraarg>-xjc-Xcommons-lang:ToStringStyle=SHORT_PREFIX_STYLE</extraarg>										
+										<extraarg>-xjc-Xcommons-lang:ToStringStyle=SHORT_PREFIX_STYLE</extraarg>
 									</extraargs>
 								</wsdlOption>
 							</wsdlOptions>
@@ -102,7 +102,7 @@
 									</bindingFiles>
 									<extraargs>
 										<extraarg>-xjc-Xcommons-lang</extraarg>
-										<extraarg>-xjc-Xcommons-lang:ToStringStyle=SHORT_PREFIX_STYLE</extraarg>										
+										<extraarg>-xjc-Xcommons-lang:ToStringStyle=SHORT_PREFIX_STYLE</extraarg>
 									</extraargs>
 								</wsdlOption>
 							</wsdlOptions>
@@ -156,9 +156,9 @@
 				</executions>
 				<dependencies>
 					<dependency>
-					    <groupId>org.jvnet.jaxb2_commons</groupId>
-					    <artifactId>jaxb2-commons-lang</artifactId>
-					    <version>2.4</version>
+						<groupId>org.jvnet.jaxb2_commons</groupId>
+						<artifactId>jaxb2-commons-lang</artifactId>
+						<version>2.4</version>
 					</dependency>
 				</dependencies>
 			</plugin>

@@ -4,7 +4,7 @@
 
     <groupId>eu.europa.ec.fisheries.uvms.asset</groupId>
     <artifactId>asset</artifactId>
-    <version>6.8.14-SNAPSHOT</version>
+    <version>6.8.13-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -15,9 +15,9 @@
     </parent>
 
     <properties>
-    	<asset.api.check.against.version>5.0.0</asset.api.check.against.version>
+        <asset.api.check.against.version>5.0.0</asset.api.check.against.version>
         <docker.dev.version>4.0.3</docker.dev.version>
-    	<docker.liquibase.changeLogFile>LIQUIBASE/changelog/db-changelog-master.xml</docker.liquibase.changeLogFile>
+        <docker.liquibase.changeLogFile>LIQUIBASE/changelog/db-changelog-master.xml</docker.liquibase.changeLogFile>
         <docker.liquibase.db.user>asset</docker.liquibase.db.user>
         <docker.liquibase.db.passwd>asset</docker.liquibase.db.passwd>
         <uvms.pom.version>3.6</uvms.pom.version>
@@ -29,15 +29,17 @@
         <exchange.model.version>5.3.17-UVMS</exchange.model.version>
         <project.scm.id>github</project.scm.id>
         <installAtEnd>false</installAtEnd>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
     </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>jakarta.platform</groupId>
-			<artifactId>jakarta.jakartaee-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>eu.europa.ec.fisheries.uvms.commons</groupId>
             <artifactId>uvms-commons-date</artifactId>
@@ -56,30 +58,30 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
-			<dependency>
-				<groupId>fish.focus.uvms.maven</groupId>
-				<artifactId>uvms-pom-gis-deps</artifactId>
-				<version>${uvms.pom.version}</version>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>fish.focus.uvms.maven</groupId>
-				<artifactId>uvms-pom-monitoring-deps</artifactId>
-				<version>${uvms.pom.version}</version>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>fish.focus.uvms.maven</groupId>
-				<artifactId>uvms-pom-test-deps</artifactId>
-				<version>${uvms.pom.version}</version>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>fish.focus.uvms.maven</groupId>
-				<artifactId>uvms-pom-arquillian-deps</artifactId>
-				<version>${uvms.pom.version}</version>
-				<type>pom</type>
-			</dependency>
+            <dependency>
+                <groupId>fish.focus.uvms.maven</groupId>
+                <artifactId>uvms-pom-gis-deps</artifactId>
+                <version>${uvms.pom.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>fish.focus.uvms.maven</groupId>
+                <artifactId>uvms-pom-monitoring-deps</artifactId>
+                <version>${uvms.pom.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>fish.focus.uvms.maven</groupId>
+                <artifactId>uvms-pom-test-deps</artifactId>
+                <version>${uvms.pom.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>fish.focus.uvms.maven</groupId>
+                <artifactId>uvms-pom-arquillian-deps</artifactId>
+                <version>${uvms.pom.version}</version>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>fish.focus.uvms.maven</groupId>
                 <artifactId>uvms-pom-java11-deps</artifactId>
@@ -121,11 +123,10 @@
     </scm>
 
     <modules>
-    	<module>model</module>
+        <module>model</module>
         <module>LIQUIBASE</module>
         <module>module</module>
         <module>client</module>
     </modules>
-
 
 </project>

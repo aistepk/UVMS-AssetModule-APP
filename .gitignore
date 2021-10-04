@@ -1,8 +1,7 @@
 target
 logging.properties
 *.iml
-*.ds_store
 .idea/
 /module/src/main/webapp/apidocs
-
+.DS_Store
 model/pom.xml.rej

@@ -11,11 +11,5 @@
         <module name="asset-model" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="asset-client" target="1.8" />
-      <module name="asset-model" target="1.8" />
-      <module name="asset-module" target="1.8" />
-      <module name="liquibase" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

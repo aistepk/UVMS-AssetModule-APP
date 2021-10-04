@@ -1,3 +1,7 @@
+<!--suppress ALL -->
+
+
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -6,17 +10,17 @@
     <packaging>war</packaging>
 
     <parent>
-	    <groupId>eu.europa.ec.fisheries.uvms.asset</groupId>
-	    <artifactId>asset</artifactId>
-	    <version>6.8.14-SNAPSHOT</version>
-	    <relativePath>../pom.xml</relativePath>
+        <groupId>eu.europa.ec.fisheries.uvms.asset</groupId>
+        <artifactId>asset</artifactId>
+        <version>6.8.13-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <properties>
         <docker.dev.start.phase>test-compile</docker.dev.start.phase>
         <docker.liquibase.phase>test-compile</docker.liquibase.phase>
         <docker.dev.prestop.phase>validate</docker.dev.prestop.phase>
-    
+
         <wildfly.maven.plugin.version>2.0.2.Final</wildfly.maven.plugin.version>
     </properties>
 
@@ -212,5 +216,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>
