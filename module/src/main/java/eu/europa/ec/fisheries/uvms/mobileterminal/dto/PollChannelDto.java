@@ -20,7 +20,7 @@ public class PollChannelDto {
 	private String mobileTerminalType;
 	private String comChannelId;
 	
-	private PollDto poll;
+	private GenericDto poll;
 	
 	private List<AttributeDto> mobileTerminalAttributes;
 
@@ -64,11 +64,11 @@ public class PollChannelDto {
 		this.mobileTerminalId = mobileTerminalId;
 	}
 
-	public PollDto getPoll() {
+	public GenericDto getPoll() {
 		return poll;
 	}
 
-	public void setPoll(PollDto poll) {
+	public void setPoll(GenericDto poll) {
 		this.poll = poll;
 	}
 }

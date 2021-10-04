@@ -19,9 +19,7 @@ import eu.europa.ec.fisheries.schema.mobileterminal.types.v1.*;
 import eu.europa.ec.fisheries.uvms.mobileterminal.dto.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 public class PollDtoMapper {
 
@@ -33,7 +31,7 @@ public class PollDtoMapper {
         return dtoList;
     }
     
-    public static PollDto mapPoll(PollResponseType response){
+    public static GenericDto mapPoll(PollResponseType response){
         checkInputParams(response.getMobileTerminal());
         return createPollDto(response);
     }
@@ -44,11 +42,11 @@ public class PollDtoMapper {
         }
     }
 
-    private static PollDto createPollDto(PollResponseType response) {
+    private static GenericDto createPollDto(PollResponseType response) {
         MobileTerminalType terminal = response.getMobileTerminal();
         List<PollAttribute> attributes = response.getAttributes();
 
-        PollDto dto = new PollDto();
+        GenericDto dto = new GenericDto();
         dto.addValue(PollKey.CONNECTION_ID, response.getMobileTerminal().getConnectId());
         dto.addValue(PollKey.TRANSPONDER, terminal.getType());
         dto.addValue(PollKey.POLL_ID, response.getPollId().getGuid());

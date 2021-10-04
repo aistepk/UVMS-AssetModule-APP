@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08fad018-908f-44d1-b291-faafa85f9e2a" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/eu/europa/ec/fisheries/uvms/asset/client/model/AssetBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/eu/europa/ec/fisheries/uvms/asset/client/model/AssetBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/dto/GenericDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/model/dto/GenericDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/dto/PollChannelDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/dto/PollChannelDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/dto/PollDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/dto/PollDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/mapper/PollDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/main/java/eu/europa/ec/fisheries/uvms/mobileterminal/mapper/PollDtoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/test/java/eu/europa/ec/fisheries/uvms/rest/mobileterminal/rest/service/PollRestResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/test/java/eu/europa/ec/fisheries/uvms/rest/mobileterminal/rest/service/PollRestResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module/src/test/java/eu/europa/ec/fisheries/uvms/tests/mobileterminal/service/arquillian/PollServiceBeanIntTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/module/src/test/java/eu/europa/ec/fisheries/uvms/tests/mobileterminal/service/arquillian/PollServiceBeanIntTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -79,6 +84,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="eu.europa.ec.fisheries.uvms.asset.domain.entity" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="eu.europa.ec.fisheries.uvms.mobileterminal.dto" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in asset">
@@ -179,7 +187,7 @@
       <workItem from="1633006510706" duration="2268000" />
       <workItem from="1633334920312" duration="1716000" />
       <workItem from="1633338685090" duration="8626000" />
-      <workItem from="1633356337115" duration="5276000" />
+      <workItem from="1633356337115" duration="6652000" />
     </task>
     <servers />
   </component>
